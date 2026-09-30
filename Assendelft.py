@@ -15,6 +15,12 @@ import xml.etree.ElementTree as ET
 
 assendelftfont = "LiberationSerif"
 version = "1"
+left_padding = 0
+bottom_padding = 0
+A4_width = A4[0]
+A4_height = A4[1]
+width = A4_width
+height = A4_height
   
 if sys.platform[0] == 'l':
     path = '/home/jan/git/Assendelft'
@@ -26,9 +32,11 @@ pdfmetrics.registerFont(TTFont('LiberationSerifBold', 'LiberationSerif-Bold.ttf'
 pdfmetrics.registerFont(TTFont('LiberationSerifItalic', 'LiberationSerif-Italic.ttf'))
 pdfmetrics.registerFont(TTFont('LiberationSerifBoldItalic', 'LiberationSerif-BoldItalic.ttf'))
 my_canvas = canvas.Canvas("PDF/Assendelft" + version + ".pdf")
+my_canvas.setFillColor(HexColor("#ffffff"))
+my_canvas.rect(left_padding, bottom_padding, width, height, fill=1)
 my_canvas.setTitle("Assendelft" + version)
 my_canvas.setFont(assendelftfont, 30)
-my_canvas.setFillColor(HexColor("#ffffff"))
+my_canvas.setFillColor(HexColor("#000000"))
 my_canvas.drawString(50, 600, "Assendelft" + version)
 my_canvas.save()
 key = input("Wait")
