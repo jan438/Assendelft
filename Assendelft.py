@@ -27,5 +27,8 @@ pdfmetrics.registerFont(TTFont('LiberationSerifItalic', 'LiberationSerif-Italic.
 pdfmetrics.registerFont(TTFont('LiberationSerifBoldItalic', 'LiberationSerif-BoldItalic.ttf'))
 my_canvas = canvas.Canvas("PDF/Assendelft" + version + ".pdf")
 my_canvas.setTitle("Assendelft" + version)
+my_canvas.setFont(assendelftfont, 30)
+my_canvas.setFillColor(HexColor("#ffffff"))
+my_canvas.drawString(50, 600, "Assendelft" + version)
 my_canvas.save()
 key = input("Wait")
