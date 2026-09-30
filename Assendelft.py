@@ -21,7 +21,11 @@ A4_width = A4[0]
 A4_height = A4[1]
 width = A4_width
 height = A4_height
-  
+
+def readjson(jsonfile):
+    totalcoords = []
+    return totalcoords
+    
 if sys.platform[0] == 'l':
     path = '/home/jan/git/Assendelft'
 if sys.platform[0] == 'w':
@@ -38,5 +42,6 @@ my_canvas.setTitle("Assendelft" + version)
 my_canvas.setFont(assendelftfont, 30)
 my_canvas.setFillColor(HexColor("#000000"))
 my_canvas.drawString(50, 800, "Assendelft" + version)
+totalcoords = readjson("JSON/assendelft.json")
 my_canvas.save()
 key = input("Wait")
