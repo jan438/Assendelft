@@ -38,8 +38,6 @@ def readjson(jsonfile):
                         coords = geom["coordinates"]
                         coords0 = coords[0]
                         totalcoords = coords0[0]
-                        print(len(totalcoords), totalcoords)
-                        print("==========================")
     return totalcoords
     
 if sys.platform[0] == 'l':
@@ -59,5 +57,6 @@ my_canvas.setFont(assendelftfont, 30)
 my_canvas.setFillColor(HexColor("#000000"))
 my_canvas.drawString(50, 800, "Assendelft" + version)
 totalcoords = readjson("JSON/assendelft.json")
+my_canvas.drawString(50, 500, "totalcoords:" + str(len(totalcoords)))
 my_canvas.save()
 key = input("Wait")
