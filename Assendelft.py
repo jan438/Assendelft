@@ -27,15 +27,15 @@ def readjson(jsonfile):
     totalcoords = []
     with open(jsonfile, 'r') as file:
         data = json.load(file)
-        print(data["uri"])
-        print(data["name"])
-        print(data["inProvince"])
-        print(data["inDepartement"])
+        #print(data["uri"])
+        #print(data["name"])
+        #print(data["inProvince"])
+        #print(data["inDepartement"])
         dep = data["inDepartement"]
-        print(dep["nl"])
+        #print(dep["nl"])
         geo = data["geometries"]
         for item in geo:
-            print(item)
+            #print(item)
             subitem = geo[item]
             print(subitem)
         print(geo)
