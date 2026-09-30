@@ -34,7 +34,7 @@ def readjson(jsonfile):
                 if subsubitem == "features":
                     features = subitem[subsubitem]
                     for feature in features:
-                        print("feature", feature)
+                        print(feature)
                         print("==========================")
     return totalcoords
     
