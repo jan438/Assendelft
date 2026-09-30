@@ -27,7 +27,6 @@ def readjson(jsonfile):
     totalcoords = []
     with open(jsonfile, 'r') as file:
         data = json.load(file)
-        print(type(data), data)
         print(data["uri"])
         print(data["name"])
         print(data["inProvince"])
@@ -35,6 +34,8 @@ def readjson(jsonfile):
         dep = data["inDepartement"]
         print(dep["nl"])
         geo = data["geometries"]
+        for item in geo:
+            print(item)
         print(geo)
     return totalcoords
     
