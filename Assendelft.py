@@ -28,6 +28,7 @@ def readjson(jsonfile):
     with open(jsonfile, 'r') as file:
         data = json.load(file)
         print(type(data), data)
+        print(data["uri"])
     return totalcoords
     
 if sys.platform[0] == 'l':
