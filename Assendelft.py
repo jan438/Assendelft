@@ -3,6 +3,7 @@ from reportlab.pdfgen import canvas
 import os
 import csv
 import sys
+import json
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfbase.pdfmetrics import registerFontFamily
@@ -24,6 +25,9 @@ height = A4_height
 
 def readjson(jsonfile):
     totalcoords = []
+    with open(jsonfile, 'r') as file:
+        data = json.load(file)
+        print(type(data))
     return totalcoords
     
 if sys.platform[0] == 'l':
