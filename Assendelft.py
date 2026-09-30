@@ -36,7 +36,8 @@ def readjson(jsonfile):
                     for feature in features:
                         geom = feature["geometry"]
                         coords = geom["coordinates"]
-                        print(coords[0])
+                        coords0 = coords[0]
+                        print(coords0[0])
                         print("==========================")
     return totalcoords
     
