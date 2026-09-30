@@ -30,6 +30,8 @@ def readjson(jsonfile):
         print(type(data), data)
         print(data["uri"])
         print(data["name"])
+        print(data["inProvince"])
+        print(data["inDepartement"])
     return totalcoords
     
 if sys.platform[0] == 'l':
