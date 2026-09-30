@@ -34,6 +34,8 @@ def readjson(jsonfile):
         print(data["inDepartement"])
         dep = data["inDepartement"]
         print(dep["nl"])
+        geo = data["geometries"]
+        print(geo)
     return totalcoords
     
 if sys.platform[0] == 'l':
