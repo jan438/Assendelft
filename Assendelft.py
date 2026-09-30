@@ -33,8 +33,9 @@ def readjson(jsonfile):
             for subsubitem in subitem:
                 if subsubitem == "features":
                     features = subitem[subsubitem]
-                    print("features", features)
-                    print("==========================")
+                    for feature in features:
+                        print("feature", feature)
+                        print("==========================")
     return totalcoords
     
 if sys.platform[0] == 'l':
