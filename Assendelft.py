@@ -32,7 +32,7 @@ def readjson(jsonfile):
             subitem = geo[item]
             for subsubitem in subitem:
                 if subsubitem == "crs":
-                    print("crs")
+                    dummy = 0
                 if subsubitem == "features":
                     features = subitem[subsubitem]
                     for feature in features:
