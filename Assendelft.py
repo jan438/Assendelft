@@ -31,11 +31,8 @@ def readjson(jsonfile):
         for item in geo:
             subitem = geo[item]
             for subsubitem in subitem:
-                if subsubitem == "type":
-                    print("type", subitem[subsubitem])
-                    print("==========================")
-                if subsubitem == "crs":
-                    print("crs", subitem[subsubitem])
+                if subsubitem == "features":
+                    print("features", subitem[subsubitem])
                     print("==========================")
     return totalcoords
     
