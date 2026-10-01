@@ -88,11 +88,7 @@ gcircle = 0
 p.moveTo(bx, by)
 p.lineTo(bx, by)
 for i in range(len(totalcoords2) - 1):
-    lat1, lon1 = totalcoords2[i]
-    lat2, lon2 = totalcoords2[i + 1]
-    coord1 = (lon1, lat1)
-    coord2 = (lon2, lat2)
-    d = great_circle(coord1, coord2).km
+    d = great_circle(totalcoords2[i], totalcoords2[i + 1]).km
     gcircle += d
     print("gcircle", gcircle)
     dx = totalcoords2[i][0] - totalcoords2[i + 1][0]
