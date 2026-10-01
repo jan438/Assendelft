@@ -94,7 +94,7 @@ for i in range(len(totalcoords2) - 1):
     coord2 = (lon2, lat2)
     d = great_circle(coord1, coord2).km
     gcircle += d
-    print(gcircle)
+    print("gcircle", gcircle)
     dx = totalcoords2[i][0] - totalcoords2[i + 1][0]
     dy = totalcoords2[i][1] - totalcoords2[i + 1][1]
     p.lineTo(bx + dx * scale, by + dy * scale)
