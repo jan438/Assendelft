@@ -13,6 +13,7 @@ from reportlab.lib.colors import yellow, green, red, blue, black, white, tan, He
 from reportlab.lib.units import inch, cm, mm
 from math import pi, cos, sin, radians, sqrt
 import xml.etree.ElementTree as ET
+from geopy.distance import great_circle
 
 assendelftfont = "LiberationSerif"
 version = "1"
@@ -83,9 +84,17 @@ p = my_canvas.beginPath()
 bx = 250
 by = 250
 scale = 5000
+gcircle = 0
 p.moveTo(bx, by)
 p.lineTo(bx, by)
 for i in range(len(totalcoords2) - 1):
+    lat1, lon1 = totalcoords2[i]
+    lat2, lon2 = totalcoords2[i + 1]
+    coord1 = (lon1, lat1)
+    coord2 = (lon2, lat2)
+    d = great_circle(coord1, coord2).km
+    gcircle += d
+    print(gcircle)
     dx = totalcoords2[i][0] - totalcoords2[i + 1][0]
     dy = totalcoords2[i][1] - totalcoords2[i + 1][1]
     p.lineTo(bx + dx * scale, by + dy * scale)
