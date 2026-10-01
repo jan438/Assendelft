@@ -28,8 +28,9 @@ def readjson(jsonfile):
     with open(jsonfile, 'r') as file:
         data = json.load(file)
         geo = data["geometries"]
-        for item in geo:
-            subitem = geo[item]
+        for year in geo:
+            print(year)
+            subitem = geo[year]
             for subsubitem in subitem:
                 if subsubitem == "features":
                     features = subitem[subsubitem]
