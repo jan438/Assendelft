@@ -79,7 +79,7 @@ p.lineTo(50 + dx, 450 + dy)
 dx = -10
 dy = -20
 p.lineTo(50 + dx, 450 + dy)
-my_canvas.drawPath(p, fill=1, stroke=1)
+my_canvas.drawPath(p, fill=0, stroke=1)
 my_canvas.drawString(50, 300, "totalcoords2:" + str(len(totalcoords2)))
 my_canvas.save()
 key = input("Wait")
