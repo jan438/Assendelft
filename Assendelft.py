@@ -30,10 +30,10 @@ def readjson(jsonfile):
         geo = data["geometries"]
         for year in geo:
             print(year)
-            subitem = geo[year]
-            for subsubitem in subitem:
-                if subsubitem == "features":
-                    features = subitem[subsubitem]
+            item = geo[year]
+            for subitem in item:
+                if subitem == "features":
+                    features = item[subitem]
                     for feature in features:
                         geom = feature["geometry"]
                         coords = geom["coordinates"]
