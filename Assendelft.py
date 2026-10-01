@@ -68,11 +68,11 @@ beginlat = totalcoords1[0][0]
 beginlon = totalcoords1[0][1]
 dx = 0
 dy = 0
-for i in range(len(totalcoords1)):
-    print(beginlat, beginlon, "lat", totalcoords1[i][0], "lon", totalcoords1[i][1])
 p = my_canvas.beginPath()
 p.moveTo(50 + dx, 450 + dy)
 p.lineTo(50 + dx, 450 + dy)
+for i in range(len(totalcoords1)):
+    print(beginlat, beginlon, "lat", totalcoords1[i][0], "lon", totalcoords1[i][1])
 dx = 5
 dy = -10
 p.lineTo(50 + dx, 450 + dy)
