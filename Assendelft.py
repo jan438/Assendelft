@@ -74,13 +74,7 @@ p.lineTo(50 + dx, 450 + dy)
 for i in range(len(totalcoords1) - 1):
     dx = totalcoords1[i][0] - totalcoords1[i+1][0]
     dy = totalcoords1[i][1] - totalcoords1[i+1][1]
-    print(beginlat, beginlon, "lat", totalcoords1[i][0], "lon", totalcoords1[i][1], dx, dy)
-dx = 5
-dy = -10
-p.lineTo(50 + dx, 450 + dy)
-dx = -10
-dy = -20
-p.lineTo(50 + dx, 450 + dy)
+    p.lineTo(50 + dx * 1000, 450 + dy * 1000)
 my_canvas.drawPath(p, fill=0, stroke=1)
 my_canvas.drawString(50, 300, "totalcoords2:" + str(len(totalcoords2)))
 my_canvas.save()
