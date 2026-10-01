@@ -66,13 +66,19 @@ my_canvas.drawString(50, 800, "Assendelft" + version)
 my_canvas.drawString(50, 500, "totalcoords1:" + str(len(totalcoords1)))
 beginlat = totalcoords1[0][0]
 beginlon = totalcoords1[0][1]
+dx = 0
+dy = 0
 for i in range(len(totalcoords1)):
     print(beginlat, beginlon, "lat", totalcoords1[i][0], "lon", totalcoords1[i][1])
 p = my_canvas.beginPath()
-p.moveTo(50, 450)
-p.lineTo(50, 450)
-p.lineTo(55, 448)
-p.lineTo(53, 446)
+p.moveTo(50 + dx, 450 + dy)
+p.lineTo(50 + dx, 450 + dy)
+dx = 5
+dy = -10
+p.lineTo(50 + dx, 450 + dy)
+dx = -10
+dy = -20
+p.lineTo(50 + dx, 450 + dy)
 my_canvas.drawPath(p, fill=1, stroke=1)
 my_canvas.drawString(50, 300, "totalcoords2:" + str(len(totalcoords2)))
 my_canvas.save()
