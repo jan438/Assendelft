@@ -72,7 +72,7 @@ p = my_canvas.beginPath()
 p.moveTo(50 + dx, 450 + dy)
 p.lineTo(50 + dx, 450 + dy)
 for i in range(len(totalcoords1) - 1):
-    if i == 5:
+    if i == 8:
         break
     dx = totalcoords1[i][0] - totalcoords1[i + 1][0]
     dy = totalcoords1[i][1] - totalcoords1[i + 1][1]
