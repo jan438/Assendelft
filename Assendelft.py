@@ -65,7 +65,7 @@ my_canvas.setFont(assendelftfont, 30)
 my_canvas.setFillColor(HexColor("#000000"))
 my_canvas.drawString(50, 800, "Assendelft" + version)
 [year1, year2, totalcoords1, totalcoords2] = readjson("JSON/assendelft.json")
-my_canvas.drawString(50, 500, year1 + str(len(totalcoords1)))
+my_canvas.drawString(50, 500, year1 + "   " + str(len(totalcoords1)))
 p = my_canvas.beginPath()
 bx = 250
 by = 450
@@ -78,7 +78,7 @@ for i in range(len(totalcoords1) - 1):
     p.lineTo(bx + dx * scale, by + dy * scale)
 p.lineTo(bx, by)
 my_canvas.drawPath(p, fill=0, stroke=1)
-my_canvas.drawString(50, 300, year2 + str(len(totalcoords2)))
+my_canvas.drawString(50, 300, year2 + "   " + str(len(totalcoords2)))
 p = my_canvas.beginPath()
 bx = 250
 by = 250
