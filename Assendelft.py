@@ -24,12 +24,14 @@ width = A4_width
 height = A4_height
 
 def readjson(jsonfile):
+    countyears = 0
     totalcoords = []
     with open(jsonfile, 'r') as file:
         data = json.load(file)
         geo = data["geometries"]
         for year in geo:
-            print(year)
+            print(countyears)
+            countyears += 1
             item = geo[year]
             for subitem in item:
                 if subitem == "features":
