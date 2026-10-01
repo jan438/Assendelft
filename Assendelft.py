@@ -25,12 +25,12 @@ height = A4_height
 
 def readjson(jsonfile):
     countyears = 0
-    totalcoords = []
+    totalcoords1 = []
+    totalcoords2 = []
     with open(jsonfile, 'r') as file:
         data = json.load(file)
         geo = data["geometries"]
         for year in geo:
-            print(countyears)
             countyears += 1
             item = geo[year]
             for subitem in item:
@@ -40,8 +40,11 @@ def readjson(jsonfile):
                         geom = feature["geometry"]
                         coords = geom["coordinates"]
                         coords0 = coords[0]
-                        totalcoords = coords0[0]
-    return totalcoords
+                        if countyears == 1:
+                            totalcoords1 = coords0[0]
+                        if countyears == 2:
+                            totalcoords2 = coords0[0]
+    return [totalcoords1, totalcoords2]
     
 if sys.platform[0] == 'l':
     path = '/home/jan/git/Assendelft'
@@ -59,7 +62,8 @@ my_canvas.setTitle("Assendelft" + version)
 my_canvas.setFont(assendelftfont, 30)
 my_canvas.setFillColor(HexColor("#000000"))
 my_canvas.drawString(50, 800, "Assendelft" + version)
-totalcoords = readjson("JSON/assendelft.json")
-my_canvas.drawString(50, 500, "totalcoords:" + str(len(totalcoords)))
+[totalcoords1, totalcoords2] = readjson("JSON/assendelft.json")
+my_canvas.drawString(50, 500, "totalcoords1:" + str(len(totalcoords1)))
+my_canvas.drawString(50, 300, "totalcoords2:" + str(len(totalcoords2)))
 my_canvas.save()
 key = input("Wait")
