@@ -64,19 +64,14 @@ my_canvas.setFillColor(HexColor("#000000"))
 my_canvas.drawString(50, 800, "Assendelft" + version)
 [totalcoords1, totalcoords2] = readjson("JSON/assendelft.json")
 my_canvas.drawString(50, 500, "totalcoords1:" + str(len(totalcoords1)))
-beginlat = totalcoords1[0][0]
-beginlon = totalcoords1[0][1]
-dx = 0
-dy = 0
 p = my_canvas.beginPath()
-p.moveTo(50 + dx, 450 + dy)
-p.lineTo(50 + dx, 450 + dy)
+p.moveTo(50, 450)
+p.lineTo(50, 450)
 for i in range(len(totalcoords1) - 1):
-    if i == 8:
-        break
     dx = totalcoords1[i][0] - totalcoords1[i + 1][0]
     dy = totalcoords1[i][1] - totalcoords1[i + 1][1]
     p.lineTo(50 + dx * 1000, 450 + dy * 1000)
+p.lineTo(50, 450)
 my_canvas.drawPath(p, fill=0, stroke=1)
 my_canvas.drawString(50, 300, "totalcoords2:" + str(len(totalcoords2)))
 my_canvas.save()
