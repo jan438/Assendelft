@@ -90,12 +90,12 @@ p.lineTo(bx, by)
 for i in range(len(totalcoords2) - 1):
     d = great_circle(totalcoords2[i], totalcoords2[i + 1]).km
     gcircle += d
-    print("gcircle", gcircle)
     dx = totalcoords2[i][0] - totalcoords2[i + 1][0]
     dy = totalcoords2[i][1] - totalcoords2[i + 1][1]
     p.lineTo(bx + dx * scale, by + dy * scale)
 p.lineTo(bx, by)
 my_canvas.drawPath(p, fill=0, stroke=1)
+my_canvas.drawString(90, 300, str(gcircle))
 my_canvas.drawImage("Photos/foto1.jpg", 150, 400, 400 * 0.75, 250 * 0.75)
 my_canvas.save()
 key = input("Wait")
