@@ -65,7 +65,7 @@ my_canvas.drawString(50, 800, "Assendelft" + version)
 [totalcoords1, totalcoords2] = readjson("JSON/assendelft.json")
 my_canvas.drawString(50, 500, "totalcoords1:" + str(len(totalcoords1)))
 p = my_canvas.beginPath()
-bx = 50
+bx = 250
 by = 450
 scale = 5000
 p.moveTo(bx, by)
@@ -77,5 +77,17 @@ for i in range(len(totalcoords1) - 1):
 p.lineTo(bx, by)
 my_canvas.drawPath(p, fill=0, stroke=1)
 my_canvas.drawString(50, 300, "totalcoords2:" + str(len(totalcoords2)))
+p = my_canvas.beginPath()
+bx = 250
+by = 250
+scale = 5000
+p.moveTo(bx, by)
+p.lineTo(bx, by)
+for i in range(len(totalcoords2) - 1):
+    dx = totalcoords2[i][0] - totalcoords2[i + 1][0]
+    dy = totalcoords2[i][1] - totalcoords2[i + 1][1]
+    p.lineTo(bx + dx * scale, by + dy * scale)
+p.lineTo(bx, by)
+my_canvas.drawPath(p, fill=0, stroke=1)
 my_canvas.save()
 key = input("Wait")
