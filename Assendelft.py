@@ -139,9 +139,10 @@ for i in range(len(totalcoords2) - 1):
     p.lineTo(bx + dx * scale, by + dy * scale)
 p.lineTo(bx, by)
 my_canvas.drawPath(p, fill=0, stroke=1)
+scalepics = 0.4
 my_canvas.drawString(200, 300, str(round(gcircle, 1)) + " km")
-my_canvas.drawImage("Photos/deHuisman2e.jpg", 150, 600, 400 * 0.75, 250 * 0.75)
-my_canvas.drawImage("Photos/hetHuisAssumburg.jpg", 150, 400, 400 * 0.75, 250 * 0.75)
-my_canvas.drawImage("Photos/dePauw.jpg", 150, 200, 400 * 0.75, 250 * 0.75)
+my_canvas.drawImage("Photos/deHuisman2e.jpg", 25, 600, 400 * scalepics, 250 * scalepics)
+my_canvas.drawImage("Photos/hetHuisAssumburg.jpg", 25, 400, 400 * scalepics, 250 * scalepics)
+my_canvas.drawImage("Photos/dePauw.jpg", 25, 200, 400 * scalepics, 250 * scalepics)
 my_canvas.save()
 key = input("Wait")
