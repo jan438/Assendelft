@@ -22,7 +22,7 @@ class GPSVis(object):
         self.x_ticks = []
         self.y_ticks = []
 
-    def plot_map(self, output='save', save_as='resultMap.png'):
+    def plot_map(self, output='save', save_as='Photos/resultMap.png'):
         """
         Method for plotting the map. You can choose to save it in file or to plot it.
         :param output: Type 'plot' to show the map or 'save' to save it.
