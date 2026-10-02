@@ -1,5 +1,7 @@
-import pandas as pd
+import warnings
 from gps_class import GPSVis
+
+warnings.filterwarnings('ignore')
 
 vis = GPSVis(data_path='Data/data.csv',map_path='Photos/map.png',points=(45.8357, 15.9645, 45.6806, 16.1557))
 
