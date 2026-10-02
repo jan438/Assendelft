@@ -4,6 +4,7 @@ import os
 import csv
 import sys
 import json
+import math
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfbase.pdfmetrics import registerFontFamily
@@ -70,6 +71,10 @@ my_canvas.setFont(assendelftfont, 30)
 my_canvas.setFillColor(HexColor("#000000"))
 my_canvas.drawString(50, 800, "Assendelft")
 [year1, year2, totalcoords1, totalcoords2] = readjson("JSON/assendelft.json")
+minlat = math.inf
+maxlat = -math.inf
+minlon = math.inf
+maxlon = -math.inf
 vis = GPSVis(data_path='Data/data.csv',map_path='Photos/map.png',points=(45.8357, 15.9645, 45.6806, 16.1557))
 vis.create_image(color=(0, 0, 255), width=3)
 vis.plot_map(output='save')
