@@ -16,7 +16,7 @@ from math import pi, cos, sin, radians, sqrt
 import xml.etree.ElementTree as ET
 from geopy.distance import great_circle
 import warnings
-from gps_class import GPSVis
+from gpsclass import GPSVis
 
 warnings.filterwarnings('ignore')
 
