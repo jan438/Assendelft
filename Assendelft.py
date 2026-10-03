@@ -103,7 +103,8 @@ for i in range(len(totalcoords2)):
     if lat < minlat:
         minlat = lat
 print("2 lon", minlon, maxlon, "lat", minlat, maxlat)
-vis = GPSVis(data_path='CSV/data.csv',map_path='Photos/map.png',points=(45.8357, 15.9645, 45.6806, 16.1557))
+#vis = GPSVis(data_path='CSV/data1.csv',map_path='Photos/map1.png',points=(45.8357, 15.9645, 45.6806, 16.1557))
+vis = GPSVis(data_path='CSV/data1.csv',map_path='Photos/map1.png',points=(4.8, 52.4, 4.6, 52.6))
 vis.create_image(color=(0, 0, 255), width=3)
 vis.plot_map(output='save')
 my_canvas.drawString(50, 500, year1 + "   " + str(len(totalcoords1)))
