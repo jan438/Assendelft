@@ -71,15 +71,12 @@ my_canvas.setFillColor(HexColor("#000000"))
 my_canvas.drawString(50, 800, "Conversion")
 [year1, year2, totalcoords1, totalcoords2] = readjson("JSON/assendelft.json")
 data = [
-    ['Nikhil', 'COE', 2, 9.0],
-    ['Sanchit', 'COE', 2, 9.1],
-    ['Aditya', 'IT', 2, 9.3],
-    ['Sagar', 'SE', 1, 9.5],
-    ['Prateek', 'MCE', 3, 7.8],
-    ['Sahil', 'EP', 2, 9.1]
+    [5.8, 9.0],
+    [4.7, 9.1],
+    [4.3, 8.1]
 ]
 with open('CSV/students_data.csv', 'w', newline='') as csvfile:
-    writer = csv.writer(csvfile, quotechar='~', delimiter='|', quoting=csv.QUOTE_ALL)
+    writer = csv.writer(csvfile, delimiter=',')
     writer.writerows(data)
 my_canvas.drawString(50, 500, str(len(totalcoords1)))
 my_canvas.save()
