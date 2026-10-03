@@ -70,14 +70,12 @@ my_canvas.setFont(assendelftfont, 30)
 my_canvas.setFillColor(HexColor("#000000"))
 my_canvas.drawString(50, 800, "Conversion")
 [year1, year2, totalcoords1, totalcoords2] = readjson("JSON/assendelft.json")
-data = [
-    [5.8, 9.0],
-    [4.7, 9.1],
-    [4.3, 8.1]
-]
-with open('CSV/students_data.csv', 'w', newline='') as csvfile:
+with open('CSV/data1.csv', 'w', newline='') as csvfile:
     writer = csv.writer(csvfile, delimiter=',')
     writer.writerows(totalcoords1)
+with open('CSV/data2.csv', 'w', newline='') as csvfile:
+    writer = csv.writer(csvfile, delimiter=',')
+    writer.writerows(totalcoords2)
 my_canvas.drawString(50, 500, str(len(totalcoords1)))
 my_canvas.save()
 key = input("Wait")
