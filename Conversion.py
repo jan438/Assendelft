@@ -77,7 +77,7 @@ data = [
 ]
 with open('CSV/students_data.csv', 'w', newline='') as csvfile:
     writer = csv.writer(csvfile, delimiter=',')
-    writer.writerows(data)
+    writer.writerows(totalcoords1)
 my_canvas.drawString(50, 500, str(len(totalcoords1)))
 my_canvas.save()
 key = input("Wait")
