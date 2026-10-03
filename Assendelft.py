@@ -76,33 +76,33 @@ maxlat = -math.inf
 minlon = math.inf
 maxlon = -math.inf
 for i in range(len(totalcoords1)):
-    lat = float(totalcoords1[i][0])
-    lon = float(totalcoords1[i][1])
-    if lat > maxlat:
-        maxlat = lat
-    if lat < minlat:
-        minlat = lat
+    lon = float(totalcoords1[i][0])
+    lat = float(totalcoords1[i][1])
     if lon > maxlon:
         maxlon = lon
     if lon < minlon:
         minlon = lon  
-print("1 lat", minlat, maxlat, "lon", minlon, maxlon)
+    if lat > maxlat:
+        maxlat = lat
+    if lat < minlat:
+        minlat = lat
+print("1 lon", minlon, maxlon, "lat", minlat, maxlat)
 minlat = math.inf
 maxlat = -math.inf
 minlon = math.inf
 maxlon = -math.inf
 for i in range(len(totalcoords2)):
-    lat = float(totalcoords2[i][0])
-    lon = float(totalcoords2[i][1])
-    if lat > maxlat:
-        maxlat = lat
-    if lat < minlat:
-        minlat = lat
+    lon = float(totalcoords2[i][0])
+    lat = float(totalcoords2[i][1])
     if lon > maxlon:
         maxlon = lon
     if lon < minlon:
         minlon = lon
-print("2 lat", minlat, maxlat, "lon", minlon, maxlon)
+    if lat > maxlat:
+        maxlat = lat
+    if lat < minlat:
+        minlat = lat
+print("2 lon", minlon, maxlon, "lat", minlat, maxlat)
 vis = GPSVis(data_path='Data/data.csv',map_path='Photos/map.png',points=(45.8357, 15.9645, 45.6806, 16.1557))
 vis.create_image(color=(0, 0, 255), width=3)
 vis.plot_map(output='save')
