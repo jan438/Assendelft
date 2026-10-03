@@ -142,7 +142,7 @@ p.lineTo(bx, by)
 my_canvas.drawPath(p, fill=0, stroke=1)
 scalepics = 0.4
 my_canvas.drawString(200, 300, str(round(gcircle, 1)) + " km")
-my_canvas.drawImage("Photos/map.png", 400, 300, 145, 269)
+my_canvas.drawImage("Photos/resultMap.png", 400, 300, 145, 269)
 my_canvas.drawImage("Photos/deHuisman2e.jpg", 25, 600, 400 * scalepics, 250 * scalepics)
 my_canvas.drawImage("Photos/hetHuisAssumburg.jpg", 25, 400, 400 * scalepics, 250 * scalepics)
 my_canvas.drawImage("Photos/dePauw.jpg", 25, 200, 400 * scalepics, 250 * scalepics)
