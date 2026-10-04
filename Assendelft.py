@@ -54,6 +54,10 @@ def readjson(jsonfile):
                             totalcoords2 = coords0[0]
     return [year1, year2, totalcoords1, totalcoords2]
     
+def scale_to_img(lat_lon, h_w):
+    print(lat_lon, h_w)
+    return [0,0]
+
 if sys.platform[0] == 'l':
     path = '/home/jan/git/Assendelft'
 if sys.platform[0] == 'w':
@@ -112,7 +116,7 @@ for i in range(len(totalcoords1)):
     totalcoords1[i][0] = totalcoords1[i][1]
     totalcoords1[i][1] = temp
 for i in range(len(totalcoords1)):
-    print(totalcoords1[i])
+    x1, y1 = scale_to_img(totalcoords1[i], [100, 100] )
 my_canvas.drawString(50, 300, year2 + "   " + str(len(totalcoords2)))
 p = my_canvas.beginPath()
 bx = 250
