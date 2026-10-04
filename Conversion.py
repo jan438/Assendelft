@@ -70,6 +70,10 @@ my_canvas.setFont(assendelftfont, 30)
 my_canvas.setFillColor(HexColor("#000000"))
 my_canvas.drawString(50, 800, "Conversion")
 [year1, year2, totalcoords1, totalcoords2] = readjson("JSON/assendelft.json")
+for i in range(len(totalcoords1)):
+    temp = totalcoords1[i][0]
+    totalcoords1[i][0] = totalcoords1[i][1]
+    totalcoords1[i][1] = temp
 with open('CSV/data1.csv', 'w', newline='') as csvfile:
     writer = csv.writer(csvfile, delimiter=',')
     writer.writerows(totalcoords1)
