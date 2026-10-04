@@ -55,6 +55,7 @@ class GPSVis(object):
         img_points = []
         gps_data = tuple(zip(data['LATITUDE'].values, data['LONGITUDE'].values))
         for d in gps_data:
+            print(d)
             x1, y1 = self.scale_to_img(d, (self.result_image.size[0], self.result_image.size[1]))
             img_points.append((x1, y1))
         draw = ImageDraw.Draw(self.result_image)
