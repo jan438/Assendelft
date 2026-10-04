@@ -119,7 +119,9 @@ p = my_canvas.beginPath()
 bx = 250
 by = 450
 p.moveTo(bx, by)
-p.lineTo(bx, by)  
+p.lineTo(bx, by)
+# to remove
+p.lineTo(bx + 100, by - 50)
 for i in range(len(totalcoords1)):
     x1, y1 = scale_to_img(totalcoords1[i], [100, 100] )
 my_canvas.drawPath(p, fill=0, stroke=1)
