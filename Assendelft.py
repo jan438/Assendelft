@@ -107,6 +107,12 @@ vis = GPSVis(data_path='CSV/data1.csv',map_path='Photos/map1.png',points=(52.51,
 vis.create_image(color=(0, 0, 255), width=3)
 vis.plot_map(output='save')
 my_canvas.drawString(50, 500, year1 + "   " + str(len(totalcoords1)))
+for i in range(len(totalcoords1)):
+    temp = totalcoords1[i][0]
+    totalcoords1[i][0] = totalcoords1[i][1]
+    totalcoords1[i][1] = temp
+for i in range(len(totalcoords1)):
+    print(totalcoords1[i])
 my_canvas.drawString(50, 300, year2 + "   " + str(len(totalcoords2)))
 p = my_canvas.beginPath()
 bx = 250
