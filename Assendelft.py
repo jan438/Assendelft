@@ -115,8 +115,14 @@ for i in range(len(totalcoords1)):
     temp = totalcoords1[i][0]
     totalcoords1[i][0] = totalcoords1[i][1]
     totalcoords1[i][1] = temp
+p = my_canvas.beginPath()
+bx = 250
+by = 450
+p.moveTo(bx, by)
+p.lineTo(bx, by)  
 for i in range(len(totalcoords1)):
     x1, y1 = scale_to_img(totalcoords1[i], [100, 100] )
+my_canvas.drawPath(p, fill=0, stroke=1)
 my_canvas.drawString(50, 300, year2 + "   " + str(len(totalcoords2)))
 p = my_canvas.beginPath()
 bx = 250
