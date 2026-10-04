@@ -77,6 +77,10 @@ for i in range(len(totalcoords1)):
 with open('CSV/data1.csv', 'w', newline='') as csvfile:
     writer = csv.writer(csvfile, delimiter=',')
     writer.writerows(totalcoords1)
+for i in range(len(totalcoords2)):
+    temp = totalcoords2[i][0]
+    totalcoords2[i][0] = totalcoords2[i][1]
+    totalcoords2[i][1] = temp
 with open('CSV/data2.csv', 'w', newline='') as csvfile:
     writer = csv.writer(csvfile, delimiter=',')
     writer.writerows(totalcoords2)
