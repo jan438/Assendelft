@@ -1,0 +1,44 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from PIL import Image, ImageDraw
+
+
+class GPSVis(object):
+    def __init__(self, data_path, map_path, points):
+        self.data_path = data_path
+        self.points = points
+        self.map_path = map_path
+        self.result_image = Image
+        self.x_ticks = []
+        self.y_ticks = []
+
+    def create_image(self, color, width=2):
+        data = pd.read_csv(self.data_path, names=['LATITUDE', 'LONGITUDE'], sep=',')
+        self.result_image = Image.open(self.map_path, 'r')
+        img_points = []
+        gps_data = tuple(zip(data['LATITUDE'].values, data['LONGITUDE'].values))
+        for d in gps_data:
+            print(d)
+            x1, y1 = self.scale_to_img(d, (self.result_image.size[0], self.result_image.size[1]))
+            img_points.append((x1, y1))
+        draw = ImageDraw.Draw(self.result_image)
+        draw.line(img_points, fill=color, width=width)
+
+    def scale_to_img(self, lat_lon, h_w):
+        old = (self.points[2], self.points[0])
+        new = (0, h_w[1])
+        y = ((lat_lon[0] - old[0]) * (new[1] - new[0]) / (old[1] - old[0])) + new[0]
+        old = (self.points[1], self.points[3])
+        new = (0, h_w[0])
+        x = ((lat_lon[1] - old[0]) * (new[1] - new[0]) / (old[1] - old[0])) + new[0]
+        return int(x), h_w[1] - int(y)
+
+    def get_ticks(self):
+        self.x_ticks = map(
+            lambda x: round(x, 4),
+            np.linspace(self.points[1], self.points[3], num=7))
+        y_ticks = map(
+            lambda x: round(x, 4),
+            np.linspace(self.points[2], self.points[0], num=8))
+        self.y_ticks = sorted(y_ticks, reverse=True)
