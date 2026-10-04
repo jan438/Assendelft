@@ -103,27 +103,10 @@ for i in range(len(totalcoords2)):
     if lat < minlat:
         minlat = lat
 print("2 lon", minlon, maxlon, "lat", minlat, maxlat)
-#vis = GPSVis(data_path='CSV/data1.csv',map_path='Photos/map1.png',points=(45.8357, 15.9645, 45.6806, 16.1557))
 vis = GPSVis(data_path='CSV/data1.csv',map_path='Photos/map1.png',points=(52.51, 4.67, 52.43, 4.77))
 vis.create_image(color=(0, 0, 255), width=3)
 vis.plot_map(output='save')
 my_canvas.drawString(50, 500, year1 + "   " + str(len(totalcoords1)))
-p = my_canvas.beginPath()
-bx = 250
-by = 450
-scale = 5000
-gcircle = 0
-p.moveTo(bx, by)
-p.lineTo(bx, by)
-for i in range(len(totalcoords1) - 1):
-    d = great_circle(totalcoords1[i], totalcoords1[i + 1]).km
-    gcircle += d
-    dx = totalcoords1[i][0] - totalcoords1[i + 1][0]
-    dy = totalcoords1[i][1] - totalcoords1[i + 1][1]
-    p.lineTo(bx + dx * scale, by + dy * scale)
-p.lineTo(bx, by)
-my_canvas.drawPath(p, fill=0, stroke=1)
-my_canvas.drawString(200, 500, str(round(gcircle, 1)) + " km")
 my_canvas.drawString(50, 300, year2 + "   " + str(len(totalcoords2)))
 p = my_canvas.beginPath()
 bx = 250
