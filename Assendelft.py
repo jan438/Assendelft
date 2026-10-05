@@ -57,13 +57,13 @@ def readjson(jsonfile):
     return [year1, year2, totalcoords1, totalcoords2]
     
 def scale_to_img(lat_lon, w_h):
-    print(lat_lon, w_h)
     old = (points[2], points[0])
     new = (0, w_h[1])
     y = ((lat_lon[0] - old[0]) * (new[1] - new[0]) / (old[1] - old[0])) + new[0]
     old = (points[1], points[3])
     new = (0, w_h[0])
     x = ((lat_lon[1] - old[0]) * (new[1] - new[0]) / (old[1] - old[0])) + new[0]
+    print(lat_lon, x, y)
     return int(x), w_h[1] - int(y)
 
 if sys.platform[0] == 'l':

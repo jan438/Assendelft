@@ -55,7 +55,6 @@ class GPSVis(object):
         img_points = []
         gps_data = tuple(zip(data['LATITUDE'].values, data['LONGITUDE'].values))
         for d in gps_data:
-            print(d)
             x1, y1 = self.scale_to_img(d, (self.result_image.size[0], self.result_image.size[1]))
             img_points.append((x1, y1))
         draw = ImageDraw.Draw(self.result_image)
@@ -78,6 +77,7 @@ class GPSVis(object):
         x = ((lat_lon[1] - old[0]) * (new[1] - new[0]) / (old[1] - old[0])) + new[0]
         # y must be reversed because the orientation of the image in the matplotlib.
         # image - (0, 0) in upper left corner; coordinate system - (0, 0) in lower left corner
+        print(lat_lon, x, y)
         return int(x), h_w[1] - int(y)
 
     def get_ticks(self):
