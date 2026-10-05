@@ -102,6 +102,21 @@ for i in range(len(totalcoords1)):
     p.lineTo(x1, y1)
 my_canvas.drawPath(p, fill=0, stroke=1)
 my_canvas.drawString(50, 300, year2 + "   " + str(len(totalcoords2)))
+for i in range(len(totalcoords2)):
+    temp = totalcoords2[i][0]
+    totalcoords2[i][0] = totalcoords2[i][1]
+    totalcoords2[i][1] = temp
+p = my_canvas.beginPath()
+bx = 175
+by = 100
+for i in range(len(totalcoords2)):
+    x, y = scale_to_img(totalcoords2[i], w_h)
+    x1 = bx + x
+    y1 = by + y
+    if i == 0:
+        p.moveTo(x1, y1)
+    p.lineTo(x1, y1)
+my_canvas.drawPath(p, fill=0, stroke=1)
 scalepics = 0.4
 my_canvas.drawImage("Photos/resultMap.png", 300, 400, 200, 200)
 my_canvas.drawImage("Photos/deHuisman2e.jpg", 25, 600, 400 * scalepics, 250 * scalepics)
