@@ -69,7 +69,7 @@ def scale_to_img(lat_lon, w_h):
     
 def drawbounderies(c, bx, by, coords):
     c.setFont(assendelftfont, 10)
-    c.drawString(bx, by - 15, year1 + "   " + str(len(totalcoords1)))
+    c.drawString(bx, by - 15, year1 + "   " + str(len(coords)))
     for i in range(len(coords)):
         temp = coords[i][0]
         coords[i][0] = coords[i][1]
