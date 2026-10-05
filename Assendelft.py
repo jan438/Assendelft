@@ -68,7 +68,7 @@ def scale_to_img(lat_lon, w_h):
     return int(x), int(y)
     
 def drawbounderies(c, bx, by, coords):
-    c.drawString(bx, by, year1 + "   " + str(len(totalcoords1)))
+    c.drawString(bx, by - 10, year1 + "   " + str(len(totalcoords1)))
     for i in range(len(coords)):
         temp = coords[i][0]
         coords[i][0] = coords[i][1]
@@ -92,7 +92,7 @@ def drawbounderies(c, bx, by, coords):
         d = great_circle(coord1, coord2).km
         gcircle += d
     c.drawPath(p, fill=0, stroke=1)
-    c.drawString(bx, by, str(round(gcircle, 1)) + "km")
+    c.drawString(bx, by - 20, str(round(gcircle, 1)) + "km")
     return
 
 if sys.platform[0] == 'l':
