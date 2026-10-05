@@ -126,12 +126,15 @@ for i in range(len(totalcoords1)):
 p = my_canvas.beginPath()
 bx = 250
 by = 450
+x0 = bx
+y0 = by
 p.moveTo(bx, by)
 p.lineTo(bx, by)
-# to remove
-p.lineTo(bx + 100, by - 50)
 for i in range(len(totalcoords1)):
     x1, y1 = scale_to_img(totalcoords1[i], w_h)
+    p.lineTo(x1, y1)
+    x0 = x1
+    y0 = y1
 my_canvas.drawPath(p, fill=0, stroke=1)
 my_canvas.drawString(50, 300, year2 + "   " + str(len(totalcoords2)))
 p = my_canvas.beginPath()
