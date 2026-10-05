@@ -66,6 +66,34 @@ def scale_to_img(lat_lon, w_h):
     new = (0, w_h[0])
     x = ((lat_lon[1] - old[0]) * (new[1] - new[0]) / (old[1] - old[0])) + new[0]
     return int(x), int(y)
+    
+def drawbounderies(c, bx, by, coords):
+    c.drawString(bx, by, year1 + "   " + str(len(totalcoords1)))
+    for i in range(len(coords)):
+        temp = coords[i][0]
+        coords[i][0] = coords[i][1]
+        coords[i][1] = temp
+    p = c.beginPath()
+    gcircle = 0
+    for i in range(len(coords)):
+        x, y = scale_to_img(coords[i], w_h)
+        x1 = bx + x
+        y1 = by + y
+        if i == 0:
+            p.moveTo(x1, y1)
+        p.lineTo(x1, y1)
+        lat1, lon1 = coords[i]
+        if i < len(coords) - 1:
+            lat2, lon2 = coords[i + 1]
+        else:
+            lat2, lon2 = coords[0]
+        coord1 = (lon1, lat1)
+        coord2 = (lon2, lat2)
+        d = great_circle(coord1, coord2).km
+        gcircle += d
+    c.drawPath(p, fill=0, stroke=1)
+    c.drawString(bx, by, str(round(gcircle, 1)) + "km")
+    return
 
 if sys.platform[0] == 'l':
     path = '/home/jan/git/Assendelft'
@@ -93,49 +121,8 @@ if response.status_code == 200:
 vis = GPSVis(data_path='CSV/data1.csv',map_path='Photos/map1.png',points=points)
 vis.create_image(color=(0, 0, 255), width=3)
 vis.plot_map(output='save')
-my_canvas.drawString(50, 500, year1 + "   " + str(len(totalcoords1)))
-for i in range(len(totalcoords1)):
-    temp = totalcoords1[i][0]
-    totalcoords1[i][0] = totalcoords1[i][1]
-    totalcoords1[i][1] = temp
-p = my_canvas.beginPath()
-bx = 75
-by = 100
-gcircle = 0
-for i in range(len(totalcoords1)):
-    x, y = scale_to_img(totalcoords1[i], w_h)
-    x1 = bx + x
-    y1 = by + y
-    if i == 0:
-        p.moveTo(x1, y1)
-    p.lineTo(x1, y1)
-    lat1, lon1 = totalcoords1[i]
-    if i < len(totalcoords1) - 1:
-        lat2, lon2 = totalcoords1[i + 1]
-    else:
-        lat2, lon2 = totalcoords1[0]
-    coord1 = (lon1, lat1)
-    coord2 = (lon2, lat2)
-    d = great_circle(coord1, coord2).km
-    gcircle += d
-my_canvas.drawPath(p, fill=0, stroke=1)
-my_canvas.drawString(170, 500, str(round(gcircle, 1)) + "km")
-my_canvas.drawString(50, 300, year2 + "   " + str(len(totalcoords2)))
-for i in range(len(totalcoords2)):
-    temp = totalcoords2[i][0]
-    totalcoords2[i][0] = totalcoords2[i][1]
-    totalcoords2[i][1] = temp
-p = my_canvas.beginPath()
-bx = 175
-by = 100
-for i in range(len(totalcoords2)):
-    x, y = scale_to_img(totalcoords2[i], w_h)
-    x1 = bx + x
-    y1 = by + y
-    if i == 0:
-        p.moveTo(x1, y1)
-    p.lineTo(x1, y1)
-my_canvas.drawPath(p, fill=0, stroke=1)
+drawbounderies(my_canvas, 75, 100, totalcoords1)
+drawbounderies(my_canvas, 175, 100, totalcoords2)
 scalepics = 0.4
 my_canvas.drawImage("Photos/resultMap.png", 300, 400, 200, 200)
 my_canvas.drawImage("Photos/deHuisman2e.jpg", 25, 600, 400 * scalepics, 250 * scalepics)
