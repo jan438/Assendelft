@@ -28,6 +28,7 @@ A4_width = A4[0]
 A4_height = A4[1]
 width = A4_width
 height = A4_height
+points = (52.51, 4.67, 52.43, 4.77)
 
 def readjson(jsonfile):
     countyears = 0
@@ -107,7 +108,7 @@ for i in range(len(totalcoords2)):
     if lat < minlat:
         minlat = lat
 print("2 lon", minlon, maxlon, "lat", minlat, maxlat)
-vis = GPSVis(data_path='CSV/data1.csv',map_path='Photos/map1.png',points=(52.51, 4.67, 52.43, 4.77))
+vis = GPSVis(data_path='CSV/data1.csv',map_path='Photos/map1.png',points=points)
 vis.create_image(color=(0, 0, 255), width=3)
 vis.plot_map(output='save')
 my_canvas.drawString(50, 500, year1 + "   " + str(len(totalcoords1)))
