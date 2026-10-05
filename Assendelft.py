@@ -91,8 +91,12 @@ for i in range(len(totalcoords1)):
     totalcoords1[i][0] = totalcoords1[i][1]
     totalcoords1[i][1] = temp
 p = my_canvas.beginPath()
+bx = 75
+by = 100
 for i in range(len(totalcoords1)):
-    x1, y1 = scale_to_img(totalcoords1[i], w_h)
+    x, y = scale_to_img(totalcoords1[i], w_h)
+    x1 = bx + x
+    y1 = by + y
     if i == 0:
         p.moveTo(x1, y1)
     p.lineTo(x1, y1)
