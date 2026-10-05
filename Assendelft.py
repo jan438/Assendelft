@@ -67,9 +67,9 @@ def scale_to_img(lat_lon, w_h):
     x = ((lat_lon[1] - old[0]) * (new[1] - new[0]) / (old[1] - old[0])) + new[0]
     return int(x), int(y)
     
-def drawbounderies(c, bx, by, coords):
+def drawbounderies(c, bx, by, coords, year):
     c.setFont(assendelftfont, 10)
-    c.drawString(bx, by - 15, year1 + "   " + str(len(coords)))
+    c.drawString(bx, by - 15, year + "   " + str(len(coords)))
     for i in range(len(coords)):
         temp = coords[i][0]
         coords[i][0] = coords[i][1]
@@ -122,8 +122,8 @@ if response.status_code == 200:
 vis = GPSVis(data_path='CSV/data1.csv',map_path='Photos/map1.png',points=points)
 vis.create_image(color=(0, 0, 255), width=3)
 vis.plot_map(output='save')
-drawbounderies(my_canvas, 75, 100, totalcoords1)
-drawbounderies(my_canvas, 175, 100, totalcoords2)
+drawbounderies(my_canvas, 75, 100, totalcoords1, year1)
+drawbounderies(my_canvas, 175, 100, totalcoords2, year2)
 scalepics = 0.4
 my_canvas.drawImage("Photos/resultMap.png", 300, 400, 200, 200)
 my_canvas.drawImage("Photos/deHuisman2e.jpg", 25, 600, 400 * scalepics, 250 * scalepics)
