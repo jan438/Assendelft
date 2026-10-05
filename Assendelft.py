@@ -119,6 +119,7 @@ for i in range(len(totalcoords1)):
     d = great_circle(coord1, coord2).km
     gcircle += d
 my_canvas.drawPath(p, fill=0, stroke=1)
+my_canvas.drawString(170, 500, str(round(gcircle, 1)) + "km")
 my_canvas.drawString(50, 300, year2 + "   " + str(len(totalcoords2)))
 for i in range(len(totalcoords2)):
     temp = totalcoords2[i][0]
