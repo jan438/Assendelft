@@ -101,6 +101,7 @@ for i in range(len(totalcoords1)):
 p = my_canvas.beginPath()
 bx = 75
 by = 100
+gcircle = 0
 for i in range(len(totalcoords1)):
     x, y = scale_to_img(totalcoords1[i], w_h)
     x1 = bx + x
@@ -108,6 +109,15 @@ for i in range(len(totalcoords1)):
     if i == 0:
         p.moveTo(x1, y1)
     p.lineTo(x1, y1)
+    lat1, lon1 = totalcoords1[i]
+    if i < len(totalcoords1) - 1:
+        lat2, lon2 = totalcoords1[i + 1]
+    else:
+        lat2, lon2 = totalcoords1[0]
+    coord1 = (lon1, lat1)
+    coord2 = (lon2, lat2)
+    d = great_circle(coord1, coord2).km
+    gcircle += d
 my_canvas.drawPath(p, fill=0, stroke=1)
 my_canvas.drawString(50, 300, year2 + "   " + str(len(totalcoords2)))
 for i in range(len(totalcoords2)):
