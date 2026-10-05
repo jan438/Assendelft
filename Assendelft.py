@@ -82,36 +82,6 @@ my_canvas.setFont(assendelftfont, 30)
 my_canvas.setFillColor(HexColor("#000000"))
 my_canvas.drawString(50, 800, "Assendelft")
 [year1, year2, totalcoords1, totalcoords2] = readjson("JSON/assendelft.json")
-minlat = math.inf
-maxlat = -math.inf
-minlon = math.inf
-maxlon = -math.inf
-for i in range(len(totalcoords1)):
-    lon = float(totalcoords1[i][0])
-    lat = float(totalcoords1[i][1])
-    if lon > maxlon:
-        maxlon = lon
-    if lon < minlon:
-        minlon = lon  
-    if lat > maxlat:
-        maxlat = lat
-    if lat < minlat:
-        minlat = lat
-minlat = math.inf
-maxlat = -math.inf
-minlon = math.inf
-maxlon = -math.inf
-for i in range(len(totalcoords2)):
-    lon = float(totalcoords2[i][0])
-    lat = float(totalcoords2[i][1])
-    if lon > maxlon:
-        maxlon = lon
-    if lon < minlon:
-        minlon = lon
-    if lat > maxlat:
-        maxlat = lat
-    if lat < minlat:
-        minlat = lat
 vis = GPSVis(data_path='CSV/data1.csv',map_path='Photos/map1.png',points=points)
 vis.create_image(color=(0, 0, 255), width=3)
 vis.plot_map(output='save')
@@ -134,23 +104,7 @@ for i in range(len(totalcoords1)):
     y0 = y1
 my_canvas.drawPath(p, fill=0, stroke=1)
 my_canvas.drawString(50, 300, year2 + "   " + str(len(totalcoords2)))
-p = my_canvas.beginPath()
-bx = 250
-by = 250
-scale = 5000
-gcircle = 0
-p.moveTo(bx, by)
-p.lineTo(bx, by)
-for i in range(len(totalcoords2) - 1):
-    d = great_circle(totalcoords2[i], totalcoords2[i + 1]).km
-    gcircle += d
-    dx = totalcoords2[i][0] - totalcoords2[i + 1][0]
-    dy = totalcoords2[i][1] - totalcoords2[i + 1][1]
-    p.lineTo(bx + dx * scale, by + dy * scale)
-p.lineTo(bx, by)
-my_canvas.drawPath(p, fill=0, stroke=1)
 scalepics = 0.4
-my_canvas.drawString(200, 300, str(round(gcircle, 1)) + " km")
 my_canvas.drawImage("Photos/resultMap.png", 300, 400, 200, 200)
 my_canvas.drawImage("Photos/deHuisman2e.jpg", 25, 600, 400 * scalepics, 250 * scalepics)
 my_canvas.drawImage("Photos/hetHuisAssumburg.jpg", 25, 400, 400 * scalepics, 250 * scalepics)
