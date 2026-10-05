@@ -5,6 +5,7 @@ import csv
 import sys
 import json
 import math
+import requests
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfbase.pdfmetrics import registerFontFamily
@@ -30,6 +31,7 @@ width = A4_width
 height = A4_height
 points = (52.51, 4.67, 52.43, 4.77)
 w_h = (100, 100)
+resp = requests.Response
 
 def readjson(jsonfile):
     countyears = 0
@@ -81,6 +83,8 @@ my_canvas.setTitle("Assendelft" + version)
 my_canvas.setFont(assendelftfont, 30)
 my_canvas.setFillColor(HexColor("#000000"))
 my_canvas.drawString(50, 800, "Assendelft")
+response = requests.get("https://gemeentegeschiedenis.nl/gemeentenaam/json/Assendelft")
+print(response)
 [year1, year2, totalcoords1, totalcoords2] = readjson("JSON/assendelft.json")
 vis = GPSVis(data_path='CSV/data1.csv',map_path='Photos/map1.png',points=points)
 vis.create_image(color=(0, 0, 255), width=3)
