@@ -29,6 +29,7 @@ A4_height = A4[1]
 width = A4_width
 height = A4_height
 points = (52.51, 4.67, 52.43, 4.77)
+w_h = (100, 100)
 
 def readjson(jsonfile):
     countyears = 0
@@ -55,8 +56,8 @@ def readjson(jsonfile):
                             totalcoords2 = coords0[0]
     return [year1, year2, totalcoords1, totalcoords2]
     
-def scale_to_img(lat_lon, h_w):
-    print(lat_lon, h_w)
+def scale_to_img(lat_lon, w_h):
+    print(lat_lon, w_h)
     return [0,0]
 
 if sys.platform[0] == 'l':
@@ -124,7 +125,7 @@ p.lineTo(bx, by)
 # to remove
 p.lineTo(bx + 100, by - 50)
 for i in range(len(totalcoords1)):
-    x1, y1 = scale_to_img(totalcoords1[i], [100, 100] )
+    x1, y1 = scale_to_img(totalcoords1[i], w_h)
 my_canvas.drawPath(p, fill=0, stroke=1)
 my_canvas.drawString(50, 300, year2 + "   " + str(len(totalcoords2)))
 p = my_canvas.beginPath()
