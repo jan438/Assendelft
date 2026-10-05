@@ -77,7 +77,6 @@ class GPSVis(object):
         x = ((lat_lon[1] - old[0]) * (new[1] - new[0]) / (old[1] - old[0])) + new[0]
         # y must be reversed because the orientation of the image in the matplotlib.
         # image - (0, 0) in upper left corner; coordinate system - (0, 0) in lower left corner
-        print(lat_lon, x, y)
         return int(x), h_w[1] - int(y)
 
     def get_ticks(self):

@@ -63,7 +63,6 @@ def scale_to_img(lat_lon, w_h):
     old = (points[1], points[3])
     new = (0, w_h[0])
     x = ((lat_lon[1] - old[0]) * (new[1] - new[0]) / (old[1] - old[0])) + new[0]
-    print(lat_lon, x, y)
     return int(x), w_h[1] - int(y)
 
 if sys.platform[0] == 'l':
@@ -98,7 +97,6 @@ for i in range(len(totalcoords1)):
         maxlat = lat
     if lat < minlat:
         minlat = lat
-print("1 lon", minlon, maxlon, "lat", minlat, maxlat)
 minlat = math.inf
 maxlat = -math.inf
 minlon = math.inf
@@ -114,7 +112,6 @@ for i in range(len(totalcoords2)):
         maxlat = lat
     if lat < minlat:
         minlat = lat
-print("2 lon", minlon, maxlon, "lat", minlat, maxlat)
 vis = GPSVis(data_path='CSV/data1.csv',map_path='Photos/map1.png',points=points)
 vis.create_image(color=(0, 0, 255), width=3)
 vis.plot_map(output='save')
