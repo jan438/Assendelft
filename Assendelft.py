@@ -84,6 +84,11 @@ my_canvas.setFont(assendelftfont, 30)
 my_canvas.setFillColor(HexColor("#000000"))
 my_canvas.drawString(50, 800, "Assendelft")
 response = requests.get("https://gemeentegeschiedenis.nl/gemeentenaam/json/Assendelft")
+if response.status_code == 200:
+    history = response.content
+    data = json.loads(history.decode('utf-8'))
+    with open('JSON/todo.json', 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=4)
 print(response)
 [year1, year2, totalcoords1, totalcoords2] = readjson("JSON/assendelft.json")
 vis = GPSVis(data_path='CSV/data1.csv',map_path='Photos/map1.png',points=points)
