@@ -30,7 +30,7 @@ A4_height = A4[1]
 width = A4_width
 height = A4_height
 points = (52.55, 4.65, 52.41, 4.80)
-w_h = (100, 100)
+w_h = (92.3, 120.0)
 resp = requests.Response
 geodata = []
 
