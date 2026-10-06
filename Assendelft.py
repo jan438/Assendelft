@@ -143,8 +143,9 @@ for i in range(len(geodata)):
     markplace(my_canvas, 75, 100, float(geodata[i][1]), float(geodata[i][2]), w_h)
 scalepics = 0.4
 my_canvas.drawImage("Photos/resultMap.png", 300, 400, 200, 200)
-my_canvas.drawImage("Photos/deHuisman2e.jpg", 25, 600, 400 * scalepics, 250 * scalepics)
-my_canvas.drawImage("Photos/hetHuisAssumburg.jpg", 25, 400, 400 * scalepics, 250 * scalepics)
-my_canvas.drawImage("Photos/dePauw.jpg", 25, 200, 400 * scalepics, 250 * scalepics)
+my_canvas.drawImage("Photos/deHuisman2e.jpg", 25, 700, 400 * scalepics, 250 * scalepics)
+my_canvas.drawImage("Photos/hetHuisAssumburg.jpg", 25, 600, 400 * scalepics, 250 * scalepics)
+my_canvas.drawImage("Photos/dePauw.jpg", 25, 500, 400 * scalepics, 250 * scalepics)
+my_canvas.drawImage("Photos/huisvrouw.jpg", 25, 400, 400 * scalepics, 250 * scalepics)
 my_canvas.save()
 key = input("Wait")
