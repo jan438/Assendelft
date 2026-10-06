@@ -68,7 +68,8 @@ def scale_to_img(lat_lon, w_h):
     return int(x), int(y)
     
 def markplace(c, x, y, lat, lon):
-    c.circle(x, y, 10, stroke=1, fill=0)
+    c.setFillColor(HexColor("#ff7462"))
+    c.circle(x, y, 3, stroke=0, fill=1)
     return
     
 def drawbounderies(c, bx, by, coords, year):
