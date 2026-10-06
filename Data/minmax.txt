@@ -6,7 +6,7 @@ voorbeeld Zagreb
 points=(45.8357, 15.9645, 45.6806, 16.1557)
 
 points = (52.55, 4.65, 52.41, 4.80)
-w_h = (92.3, 120.0)
+w_h = (92.3, 126.0)
 
 OpenStreetmap extract
 
