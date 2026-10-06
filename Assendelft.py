@@ -59,7 +59,7 @@ def readjson(jsonfile):
                             totalcoords2 = coords0[0]
     return [year1, year2, totalcoords1, totalcoords2]
     
-def scale_to_img(lat_lon, w_h, scale):
+def scale_to_img(lat_lon, w_h):
     old = (points[2], points[0])
     new = (0, w_h[1])
     y = ((lat_lon[0] - old[0]) * (new[1] - new[0]) / (old[1] - old[0])) + new[0]
@@ -70,7 +70,7 @@ def scale_to_img(lat_lon, w_h, scale):
     
 def markplace(c, bx, by, lat, lon, w_h):
     c.setFillColor(HexColor("#ff7462"))
-    x, y = scale_to_img((lat, lon), w_h, 1.0)
+    x, y = scale_to_img((lat, lon), w_h)
     c.circle(bx + x, by + y, 3, stroke=0, fill=1)
     return
     
@@ -84,7 +84,7 @@ def drawbounderies(c, bx, by, coords, year):
     p = c.beginPath()
     gcircle = 0
     for i in range(len(coords)):
-        x, y = scale_to_img(coords[i], w_h, 1.0)
+        x, y = scale_to_img(coords[i], w_h)
         x1 = bx + x
         y1 = by + y
         if i == 0:
