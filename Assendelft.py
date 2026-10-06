@@ -67,9 +67,10 @@ def scale_to_img(lat_lon, w_h):
     x = ((lat_lon[1] - old[0]) * (new[1] - new[0]) / (old[1] - old[0])) + new[0]
     return int(x), int(y)
     
-def markplace(c, x, y, lat, lon):
+def markplace(c, bx, by, lat, lon, w_h):
     c.setFillColor(HexColor("#ff7462"))
-    c.circle(x, y, 3, stroke=0, fill=1)
+    x, y = scale_to_img((lat, lon), w_h)
+    c.circle(bx + x, by + y, 3, stroke=0, fill=1)
     return
     
 def drawbounderies(c, bx, by, coords, year):
@@ -129,7 +130,7 @@ vis.create_image(color=(0, 0, 255), width=3)
 vis.plot_map(output='save')
 drawbounderies(my_canvas, 75, 100, totalcoords1, year1)
 drawbounderies(my_canvas, 175, 100, totalcoords2, year2)
-markplace(my_canvas, 75, 100, 52.44154, 4.75349)
+markplace(my_canvas, 75, 100, 52.44154, 4.75349, w_h)
 scalepics = 0.4
 my_canvas.drawImage("Photos/resultMap.png", 300, 400, 200, 200)
 my_canvas.drawImage("Photos/deHuisman2e.jpg", 25, 600, 400 * scalepics, 250 * scalepics)
