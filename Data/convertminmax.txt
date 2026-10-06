@@ -1,0 +1,26 @@
+from osgeo import gdal
+import numpy as np
+
+ds = gdal.Open(r"/home/bera/Desktop/gistest/dem.tif")
+arr = ds.ReadAsArray()
+
+def findit(dataset, array, value):
+    """Prints the coordinates of where an input value
+       is found in an array"""
+    if value in array:
+        i = np.where(array == value) #Find the indices of the value
+        irow, icol = i[0][0], i[1][0]
+        GT = dataset.GetGeoTransform()
+        upperleftx, pixelwidth, upperlefty, pixelheight = GT[0], GT[1], GT[3], GT[5]
+        xcoord = upperleftx+icol*pixelwidth+pixelwidth/2
+        ycoord = upperlefty+irow*pixelheight+pixelheight/2
+        print(xcoord, ycoord)
+    else:
+        print(f"{value} is not in array")
+
+findit(ds, arr, arr.max())
+#429487.00008182594 6178720.219712928
+findit(ds, arr, arr.min())
+#409083.7854456485 6173480.200701521
+findit(ds, arr, 9999)
+#9999 is not in array
