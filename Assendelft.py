@@ -138,7 +138,8 @@ vis.create_image(color=(0, 0, 255), width=3)
 vis.plot_map(output='save')
 drawbounderies(my_canvas, 75, 100, totalcoords1, year1)
 drawbounderies(my_canvas, 175, 100, totalcoords2, year2)
-markplace(my_canvas, 75, 100, float(geodata[3][1]), float(geodata[3][2]), w_h)
+for i in range(len(geodata)):
+    markplace(my_canvas, 75, 100, float(geodata[i][1]), float(geodata[i][2]), w_h)
 scalepics = 0.4
 my_canvas.drawImage("Photos/resultMap.png", 300, 400, 200, 200)
 my_canvas.drawImage("Photos/deHuisman2e.jpg", 25, 600, 400 * scalepics, 250 * scalepics)
