@@ -136,6 +136,7 @@ if response.status_code == 200:
 vis = GPSVis(data_path='CSV/data1.csv',map_path='Photos/map1.png',points=points)
 vis.create_image(color=(0, 0, 255), width=3)
 vis.plot_map(output='save')
+my_canvas.drawImage("Photos/map1.png", 75, 100, 92.3, 126.0)
 drawbounderies(my_canvas, 75, 100, totalcoords1, year1)
 drawbounderies(my_canvas, 175, 100, totalcoords2, year2)
 for i in range(len(geodata)):
