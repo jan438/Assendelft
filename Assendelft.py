@@ -136,9 +136,6 @@ if response.status_code == 200:
     with open('JSON/Assendelft.json', 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
 [year1, year2, totalcoords1, totalcoords2] = readjson("JSON/Assendelft.json")
-vis = GPSVis(data_path='CSV/data1.csv',map_path='Photos/map1.png',points=points)
-vis.create_image(color=(0, 0, 255), width=3)
-vis.plot_map(output='save')
 my_canvas.drawImage("Photos/map1.png", 75 + mapdx, 100 + mapdy, 92.3 * mapscale, 126.0 * mapscale)
 my_canvas.drawImage("Photos/map1.png", 175 + mapdx, 100 + mapdy, 92.3 * mapscale, 126.0 * mapscale)
 my_canvas.saveState()
@@ -151,7 +148,6 @@ for i in range(len(geodata)):
     markplace(my_canvas, 175, 100, float(geodata[i][1]), float(geodata[i][2]), w_h)
 my_canvas.restoreState()
 scalepics = 0.4
-my_canvas.drawImage("Photos/resultMap.png", 300, 400, 200, 200)
 my_canvas.drawImage("Photos/deHuisman2e.jpg", 25, 700, 400 * scalepics, 250 * scalepics)
 my_canvas.drawImage("Photos/hetHuisAssumburg.jpg", 25, 600, 400 * scalepics, 250 * scalepics)
 my_canvas.drawImage("Photos/dePauw.jpg", 25, 500, 400 * scalepics, 250 * scalepics)
