@@ -34,7 +34,7 @@ w_h = (92.3, 126.0)
 resp = requests.Response
 geodata = []
 mapscale = 0.5
-mapdx = 10
+mapdx = 25
 mapdy = 20
 
 def readjson(jsonfile):
