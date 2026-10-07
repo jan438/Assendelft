@@ -33,7 +33,7 @@ points = (52.5496, 4.6510 , 52.4104 , 4.7966)
 w_h = (92.3, 126.0)
 resp = requests.Response
 geodata = []
-mapscale = 0.75
+mapscale = 0.6
 mapdx = 10
 mapdy = 20
 
