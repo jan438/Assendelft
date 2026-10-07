@@ -35,7 +35,7 @@ resp = requests.Response
 geodata = []
 mapscale = 0.75
 mapdx = 10
-mapdy = 10
+mapdy = 20
 
 def readjson(jsonfile):
     countyears = 0
