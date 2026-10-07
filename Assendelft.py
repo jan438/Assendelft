@@ -36,9 +36,9 @@ points = (52.5242, 4.6596 , 52.4225 , 4.7942)
 w_h = (72.9, 90.8)
 resp = requests.Response
 geodata = []
-mapscale = 0.5
-mapdx = 25
-mapdy = 20
+mapscale = 1.0
+mapdx = 0
+mapdy = 0
 
 def readjson(jsonfile):
     countyears = 0
