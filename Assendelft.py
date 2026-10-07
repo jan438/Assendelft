@@ -142,6 +142,7 @@ my_canvas.drawImage("Photos/map1.png", 175, 100, 92.3, 126.0)
 drawbounderies(my_canvas, 175, 100, totalcoords2, year2)
 for i in range(len(geodata)):
     markplace(my_canvas, 75, 100, float(geodata[i][1]), float(geodata[i][2]), w_h)
+    markplace(my_canvas, 175, 100, float(geodata[i][1]), float(geodata[i][2]), w_h)
 scalepics = 0.4
 my_canvas.drawImage("Photos/resultMap.png", 300, 400, 200, 200)
 my_canvas.drawImage("Photos/deHuisman2e.jpg", 25, 700, 400 * scalepics, 250 * scalepics)
