@@ -33,6 +33,9 @@ points = (52.5496, 4.6510 , 52.4104 , 4.7966)
 w_h = (92.3, 126.0)
 resp = requests.Response
 geodata = []
+mapscale = 0.75
+mapdx = 10
+mapdy = 10
 
 def readjson(jsonfile):
     countyears = 0
@@ -136,9 +139,9 @@ if response.status_code == 200:
 vis = GPSVis(data_path='CSV/data1.csv',map_path='Photos/map1.png',points=points)
 vis.create_image(color=(0, 0, 255), width=3)
 vis.plot_map(output='save')
-my_canvas.drawImage("Photos/map1.png", 75, 100, 92.3, 126.0)
+my_canvas.drawImage("Photos/map1.png", 75 + mapdx, 100 + mapdy, 92.3 * mapscale, 126.0 * mapscale)
 drawbounderies(my_canvas, 75, 100, totalcoords1, year1)
-my_canvas.drawImage("Photos/map1.png", 175, 100, 92.3, 126.0)
+my_canvas.drawImage("Photos/map1.png", 175 + mapdx, 100 + mapdy, 92.3 * mapscale, 126.0 * mapscale)
 drawbounderies(my_canvas, 175, 100, totalcoords2, year2)
 for i in range(len(geodata)):
     markplace(my_canvas, 75, 100, float(geodata[i][1]), float(geodata[i][2]), w_h)
