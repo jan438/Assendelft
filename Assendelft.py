@@ -36,9 +36,6 @@ points = (52.5242, 4.6596 , 52.4225 , 4.7942)
 w_h = (72.9, 90.8)
 resp = requests.Response
 geodata = []
-mapscale = 1.0
-mapdx = 0
-mapdy = 0
 
 def readjson(jsonfile):
     countyears = 0
@@ -139,8 +136,8 @@ if response.status_code == 200:
     with open('JSON/Assendelft.json', 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
 [year1, year2, totalcoords1, totalcoords2] = readjson("JSON/Assendelft.json")
-my_canvas.drawImage("Photos/map2.png", 75 + mapdx, 100 + mapdy, 92.3 * mapscale, 126.0 * mapscale)
-my_canvas.drawImage("Photos/map2.png", 175 + mapdx, 100 + mapdy, 92.3 * mapscale, 126.0 * mapscale)
+my_canvas.drawImage("Photos/map2.png", 75, 100, 72.9, 90.8)
+my_canvas.drawImage("Photos/map2.png", 175, 100, 72.9, 90.8)
 my_canvas.saveState()
 my_canvas.translate(0, 0)
 my_canvas.scale(1.0, 1.0)
