@@ -41,6 +41,7 @@ namespaces = {'kml': 'http://earth.google.com/kml/2.1'}
 placemarks = root.findall(".//{kml}Placemark", namespaces)
 for placemark in placemarks: 
     name_text = placemark.findtext('.//name')
+print(placemarks)
 my_canvas = canvas.Canvas("PDF/Monumenten.pdf")
 my_canvas.setFillColor(HexColor("#50ff3c"))
 my_canvas.rect(left_padding, bottom_padding, width, height, fill=1)
