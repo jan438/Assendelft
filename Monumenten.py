@@ -34,6 +34,13 @@ if sys.platform[0] == 'w':
     path = "C:/Users/janbo/OneDrive/Documents/GitHub/Assendelft"
 os.chdir(path)
 pdfmetrics.registerFont(TTFont('LiberationSerif', 'LiberationSerif-Regular.ttf'))
+kmlfile = "KML/gemeente.kml"
+tree = ET.parse(kmlfile)
+root = tree.getroot()
+attrib = root.attrib
+for name, value in attrib.items():
+    if name == "Placemark":
+        print('{0}="{1}"'.format(name, value))
 my_canvas = canvas.Canvas("PDF/Monumenten.pdf")
 my_canvas.setFillColor(HexColor("#50ff3c"))
 my_canvas.rect(left_padding, bottom_padding, width, height, fill=1)
@@ -41,7 +48,5 @@ my_canvas.setTitle("Monumenten")
 my_canvas.setFont(assendelftfont, 30)
 my_canvas.setFillColor(HexColor("#000000"))
 my_canvas.drawString(50, 800, "Monumenten")
-
-
 my_canvas.save()
 key = input("Wait")
