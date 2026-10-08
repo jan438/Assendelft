@@ -40,8 +40,6 @@ root = tree.getroot()
 namespaces = {'kml': 'http://earth.google.com/kml/2.1'}
 allcontent = root.xpath(".//*")
 print(str(allcontent))
-places = root.xpath("Placemark")
-print(str(places))
 my_canvas = canvas.Canvas("PDF/Monumenten.pdf")
 my_canvas.setFillColor(HexColor("#50ff3c"))
 my_canvas.rect(left_padding, bottom_padding, width, height, fill=1)
