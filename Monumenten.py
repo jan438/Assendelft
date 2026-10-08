@@ -34,7 +34,7 @@ if sys.platform[0] == 'w':
     path = "C:/Users/janbo/OneDrive/Documents/GitHub/Assendelft"
 os.chdir(path)
 pdfmetrics.registerFont(TTFont('LiberationSerif', 'LiberationSerif-Regular.ttf'))
-kmlfile = "KML/gemeente.kml"
+kmlfile = "KML/rijk.kml"
 tree = etree.parse(open(kmlfile, encoding='utf-8'))
 root = tree.getroot()
 namespaces = {'kml': 'http://earth.google.com/kml/2.1'}
