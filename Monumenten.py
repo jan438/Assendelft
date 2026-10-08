@@ -13,7 +13,7 @@ from reportlab.graphics import renderPDF
 from reportlab.lib.colors import yellow, green, red, blue, black, white, tan, HexColor
 from reportlab.lib.units import inch, cm, mm
 from math import pi, cos, sin, radians, sqrt
-import xml.etree.ElementTree as ET
+from lxml import etree
 from geopy.distance import great_circle
 import warnings
 
@@ -35,12 +35,9 @@ if sys.platform[0] == 'w':
 os.chdir(path)
 pdfmetrics.registerFont(TTFont('LiberationSerif', 'LiberationSerif-Regular.ttf'))
 kmlfile = "KML/gemeente.kml"
-tree = ET.parse(kmlfile)
-root = tree.getroot()
-attrib = root.attrib
-for name, value in attrib.items():
-    if name == "Placemark":
-        print('{0}="{1}"'.format(name, value))
+tree = etree.parse(open(kmlfile, encoding='utf-8'))
+root = tree.getroot()   
+print(root)
 my_canvas = canvas.Canvas("PDF/Monumenten.pdf")
 my_canvas.setFillColor(HexColor("#50ff3c"))
 my_canvas.rect(left_padding, bottom_padding, width, height, fill=1)
