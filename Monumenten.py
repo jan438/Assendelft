@@ -36,8 +36,10 @@ os.chdir(path)
 pdfmetrics.registerFont(TTFont('LiberationSerif', 'LiberationSerif-Regular.ttf'))
 kmlfile = "KML/gemeente.kml"
 tree = etree.parse(open(kmlfile, encoding='utf-8'))
-root = tree.getroot()   
-namespaces = {'kml': 'http://www.opengis.net/kml/2.2'}
+root = tree.getroot()
+#<kml xmlns="http://earth.google.com/kml/2.1">
+#namespaces = {'kml': 'http://www.opengis.net/kml/2.2'}
+namespaces = {'kml': 'http://earth.google.com/kml/2.1'}
 placemarks = root.findall(".//{kml}Placemark", namespaces)
 for placemark in placemarks: 
     name_text = placemark.findtext('.//name')
