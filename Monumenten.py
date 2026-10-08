@@ -38,7 +38,8 @@ kmlfile = "KML/rijk.kml"
 tree = etree.parse(open(kmlfile, encoding='utf-8'))
 root = tree.getroot()
 namespaces = {'kml': 'http://earth.google.com/kml/2.1'}
-print(root.xpath(".//*"))
+allcontent = root.xpath(".//*")
+print(str(allcontent))
 my_canvas = canvas.Canvas("PDF/Monumenten.pdf")
 my_canvas.setFillColor(HexColor("#50ff3c"))
 my_canvas.rect(left_padding, bottom_padding, width, height, fill=1)
