@@ -40,7 +40,6 @@ root = tree.getroot()
 namespaces = {'kml': 'http://www.opengis.net/kml/2.2'}
 placemarks = root.findall(".//{kml}Placemark", namespaces)
 for placemark in placemarks: 
-    ##LIST IS EMPTY!!!
     name_text = placemark.findtext('.//name')
 my_canvas = canvas.Canvas("PDF/Monumenten.pdf")
 my_canvas.setFillColor(HexColor("#50ff3c"))
