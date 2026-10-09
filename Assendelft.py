@@ -148,7 +148,7 @@ my_canvas.drawImage("Photos/mapassendelft.png", 175, 100, 72.9, 90.8)
 my_canvas.saveState()
 my_canvas.translate(0, 0)
 my_canvas.scale(1.0, 1.0)
-drawbounderies(my_canvas, 75, 500, totalcoords1z, year1z, pointsz, w_hz)
+drawbounderies(my_canvas, 75, 300, totalcoords1z, year1z, pointsz, w_hz)
 drawbounderies(my_canvas, 75, 100, totalcoords1a, year1a, pointsa, w_ha)
 drawbounderies(my_canvas, 175, 100, totalcoords2a, year2a, pointsa, w_ha)
 for i in range(len(geodata)):
