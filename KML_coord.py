@@ -5,7 +5,7 @@ import re
 
 def main():
   # KML parse
-    tree = ET.parse('input.kml')
+    tree = ET.parse('KML/input.kml')
     root = tree.getroot()
     
   # Identify default namespace
@@ -18,9 +18,9 @@ def main():
     regex = coord_ex + coord_ex + heig_ex
     
   # Create output files (overwrite if already exist)
-    with open('output_pins.txt','w') as out_pin,  \
-         open('output_paths.txt','w') as out_pat, \
-         open('output_polygons.txt','w') as out_pol:
+    with open('PDF/output_pins.txt','w') as out_pin,  \
+         open('PDF/output_paths.txt','w') as out_pat, \
+         open('PDF/output_polygons.txt','w') as out_pol:
       
       # Add headers
         out_pin.write('Pin Name,Latitude,Longitude,Height\n')
