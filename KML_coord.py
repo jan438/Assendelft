@@ -5,7 +5,7 @@ import re
 
 def main():
   # KML parse
-    tree = ET.parse('KML/input.kml')
+    tree = ET.parse('KML/rijk.kml')
     root = tree.getroot()
     
   # Identify default namespace
