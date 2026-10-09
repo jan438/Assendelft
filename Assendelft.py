@@ -140,6 +140,7 @@ if response.status_code == 200:
     with open('JSON/Assendelft.json', 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
 [year1a, year2a, totalcoords1a, totalcoords2a] = readjson("JSON/Assendelft.json")
+my_canvas.drawImage("Photos/mapzaanstad.png", 75, 300, 114.4, 84.5)
 my_canvas.drawImage("Photos/mapassendelft.png", 75, 100, 72.9, 90.8)
 my_canvas.drawImage("Photos/mapassendelft.png", 175, 100, 72.9, 90.8)
 my_canvas.saveState()
