@@ -5,8 +5,10 @@ voorbeeld Zagreb
            lat       lon       lat     lon  
 points=(45.8357, 15.9645, 45.6806, 16.1557) 
 
-points = (52.5242, 4.6596 , 52.4225 , 4.7942)
-w_h = (72.9, 90.8)
+Assendelft
+
+pointsa = (52.5242, 4.6596 , 52.4225 , 4.7942)
+w_ha = (72.9, 90.8)
 
 OpenStreetmap extract 
 
@@ -16,5 +18,19 @@ OpenStreetmap extract
 
     52.4225
 
+Scale
+1:73000
+
+Zaanstad
+
+pointsz = (52.5158, 4.6754 , 52.4213 , 4.8869)
+w_hz = (114.4, 84.5)
+
+    52.5158
+    
+4.6754    4.8869
+
+    52.4213
+    
 Scale
 1:73000
