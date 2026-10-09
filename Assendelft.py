@@ -29,8 +29,8 @@ A4_width = A4[0]
 A4_height = A4[1]
 width = A4_width
 height = A4_height
-points = (52.5242, 4.6596 , 52.4225 , 4.7942)
-w_h = (72.9, 90.8)
+pointsa = (52.5242, 4.6596 , 52.4225 , 4.7942)
+w_ha = (72.9, 90.8)
 resp = requests.Response
 geodata = []
 
@@ -59,7 +59,7 @@ def readjson(jsonfile):
                             totalcoords2 = coords0[0]
     return [year1, year2, totalcoords1, totalcoords2]
     
-def scale_to_img(lat_lon, w_h):
+def scale_to_img(lat_lon, points, w_h):
     old = (points[2], points[0])
     new = (0, w_h[1])
     y = ((lat_lon[0] - old[0]) * (new[1] - new[0]) / (old[1] - old[0])) + new[0]
@@ -68,13 +68,13 @@ def scale_to_img(lat_lon, w_h):
     x = ((lat_lon[1] - old[0]) * (new[1] - new[0]) / (old[1] - old[0])) + new[0]
     return int(x), int(y)
     
-def markplace(c, bx, by, lat, lon, w_h):
+def markplace(c, bx, by, lat, lon, points, w_h):
     c.setFillColor(HexColor("#6b6dff"))
-    x, y = scale_to_img((lat, lon), w_h)
+    x, y = scale_to_img((lat, lon), points, w_h)
     c.circle(bx + x, by + y, 1, stroke=0, fill=1)
     return
     
-def drawbounderies(c, bx, by, coords, year):
+def drawbounderies(c, bx, by, coords, year, points, w_h):
     c.setFont(assendelftfont, 10)
     c.drawString(bx, by - 15, year + "   " + str(len(coords)))
     for i in range(len(coords)):
@@ -84,7 +84,7 @@ def drawbounderies(c, bx, by, coords, year):
     p = c.beginPath()
     gcircle = 0
     for i in range(len(coords)):
-        x, y = scale_to_img(coords[i], w_h)
+        x, y = scale_to_img(coords[i], points, w_h)
         x1 = bx + x
         y1 = by + y
         if i == 0:
@@ -145,11 +145,11 @@ my_canvas.drawImage("Photos/mapassendelft.png", 175, 100, 72.9, 90.8)
 my_canvas.saveState()
 my_canvas.translate(0, 0)
 my_canvas.scale(1.0, 1.0)
-drawbounderies(my_canvas, 75, 100, totalcoords1a, year1a)
-drawbounderies(my_canvas, 175, 100, totalcoords2a, year2a)
+drawbounderies(my_canvas, 75, 100, totalcoords1a, year1a, pointsa, w_ha)
+drawbounderies(my_canvas, 175, 100, totalcoords2a, year2a, pointsa, w_ha)
 for i in range(len(geodata)):
-    markplace(my_canvas, 75, 100, float(geodata[i][1]), float(geodata[i][2]), w_h)
-    markplace(my_canvas, 175, 100, float(geodata[i][1]), float(geodata[i][2]), w_h)
+    markplace(my_canvas, 75, 100, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha)
+    markplace(my_canvas, 175, 100, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha)
 my_canvas.restoreState()
 scalepics = 0.4
 my_canvas.drawImage("Photos/deHuisman2e.jpg", 25, 700, 400 * scalepics, 250 * scalepics)
