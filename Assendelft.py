@@ -152,6 +152,7 @@ drawbounderies(my_canvas, 75, 300, totalcoords1z, year1z, pointsz, w_hz)
 drawbounderies(my_canvas, 75, 100, totalcoords1a, year1a, pointsa, w_ha)
 drawbounderies(my_canvas, 175, 100, totalcoords2a, year2a, pointsa, w_ha)
 for i in range(len(geodata)):
+    markplace(my_canvas, 75, 300, float(geodata[i][1]), float(geodata[i][2]), pointsz, w_hz)
     markplace(my_canvas, 75, 100, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha)
     markplace(my_canvas, 175, 100, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha)
 my_canvas.restoreState()
