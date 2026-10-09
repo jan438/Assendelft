@@ -96,7 +96,7 @@ def write_csv_file(entries, csv_file):
     try:
 #         with open(csv_file, 'w', newline='') as f: #does not work with Python 2.7 
         with open(csv_file, 'w') as f:
-            writer = csv.writer(f, delimiter=',')
+            writer = csv.writer(f, delimiter=';')
             for row in entries:
                 writer.writerow(row)
         f.close()
