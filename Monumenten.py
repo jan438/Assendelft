@@ -37,8 +37,9 @@ pdfmetrics.registerFont(TTFont('LiberationSerif', 'LiberationSerif-Regular.ttf')
 kmlfile = "KML/rijk.kml"
 tree = etree.parse(open(kmlfile, encoding='utf-8'))
 root = tree.getroot()
+print (root.find('.//{http://www.opengis.net/kml/2.2}coordinates'))
 ns = {'kml': 'http://earth.google.com/kml/2.1'}
-allcontent = root.xpath(".//*")
+allcontent = root.xpath("//Placemark")
 print(str(allcontent))
 my_canvas = canvas.Canvas("PDF/Monumenten.pdf")
 my_canvas.setFillColor(HexColor("#50ff3c"))
