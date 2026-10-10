@@ -39,7 +39,7 @@ geodata = []
 rijkdata = []
 provinciedata = []
 gemeentedata = []
-factor = 1.0
+factor = 1.5
 
 def readjson(jsonfile):
     countyears = 0
@@ -75,7 +75,7 @@ def scale_to_img(lat_lon, points, w_h, factor):
     x = ((lat_lon[1] - old[0]) * (new[1] - new[0]) / (old[1] - old[0])) + new[0]
     return int(x) * factor, int(y * factor)
     
-def markplace(c, bx, by, lat, lon, points, w_h, color):
+def markplace(c, bx, by, lat, lon, points, w_h, color, factor):
     c.setFillColor(HexColor(color))
     x = 0
     y = 0
@@ -87,7 +87,7 @@ def markplace(c, bx, by, lat, lon, points, w_h, color):
     c.circle(bx + x, by + y, 1, stroke=0, fill=1)
     return
     
-def drawbounderies(c, bx, by, coords, year, points, w_h):
+def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
     c.setFont(assendelftfont, 10)
     c.drawString(bx, by - 15, year + "   " + str(len(coords)))
     for i in range(len(coords)):
@@ -210,18 +210,18 @@ if response.status_code == 200:
 my_canvas.drawImage("Photos/mapzaanstad.png", 75, 300, 114.4 * factor, 84.5 * factor)
 my_canvas.drawImage("Photos/mapassendelft.png", 75, 100, 72.9 * factor, 90.8 * factor)
 my_canvas.drawImage("Photos/mapassendelft.png", 175, 100, 72.9 * factor, 90.8 * factor)
-drawbounderies(my_canvas, 75, 300, totalcoords1z, year1z, pointsz, w_hz)
-drawbounderies(my_canvas, 75, 100, totalcoords1a, year1a, pointsa, w_ha)
-drawbounderies(my_canvas, 175, 100, totalcoords2a, year2a, pointsa, w_ha)
+drawbounderies(my_canvas, 75, 300, totalcoords1z, year1z, pointsz, w_hz, factor)
+drawbounderies(my_canvas, 75, 100, totalcoords1a, year1a, pointsa, w_ha, factor)
+drawbounderies(my_canvas, 175, 100, totalcoords2a, year2a, pointsa, w_ha, factor)
 for i in range(len(geodata)):
-    markplace(my_canvas, 75, 100, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#00aaff')
-    markplace(my_canvas, 175, 100, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#aa55ff')
+    markplace(my_canvas, 75, 100, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#00aaff', factor)
+    markplace(my_canvas, 175, 100, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#aa55ff', factor)
 for i in range(len(rijkdata)):
-    markplace(my_canvas, 75, 300, float(rijkdata[i][1]), float(rijkdata[i][2]), pointsz, w_hz, '#55557f')
+    markplace(my_canvas, 75, 300, float(rijkdata[i][1]), float(rijkdata[i][2]), pointsz, w_hz, '#55557f', factor)
 for i in range(len(provinciedata)):
-    markplace(my_canvas, 75, 300, float(provinciedata[i][1]), float(provinciedata[i][2]), pointsz, w_hz, '#00ffff')
+    markplace(my_canvas, 75, 300, float(provinciedata[i][1]), float(provinciedata[i][2]), pointsz, w_hz, '#00ffff', factor)
 for i in range(len(gemeentedata)):
-    markplace(my_canvas, 75, 300, float(gemeentedata[i][1]), float(gemeentedata[i][2]), pointsz, w_hz, '#ffb592')
+    markplace(my_canvas, 75, 300, float(gemeentedata[i][1]), float(gemeentedata[i][2]), pointsz, w_hz, '#ffb592', factor)
 scalepics = 0.4
 my_canvas.drawImage("Photos/deHuisman2e.jpg", 25, 700, 400 * scalepics, 250 * scalepics)
 my_canvas.drawImage("Photos/hetHuisAssumburg.jpg", 25, 600, 400 * scalepics, 250 * scalepics)
