@@ -141,8 +141,6 @@ for i in root.findall('.//def:Placemark', ns):
             pin += 1
             if i.find('.//def:Point', ns):
                 rijkdata.append([name, lat, long])
-for i in range(len(rijkdata)):
-    print(rijkdata[i][2])
 my_canvas = canvas.Canvas("PDF/Assendelft" + version + ".pdf")
 my_canvas.setFillColor(HexColor("#50ff3c"))
 my_canvas.rect(left_padding, bottom_padding, width, height, fill=1)
