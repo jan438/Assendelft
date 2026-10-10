@@ -114,21 +114,7 @@ pdfmetrics.registerFont(TTFont('LiberationSerif', 'LiberationSerif-Regular.ttf')
 pdfmetrics.registerFont(TTFont('LiberationSerifBold', 'LiberationSerif-Bold.ttf'))
 pdfmetrics.registerFont(TTFont('LiberationSerifItalic', 'LiberationSerif-Italic.ttf'))
 pdfmetrics.registerFont(TTFont('LiberationSerifBoldItalic', 'LiberationSerif-BoldItalic.ttf'))
-file_to_open = "CSV/rijk.csv"
-with open(file_to_open, 'r') as file:
-    csvreader = csv.reader(file, delimiter = ';')
-    count = 0
-    for row in csvreader:
-        geodata.append(row)
-        count += 1
-file_to_open = "CSV/provincie.csv"
-with open(file_to_open, 'r') as file:
-    csvreader = csv.reader(file, delimiter = ';')
-    count = 0
-    for row in csvreader:
-        geodata.append(row)
-        count += 1
-file_to_open = "CSV/gemeente.csv"
+file_to_open = "CSV/geo.csv"
 with open(file_to_open, 'r') as file:
     csvreader = csv.reader(file, delimiter = ';')
     count = 0
@@ -166,7 +152,6 @@ drawbounderies(my_canvas, 75, 300, totalcoords1z, year1z, pointsz, w_hz)
 drawbounderies(my_canvas, 75, 100, totalcoords1a, year1a, pointsa, w_ha)
 drawbounderies(my_canvas, 175, 100, totalcoords2a, year2a, pointsa, w_ha)
 for i in range(len(geodata)):
-    markplace(my_canvas, 75, 300, float(geodata[i][1]), float(geodata[i][2]), pointsz, w_hz)
     markplace(my_canvas, 75, 100, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha)
     markplace(my_canvas, 175, 100, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha)
 my_canvas.restoreState()
