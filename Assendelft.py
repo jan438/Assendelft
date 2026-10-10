@@ -122,6 +122,24 @@ with open(file_to_open, 'r') as file:
     for row in csvreader:
         geodata.append(row)
         count += 1
+tree = ET.parse('KML/rijk.kml')
+root = tree.getroot()
+namespace = re.match('\{(.*?)\}kml', root.tag).group(1)
+ns = {'def': namespace}
+coord_ex = '(-?\d+\.\d+),'
+heig_ex = '(\d+)'
+regex = coord_ex + coord_ex + heig_ex
+for i in root.findall('.//def:Placemark', ns):
+    name = i.find('def:name', ns).text
+    coord = i.find('.//def:coordinates', ns)
+    if not coord is None:
+        coord = coord.text.strip()
+        coord = re.findall(regex, coord)
+        pin = 0
+        for (long, lat, heig) in coord:
+            pin += 1
+            if i.find('.//def:Point', ns):
+                print("hallo")
 my_canvas = canvas.Canvas("PDF/Assendelft" + version + ".pdf")
 my_canvas.setFillColor(HexColor("#50ff3c"))
 my_canvas.rect(left_padding, bottom_padding, width, height, fill=1)
