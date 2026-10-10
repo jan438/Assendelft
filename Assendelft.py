@@ -209,9 +209,6 @@ if response.status_code == 200:
 my_canvas.drawImage("Photos/mapzaanstad.png", 75, 300, 114.4, 84.5)
 my_canvas.drawImage("Photos/mapassendelft.png", 75, 100, 72.9, 90.8)
 my_canvas.drawImage("Photos/mapassendelft.png", 175, 100, 72.9, 90.8)
-my_canvas.saveState()
-my_canvas.translate(0, 0)
-my_canvas.scale(1.0, 1.0)
 drawbounderies(my_canvas, 75, 300, totalcoords1z, year1z, pointsz, w_hz)
 drawbounderies(my_canvas, 75, 100, totalcoords1a, year1a, pointsa, w_ha)
 drawbounderies(my_canvas, 175, 100, totalcoords2a, year2a, pointsa, w_ha)
@@ -224,7 +221,6 @@ for i in range(len(provinciedata)):
     markplace(my_canvas, 75, 300, float(provinciedata[i][1]), float(provinciedata[i][2]), pointsz, w_hz, '#00ffff')
 for i in range(len(gemeentedata)):
     markplace(my_canvas, 75, 300, float(gemeentedata[i][1]), float(gemeentedata[i][2]), pointsz, w_hz, '#ffb592')
-my_canvas.restoreState()
 scalepics = 0.4
 my_canvas.drawImage("Photos/deHuisman2e.jpg", 25, 700, 400 * scalepics, 250 * scalepics)
 my_canvas.drawImage("Photos/hetHuisAssumburg.jpg", 25, 600, 400 * scalepics, 250 * scalepics)
