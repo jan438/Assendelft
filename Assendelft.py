@@ -76,9 +76,13 @@ def scale_to_img(lat_lon, points, w_h):
     
 def markplace(c, bx, by, lat, lon, points, w_h, color):
     c.setFillColor(HexColor(color))
+    x = 0
+    y = 0
     inkader = True
+    if lat >= points[0]:
+        inkader = False
     if inkader:
-        x, y = scale_to_img((lat, lon), points, w_h)
+        (x, y) = scale_to_img((lat, lon), points, w_h)
     c.circle(bx + x, by + y, 1, stroke=0, fill=1)
     return
     
