@@ -176,6 +176,8 @@ drawbounderies(my_canvas, 175, 100, totalcoords2a, year2a, pointsa, w_ha)
 for i in range(len(geodata)):
     markplace(my_canvas, 75, 100, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha)
     markplace(my_canvas, 175, 100, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha)
+for i in range(len(rijkdata)):
+    markplace(my_canvas, 75, 300, float(rijkdata[i][1]), float(rijkdata[i][2]), pointsz, w_hz)
 my_canvas.restoreState()
 scalepics = 0.4
 my_canvas.drawImage("Photos/deHuisman2e.jpg", 25, 700, 400 * scalepics, 250 * scalepics)
