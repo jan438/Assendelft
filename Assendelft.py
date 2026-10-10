@@ -196,6 +196,8 @@ for i in range(len(geodata)):
     markplace(my_canvas, 175, 100, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, green)
 for i in range(len(rijkdata)):
     markplace(my_canvas, 75, 300, float(rijkdata[i][1]), float(rijkdata[i][2]), pointsz, w_hz, red)
+for i in range(len(provinciedata)):
+    markplace(my_canvas, 75, 300, float(provinciedata[i][1]), float(provinciedata[i][2]), pointsz, w_hz, blue)
 my_canvas.restoreState()
 scalepics = 0.4
 my_canvas.drawImage("Photos/deHuisman2e.jpg", 25, 700, 400 * scalepics, 250 * scalepics)
