@@ -75,7 +75,7 @@ def scale_to_img(lat_lon, points, w_h):
     return int(x), int(y)
     
 def markplace(c, bx, by, lat, lon, points, w_h, color):
-    c.setFillColor(color)
+    c.setFillColor(HexColor(color))
     x, y = scale_to_img((lat, lon), points, w_h)
     c.circle(bx + x, by + y, 1, stroke=0, fill=1)
     return
@@ -192,12 +192,12 @@ drawbounderies(my_canvas, 75, 300, totalcoords1z, year1z, pointsz, w_hz)
 drawbounderies(my_canvas, 75, 100, totalcoords1a, year1a, pointsa, w_ha)
 drawbounderies(my_canvas, 175, 100, totalcoords2a, year2a, pointsa, w_ha)
 for i in range(len(geodata)):
-    markplace(my_canvas, 75, 100, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, green)
-    markplace(my_canvas, 175, 100, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, green)
+    markplace(my_canvas, 75, 100, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#00aaff')
+    markplace(my_canvas, 175, 100, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#aa55ff')
 for i in range(len(rijkdata)):
-    markplace(my_canvas, 75, 300, float(rijkdata[i][1]), float(rijkdata[i][2]), pointsz, w_hz, red)
+    markplace(my_canvas, 75, 300, float(rijkdata[i][1]), float(rijkdata[i][2]), pointsz, w_hz, '#55557f')
 for i in range(len(provinciedata)):
-    markplace(my_canvas, 75, 300, float(provinciedata[i][1]), float(provinciedata[i][2]), pointsz, w_hz, blue)
+    markplace(my_canvas, 75, 300, float(provinciedata[i][1]), float(provinciedata[i][2]), pointsz, w_hz, '#00ffff')
 my_canvas.restoreState()
 scalepics = 0.4
 my_canvas.drawImage("Photos/deHuisman2e.jpg", 25, 700, 400 * scalepics, 250 * scalepics)
