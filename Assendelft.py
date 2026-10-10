@@ -139,7 +139,8 @@ for i in root.findall('.//def:Placemark', ns):
         for (long, lat, heig) in coord:
             pin += 1
             if i.find('.//def:Point', ns):
-                print(f'{name},{lat},{long},{heig}\n')
+                row = f'{name},{lat},{long},{heig}'
+                print(row)
 my_canvas = canvas.Canvas("PDF/Assendelft" + version + ".pdf")
 my_canvas.setFillColor(HexColor("#50ff3c"))
 my_canvas.rect(left_padding, bottom_padding, width, height, fill=1)
