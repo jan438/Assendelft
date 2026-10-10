@@ -65,14 +65,14 @@ def readjson(jsonfile):
                             totalcoords2 = coords0[0]
     return [year1, year2, totalcoords1, totalcoords2]
     
-def scale_to_img(lat_lon, points, w_h):
+def scale_to_img(lat_lon, points, w_h, factor):
     old = (points[2], points[0])
     new = (0, w_h[1])
     y = ((lat_lon[0] - old[0]) * (new[1] - new[0]) / (old[1] - old[0])) + new[0]
     old = (points[1], points[3])
     new = (0, w_h[0])
     x = ((lat_lon[1] - old[0]) * (new[1] - new[0]) / (old[1] - old[0])) + new[0]
-    return int(x), int(y)
+    return int(x) * factor, int(y * factor)
     
 def markplace(c, bx, by, lat, lon, points, w_h, color):
     c.setFillColor(HexColor(color))
@@ -82,7 +82,7 @@ def markplace(c, bx, by, lat, lon, points, w_h, color):
     if lat > points[0] or lat < points[2] or lon < points[1] or lon > points[3]:
         inkader = False
     if inkader:
-        (x, y) = scale_to_img((lat, lon), points, w_h)
+        (x, y) = scale_to_img((lat, lon), points, w_h, 2.0)
     c.circle(bx + x, by + y, 1, stroke=0, fill=1)
     return
     
@@ -96,7 +96,7 @@ def drawbounderies(c, bx, by, coords, year, points, w_h):
     p = c.beginPath()
     gcircle = 0
     for i in range(len(coords)):
-        x, y = scale_to_img(coords[i], points, w_h)
+        x, y = scale_to_img(coords[i], points, w_h, 2.0)
         x1 = bx + x
         y1 = by + y
         if i == 0:
@@ -206,9 +206,9 @@ if response.status_code == 200:
     with open('JSON/Assendelft.json', 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
 [year1a, year2a, totalcoords1a, totalcoords2a] = readjson("JSON/Assendelft.json")
-my_canvas.drawImage("Photos/mapzaanstad.png", 75, 300, 114.4, 84.5)
-my_canvas.drawImage("Photos/mapassendelft.png", 75, 100, 72.9, 90.8)
-my_canvas.drawImage("Photos/mapassendelft.png", 175, 100, 72.9, 90.8)
+my_canvas.drawImage("Photos/mapzaanstad.png", 75, 300, 114.4 * 2.0, 84.5 * 2.0)
+my_canvas.drawImage("Photos/mapassendelft.png", 75, 100, 72.9 * 2.0, 90.8 * 2.0)
+my_canvas.drawImage("Photos/mapassendelft.png", 175, 100, 72.9 * 2.0, 90.8 * 2.0)
 drawbounderies(my_canvas, 75, 300, totalcoords1z, year1z, pointsz, w_hz)
 drawbounderies(my_canvas, 75, 100, totalcoords1a, year1a, pointsa, w_ha)
 drawbounderies(my_canvas, 175, 100, totalcoords2a, year2a, pointsa, w_ha)
