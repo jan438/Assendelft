@@ -36,6 +36,7 @@ pointsa = (52.5242, 4.6596 , 52.4225 , 4.7942)
 w_ha = (72.9, 90.8)
 resp = requests.Response
 geodata = []
+rijkdata = []
 
 def readjson(jsonfile):
     countyears = 0
@@ -140,6 +141,7 @@ for i in root.findall('.//def:Placemark', ns):
             pin += 1
             if i.find('.//def:Point', ns):
                 row = f'{name};{lat};{long}'
+                rijkdata.append(row)
                 print(row)
 my_canvas = canvas.Canvas("PDF/Assendelft" + version + ".pdf")
 my_canvas.setFillColor(HexColor("#50ff3c"))
