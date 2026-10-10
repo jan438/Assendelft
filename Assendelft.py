@@ -79,11 +79,8 @@ def markplace(c, bx, by, lat, lon, points, w_h, color):
     x = 0
     y = 0
     inkader = True
-    if lat > points[0] or lat < points[2]:
+    if lat > points[0] or lat < points[2] or lon < points[1] or lon > points[3]:
         inkader = False
-    if lon < points[1] or lon > points[3]:
-        inkader = False
-    print(lon, points[1])
     if inkader:
         (x, y) = scale_to_img((lat, lon), points, w_h)
     c.circle(bx + x, by + y, 1, stroke=0, fill=1)
