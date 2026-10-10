@@ -15,6 +15,7 @@ from reportlab.lib.colors import yellow, green, red, blue, black, white, tan, He
 from reportlab.lib.units import inch, cm, mm
 from math import pi, cos, sin, radians, sqrt
 import xml.etree.ElementTree as ET
+import re
 from geopy.distance import great_circle
 import warnings
 from gps_class import GPSVis
