@@ -81,6 +81,8 @@ def markplace(c, bx, by, lat, lon, points, w_h, color):
     inkader = True
     if lat > points[0] or lat < points[2]:
         inkader = False
+    if lon < points[1]:
+        inkader = False
     print(lon, points[1])
     if inkader:
         (x, y) = scale_to_img((lat, lon), points, w_h)
