@@ -238,6 +238,12 @@ my_canvas.drawImage("Photos/dePauw.jpg", xf + 2 * df, yf, 400 * scalepics, 250 *
 my_canvas.drawImage("Photos/huisvrouw.jpg", xf + 3 * df, yf, 400 * scalepics, 250 * scalepics)
 my_canvas.setFillColor(HexColor('#000000'))
 my_canvas.setFont(assendelftfont, 10)
-my_canvas.drawString(10, 10, rijkdata[0][0])
+col = 0
+row = 3
+for i in range(len(rijkdata)):
+    my_canvas.drawString(col * 40 + 10, row * 20, rijkdata[i][0])
+    col += 1
+    if col == 4:
+        row -=1
 my_canvas.save()
 key = input("Wait")
