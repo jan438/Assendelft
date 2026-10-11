@@ -241,9 +241,10 @@ my_canvas.setFont(assendelftfont, 10)
 col = 0
 row = 3
 for i in range(len(rijkdata)):
-    my_canvas.drawString(col * 40 + 10, row * 20, rijkdata[i][0])
+    my_canvas.drawString(col * 100 + 10, row * 20, rijkdata[i][0][13:])
     col += 1
     if col == 4:
+        col = 0
         row -=1
 my_canvas.save()
 key = input("Wait")
