@@ -43,9 +43,9 @@ factor = 3.0
 xz = 75
 yz = 100
 xa1 = 75
-ya1 = 600
+ya1 = 500
 xa2 = 375
-ya2 = 600
+ya2 = 500
 
 def readjson(jsonfile):
     countyears = 0
