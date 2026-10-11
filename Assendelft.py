@@ -44,7 +44,7 @@ xz = 75
 yz = 100
 xa1 = 75
 ya1 = 500
-xa2 = 375
+xa2 = 300
 ya2 = 500
 
 def readjson(jsonfile):
