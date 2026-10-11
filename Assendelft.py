@@ -48,7 +48,7 @@ xa2 = 300
 ya2 = 500
 xf = 10
 yf = 400
-df = 100
+df = 130
 
 def readjson(jsonfile):
     countyears = 0
