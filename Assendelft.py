@@ -160,6 +160,7 @@ with open(file_to_open, 'r') as file:
         count += 1
 assendelftrijkdata = retrievecoords("assendelftrijk")
 zaandamrijkdata = retrievecoords("zaandamrijk")
+zaandijkrijkdata = retrievecoords("zaandijkrijk")
 provinciedata = retrievecoords("provincie")
 gemeentedata = retrievecoords("gemeente")
 provinciedata = retrievecoords("provincie")
@@ -197,6 +198,8 @@ for i in range(len(assendelftrijkdata)):
     markplace(my_canvas, xz, yz, float(assendelftrijkdata[i][1]), float(assendelftrijkdata[i][2]), pointsz, w_hz, '#55557f', factor)
 for i in range(len(zaandamrijkdata)):
     markplace(my_canvas, xz, yz, float(zaandamrijkdata[i][1]), float(zaandamrijkdata[i][2]), pointsz, w_hz, '#55557f', factor)
+for i in range(len(zaandijkrijkdata)):
+    markplace(my_canvas, xz, yz, float(zaandijkrijkdata[i][1]), float(zaandijkrijkdata[i][2]), pointsz, w_hz, '#55557f', factor)
 for i in range(len(provinciedata)):
     markplace(my_canvas, xz, yz, float(provinciedata[i][1]), float(provinciedata[i][2]), pointsz, w_hz, '#00ffff', factor)
 for i in range(len(gemeentedata)):
