@@ -40,7 +40,7 @@ rijkdata = []
 provinciedata = []
 gemeentedata = []
 factor = 3.0
-xz = 75
+xz = 125
 yz = 100
 xa1 = 75
 ya1 = 500
@@ -241,9 +241,9 @@ my_canvas.setFont(assendelftfont, 10)
 col = 0
 row = 3
 for i in range(len(rijkdata)):
-    my_canvas.drawString(col * 100 + 10, row * 20, rijkdata[i][0][10:])
+    my_canvas.drawString(col * 95 + 10, row * 20, rijkdata[i][0][10:])
     col += 1
-    if col == 4:
+    if col == 6:
         col = 0
         row -=1
 my_canvas.save()
