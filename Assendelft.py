@@ -75,6 +75,26 @@ def readjson(jsonfile):
                             totalcoords2 = coords0[0]
     return [year1, year2, totalcoords1, totalcoords2]
     
+def retrievecoords(kmlfile):
+    data = []
+    tree = ET.parse('KML/' + kmlfile + ".kml")
+    root = tree.getroot()
+    namespace = re.match('\{(.*?)\}kml', root.tag).group(1)
+    ns = {'def': namespace}
+    coord_ex = '(-?\d+\.\d+),'
+    heig_ex = '(\d+)'
+    regex = coord_ex + coord_ex + heig_ex
+    for i in root.findall('.//def:Placemark', ns):
+        name = i.find('def:name', ns).text
+        coord = i.find('.//def:coordinates', ns)
+        if not coord is None:
+            coord = coord.text.strip()
+            coord = re.findall(regex, coord)
+            for (long, lat, heig) in coord:
+                if i.find('.//def:Point', ns):
+                    data.append([name, lat, long])
+    return data
+    
 def scale_to_img(lat_lon, points, w_h, factor):
     old = (points[2], points[0])
     new = (0, w_h[1])
@@ -141,24 +161,7 @@ with open(file_to_open, 'r') as file:
     for row in csvreader:
         geodata.append(row)
         count += 1
-tree = ET.parse('KML/rijk.kml')
-root = tree.getroot()
-namespace = re.match('\{(.*?)\}kml', root.tag).group(1)
-ns = {'def': namespace}
-coord_ex = '(-?\d+\.\d+),'
-heig_ex = '(\d+)'
-regex = coord_ex + coord_ex + heig_ex
-for i in root.findall('.//def:Placemark', ns):
-    name = i.find('def:name', ns).text
-    coord = i.find('.//def:coordinates', ns)
-    if not coord is None:
-        coord = coord.text.strip()
-        coord = re.findall(regex, coord)
-        pin = 0
-        for (long, lat, heig) in coord:
-            pin += 1
-            if i.find('.//def:Point', ns):
-                rijkdata.append([name, lat, long])
+rijkdata = retrievecoords("rijk")
 tree = ET.parse('KML/provincie.kml')
 root = tree.getroot()
 namespace = re.match('\{(.*?)\}kml', root.tag).group(1)
