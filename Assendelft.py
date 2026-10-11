@@ -229,9 +229,9 @@ for i in range(len(provinciedata)):
 for i in range(len(gemeentedata)):
     markplace(my_canvas, xz, yz, float(gemeentedata[i][1]), float(gemeentedata[i][2]), pointsz, w_hz, '#ffb592', factor)
 scalepics = 0.4
-#my_canvas.drawImage("Photos/deHuisman2e.jpg", 25, 700, 400 * scalepics, 250 * scalepics)
-#my_canvas.drawImage("Photos/hetHuisAssumburg.jpg", 25, 600, 400 * scalepics, 250 * scalepics)
-#my_canvas.drawImage("Photos/dePauw.jpg", 25, 500, 400 * scalepics, 250 * scalepics)
-#my_canvas.drawImage("Photos/huisvrouw.jpg", 25, 400, 400 * scalepics, 250 * scalepics)
+my_canvas.drawImage("Photos/deHuisman2e.jpg", xa1, ya1, 400 * scalepics, 250 * scalepics)
+my_canvas.drawImage("Photos/hetHuisAssumburg.jpg", xa1, ya1, 400 * scalepics, 250 * scalepics)
+my_canvas.drawImage("Photos/dePauw.jpg", xa1, ya1, 400 * scalepics, 250 * scalepics)
+my_canvas.drawImage("Photos/huisvrouw.jpg", xa1, ya1, 400 * scalepics, 250 * scalepics)
 my_canvas.save()
 key = input("Wait")
