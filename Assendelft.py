@@ -36,7 +36,6 @@ pointsa = (52.5242, 4.6596 , 52.4225 , 4.7942)
 w_ha = (72.9, 90.8)
 resp = requests.Response
 geodata = []
-gemeentedata = []
 factor = 3.0
 xz = 125
 yz = 100
@@ -161,24 +160,8 @@ with open(file_to_open, 'r') as file:
         count += 1
 rijkdata = retrievecoords("rijk")
 provinciedata = retrievecoords("provincie")
-tree = ET.parse('KML/gemeente.kml')
-root = tree.getroot()
-namespace = re.match('\{(.*?)\}kml', root.tag).group(1)
-ns = {'def': namespace}
-coord_ex = '(-?\d+\.\d+),'
-heig_ex = '(\d+)'
-regex = coord_ex + coord_ex + heig_ex
-for i in root.findall('.//def:Placemark', ns):
-    name = i.find('def:name', ns).text
-    coord = i.find('.//def:coordinates', ns)
-    if not coord is None:
-        coord = coord.text.strip()
-        coord = re.findall(regex, coord)
-        pin = 0
-        for (long, lat, heig) in coord:
-            pin += 1
-            if i.find('.//def:Point', ns):
-                gemeentedata.append([name, lat, long])
+gemeentedata = retrievecoords("gemeente")
+provinciedata = retrievecoords("provincie")
 my_canvas = canvas.Canvas("PDF/Assendelft" + version + ".pdf")
 my_canvas.setFillColor(HexColor("#50ff3c"))
 my_canvas.rect(left_padding, bottom_padding, width, height, fill=1)
