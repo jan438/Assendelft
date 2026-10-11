@@ -227,7 +227,7 @@ for i in range(len(rijkdata)):
 for i in range(len(provinciedata)):
     markplace(my_canvas, xz, yz, float(provinciedata[i][1]), float(provinciedata[i][2]), pointsz, w_hz, '#00ffff', factor)
 for i in range(len(gemeentedata)):
-    markplace(my_canvas, 75, 300, float(gemeentedata[i][1]), float(gemeentedata[i][2]), pointsz, w_hz, '#ffb592', factor)
+    markplace(my_canvas, xz, yz, float(gemeentedata[i][1]), float(gemeentedata[i][2]), pointsz, w_hz, '#ffb592', factor)
 scalepics = 0.4
 #my_canvas.drawImage("Photos/deHuisman2e.jpg", 25, 700, 400 * scalepics, 250 * scalepics)
 #my_canvas.drawImage("Photos/hetHuisAssumburg.jpg", 25, 600, 400 * scalepics, 250 * scalepics)
