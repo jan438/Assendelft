@@ -22,6 +22,8 @@ from gps_class import GPSVis
 
 warnings.filterwarnings('ignore')
 
+rijkgemeenten = ["assendelft", "zaandam"]
+
 assendelftfont = "LiberationSerif"
 version = "1"
 left_padding = 0
@@ -158,8 +160,9 @@ with open(file_to_open, 'r') as file:
     for row in csvreader:
         geodata.append(row)
         count += 1
-assendelftrijkdata = retrievecoords("assendelftrijk")
-zaandamrijkdata = retrievecoords("zaandamrijk")
+for i in range(len(rijkgemeenten)):
+    assendelftrijkdata = retrievecoords(rijkgemeenten[i] + "rijk")
+    zaandamrijkdata = retrievecoords("zaandamrijk")
 provinciedata = retrievecoords("provincie")
 gemeentedata = retrievecoords("gemeente")
 provinciedata = retrievecoords("provincie")
