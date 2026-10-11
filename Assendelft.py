@@ -84,7 +84,7 @@ def markplace(c, bx, by, lat, lon, points, w_h, color, factor):
         inkader = False
     if inkader:
         (x, y) = scale_to_img((lat, lon), points, w_h, factor)
-    c.circle(bx + x, by + y, 1, stroke=0, fill=1)
+    c.circle(bx + x, by + y, 3.0, stroke=0, fill=1)
     return
     
 def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
