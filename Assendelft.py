@@ -159,6 +159,7 @@ with open(file_to_open, 'r') as file:
         geodata.append(row)
         count += 1
 assendelftrijkdata = retrievecoords("assendelftrijk")
+krommenierijkdata = retrievecoords("krommenierijk")
 zaandamrijkdata = retrievecoords("zaandamrijk")
 zaandijkrijkdata = retrievecoords("zaandijkrijk")
 provinciedata = retrievecoords("provincie")
@@ -196,6 +197,8 @@ for i in range(len(geodata)):
     markplace(my_canvas, xa2, ya2, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#aa55ff', factor)
 for i in range(len(assendelftrijkdata)):
     markplace(my_canvas, xz, yz, float(assendelftrijkdata[i][1]), float(assendelftrijkdata[i][2]), pointsz, w_hz, '#55557f', factor)
+for i in range(len(krommenierijkdata)):
+    markplace(my_canvas, xz, yz, float(krommenierijkdata[i][1]), float(krommenierijkdata[i][2]), pointsz, w_hz, '#55557f', factor)
 for i in range(len(zaandamrijkdata)):
     markplace(my_canvas, xz, yz, float(zaandamrijkdata[i][1]), float(zaandamrijkdata[i][2]), pointsz, w_hz, '#55557f', factor)
 for i in range(len(zaandijkrijkdata)):
