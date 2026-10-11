@@ -158,7 +158,7 @@ with open(file_to_open, 'r') as file:
     for row in csvreader:
         geodata.append(row)
         count += 1
-rijkdata = retrievecoords("rijk")
+assendelftrijkdata = retrievecoords("assendelftrijk")
 provinciedata = retrievecoords("provincie")
 gemeentedata = retrievecoords("gemeente")
 provinciedata = retrievecoords("provincie")
@@ -192,8 +192,8 @@ drawbounderies(my_canvas, xa2, ya2, totalcoords2a, year2a, pointsa, w_ha, factor
 for i in range(len(geodata)):
     markplace(my_canvas, xa1, ya1, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#00aaff', factor)
     markplace(my_canvas, xa2, ya2, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#aa55ff', factor)
-for i in range(len(rijkdata)):
-    markplace(my_canvas, xz, yz, float(rijkdata[i][1]), float(rijkdata[i][2]), pointsz, w_hz, '#55557f', factor)
+for i in range(len(assendelftrijkdata)):
+    markplace(my_canvas, xz, yz, float(assendelftrijkdata[i][1]), float(assendelftrijkdata[i][2]), pointsz, w_hz, '#55557f', factor)
 for i in range(len(provinciedata)):
     markplace(my_canvas, xz, yz, float(provinciedata[i][1]), float(provinciedata[i][2]), pointsz, w_hz, '#00ffff', factor)
 for i in range(len(gemeentedata)):
@@ -207,8 +207,8 @@ my_canvas.setFillColor(HexColor('#000000'))
 my_canvas.setFont(assendelftfont, 10)
 col = 0
 row = 3
-for i in range(len(rijkdata)):
-    my_canvas.drawString(col * 95 + 10, row * 20, rijkdata[i][0][10:])
+for i in range(len(assendelftrijkdata)):
+    my_canvas.drawString(col * 95 + 10, row * 20, assendelftrijkdata[i][0][10:])
     col += 1
     if col == 6:
         col = 0
