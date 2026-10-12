@@ -38,7 +38,7 @@ resp = requests.Response
 geodata = []
 factor = 3.5
 xz = 125
-yz = 100
+yz = 10
 xa1 = 75
 ya1 = 500
 xa2 = 300
@@ -193,8 +193,8 @@ if response.status_code == 200:
         json.dump(data, f, ensure_ascii=False, indent=4)
 [year1a, year2a, totalcoords1a, totalcoords2a] = readjson("JSON/Assendelft.json")
 my_canvas.drawImage("Photos/mapzaanstad.png", xz, yz, w_hz[0] * factor, w_hz[1] * factor)
-my_canvas.drawImage("Photos/mapassendelft.png", xa1, ya1, 72.9 * factor, 90.8 * factor)
-my_canvas.drawImage("Photos/mapassendelft.png", xa2, ya2, 72.9 * factor, 90.8 * factor)
+my_canvas.drawImage("Photos/mapassendelft.png", xa1, ya1, w_ha[0] * factor, w_ha[1] * factor)
+my_canvas.drawImage("Photos/mapassendelft.png", xa2, ya2, w_ha[0] * factor, w_ha[1] * factor)
 drawbounderies(my_canvas, xz, yz, totalcoords1z, year1z, pointsz, w_hz, factor)
 drawbounderies(my_canvas, xa1, ya1, totalcoords1a, year1a, pointsa, w_ha, factor)
 drawbounderies(my_canvas, xa2, ya2, totalcoords2a, year2a, pointsa, w_ha, factor)
