@@ -204,7 +204,9 @@ for i in range(len(geodata)):
 for i in range(len(assendelftrijkdata)):
     markplace(my_canvas, xz, yz, float(assendelftrijkdata[i][1]), float(assendelftrijkdata[i][2]), pointsz, w_hz, '#55557f', factor)
 for i in range(len(koogaandezaanrijkdata)):
-    markplace(my_canvas, xz, yz, float(koogaandezaanrijkdata[i][1]), float(koogaandezaanrijkdata[i][2]), pointsz, w_hz, '#55557f', factor)
+    markplace(my_canvas, xz, yz, float(koogaandezaanrijkdata[i][1]), float(koogaandezaanrijkdata[i][2]), pointsz, w_hz, '#55557f', factor)   
+for i in range(len(krommeniedijkrijkdata)):
+    markplace(my_canvas, xz, yz, float(krommeniedijkrijkdata[i][1]), float(krommeniedijkrijkdata[i][2]), pointsz, w_hz, '#55557f', factor)
 for i in range(len(krommenierijkdata)):
     markplace(my_canvas, xz, yz, float(krommenierijkdata[i][1]), float(krommenierijkdata[i][2]), pointsz, w_hz, '#55557f', factor)
 for i in range(len(westzaanrijkdata)):
