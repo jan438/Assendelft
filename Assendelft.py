@@ -161,8 +161,8 @@ with open(file_to_open, 'r') as file:
 assendelftrijkdata = retrievecoords("assendelftrijk")
 koogaandezaanrijkdata = retrievecoords("koogaandezaanrijk")
 krommeniedijkrijkdata = []
-krommeniedijkrijkdata.append(["RM342003 -", 52.31, 4.8])
-krommeniedijkrijkdata.append(["RM39970 - Krommeniedijk 182", 52.31, 4.8])
+krommeniedijkrijkdata.append(["RM342003 -", 52.51808, 4.76451])
+krommeniedijkrijkdata.append(["RM39970 - Krommeniedijk 182", 52.51741, 4.75054])
 krommenierijkdata = retrievecoords("krommenierijk")
 westzaanrijkdata = retrievecoords("westzaanrijk")
 wormerveerrijkdata = retrievecoords("wormerveerrijk")
