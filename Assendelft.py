@@ -95,10 +95,10 @@ def retrievecoords(kmlfile):
 def scale_to_img(lat_lon, points, w_h, factor):
     old = (points[2], points[0])
     new = (0, w_h[1])
-    y = ((lat_lon[0] - old[0]) * (new[1] - new[0]) / (old[1] - old[0])) + new[0]
+    y = ((lat_lon[0] - old[0]) * (new[1] - new[0]) / (old[1] - old[0]))
     old = (points[1], points[3])
     new = (0, w_h[0])
-    x = ((lat_lon[1] - old[0]) * (new[1] - new[0]) / (old[1] - old[0])) + new[0]
+    x = ((lat_lon[1] - old[0]) * (new[1] - new[0]) / (old[1] - old[0]))
     return int(x) * factor, int(y * factor)
     
 def markplace(c, bx, by, lat, lon, points, w_h, color, factor, name):
