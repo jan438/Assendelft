@@ -103,6 +103,7 @@ def scale_to_img(lat_lon, points, w_h, factor):
     
 def markplace(c, bx, by, lat, lon, points, w_h, color, factor):
     c.setFillColor(HexColor(color))
+    radius = 2.0
     x = 0
     y = 0
     inkader = True
@@ -110,7 +111,13 @@ def markplace(c, bx, by, lat, lon, points, w_h, color, factor):
         inkader = False
     if inkader:
         (x, y) = scale_to_img((lat, lon), points, w_h, factor)
-    c.circle(bx + x, by + y, 2.0, stroke=0, fill=1)
+    c.circle(bx + x, by + y, radius, stroke=0, fill=1)
+    linkx1 = bx + x - 0.5 * radius
+    linky1 = by + y - 0.5 * radius
+    linkx2 = bx + x + radius
+    linky2 = by + y + radius
+    linkarea = (linkx1, linky1, linkx2, linky2)
+    c.linkAbsolute("Find ", "monumentname", linkarea, addtopage = 1, thickness = 0, color = None)
     return
     
 def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
@@ -236,5 +243,6 @@ for i in range(len(assendelftrijkdata)):
     if col == 6:
         col = 0
         row -=1
+my_canvas.bookmarkPage("monumentname", fit = "FitR", left = 10, bottom = 10, right = 50, top = 50)
 my_canvas.save()
 key = input("Wait")
