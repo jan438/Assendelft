@@ -37,14 +37,14 @@ w_ha = (72.9, 90.8)
 resp = requests.Response
 geodata = []
 factor = 2.5
-xz = 20
-yz = 10
+xz = 40
+yz = 15
 xa1 = 75
 ya1 = 550
 xa2 = 300
 ya2 = 550
 xf = 40
-yf = 500
+yf = 475
 df = 130
 
 def readjson(jsonfile):
