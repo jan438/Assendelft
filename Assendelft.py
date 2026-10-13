@@ -101,7 +101,7 @@ def scale_to_img(lat_lon, points, w_h, factor):
     x = ((lat_lon[1] - old[0]) * (new[1] - new[0]) / (old[1] - old[0])) + new[0]
     return int(x) * factor, int(y * factor)
     
-def markplace(c, bx, by, lat, lon, points, w_h, color, factor):
+def markplace(c, bx, by, lat, lon, points, w_h, color, factor, name):
     c.setFillColor(HexColor(color))
     radius = 2.0
     x = 0
@@ -117,7 +117,8 @@ def markplace(c, bx, by, lat, lon, points, w_h, color, factor):
     linkx2 = bx + x + radius
     linky2 = by + y + radius
     linkarea = (linkx1, linky1, linkx2, linky2)
-    c.linkAbsolute("Find ", "monumentname", linkarea, addtopage = 1, thickness = 0, color = None)
+    c.linkAbsolute("Find ", name, linkarea, addtopage = 1, thickness = 0, color = None)
+    c.bookmarkPage(name, fit = "FitR", left = 10, bottom = 10, right = 50, top = 50)
     return
     
 def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
@@ -206,28 +207,28 @@ drawbounderies(my_canvas, xz, yz, totalcoords1z, year1z, pointsz, w_hz, factor)
 drawbounderies(my_canvas, xa1, ya1, totalcoords1a, year1a, pointsa, w_ha, factor)
 drawbounderies(my_canvas, xa2, ya2, totalcoords2a, year2a, pointsa, w_ha, factor)
 for i in range(len(geodata)):
-    markplace(my_canvas, xa1, ya1, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#00aaff', factor)
-    markplace(my_canvas, xa2, ya2, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#aa55ff', factor)
+    markplace(my_canvas, xa1, ya1, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#00aaff', factor, geodata[i][0])
+    markplace(my_canvas, xa2, ya2, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#aa55ff', factor,geodata[i][0])
 for i in range(len(assendelftrijkdata)):
-    markplace(my_canvas, xz, yz, float(assendelftrijkdata[i][1]), float(assendelftrijkdata[i][2]), pointsz, w_hz, '#55557f', factor)
+    markplace(my_canvas, xz, yz, float(assendelftrijkdata[i][1]), float(assendelftrijkdata[i][2]), pointsz, w_hz, '#55557f', factor, assendelftrijkdata[i][0])
 for i in range(len(koogaandezaanrijkdata)):
-    markplace(my_canvas, xz, yz, float(koogaandezaanrijkdata[i][1]), float(koogaandezaanrijkdata[i][2]), pointsz, w_hz, '#55557f', factor)   
+    markplace(my_canvas, xz, yz, float(koogaandezaanrijkdata[i][1]), float(koogaandezaanrijkdata[i][2]), pointsz, w_hz, '#55557f', factor, koogaandezaanrijkdata[i][0])   
 for i in range(len(krommeniedijkrijkdata)):
-    markplace(my_canvas, xz, yz, float(krommeniedijkrijkdata[i][1]), float(krommeniedijkrijkdata[i][2]), pointsz, w_hz, '#55557f', factor)
+    markplace(my_canvas, xz, yz, float(krommeniedijkrijkdata[i][1]), float(krommeniedijkrijkdata[i][2]), pointsz, w_hz, '#55557f', factor, krommeniedijkrijkdata[i][0])
 for i in range(len(krommenierijkdata)):
-    markplace(my_canvas, xz, yz, float(krommenierijkdata[i][1]), float(krommenierijkdata[i][2]), pointsz, w_hz, '#55557f', factor)
+    markplace(my_canvas, xz, yz, float(krommenierijkdata[i][1]), float(krommenierijkdata[i][2]), pointsz, w_hz, '#55557f', factor, krommenierijkdata[i][0])
 for i in range(len(westzaanrijkdata)):
-    markplace(my_canvas, xz, yz, float(westzaanrijkdata[i][1]), float(westzaanrijkdata[i][2]), pointsz, w_hz, '#55557f', factor)
+    markplace(my_canvas, xz, yz, float(westzaanrijkdata[i][1]), float(westzaanrijkdata[i][2]), pointsz, w_hz, '#55557f', factor, westzaanrijkdata[i][0])
 for i in range(len(wormerveerrijkdata)):
-    markplace(my_canvas, xz, yz, float(wormerveerrijkdata[i][1]), float(wormerveerrijkdata[i][2]), pointsz, w_hz, '#55557f', factor)
+    markplace(my_canvas, xz, yz, float(wormerveerrijkdata[i][1]), float(wormerveerrijkdata[i][2]), pointsz, w_hz, '#55557f', factor, wormerveerrijkdata[i][0])
 for i in range(len(zaandamrijkdata)):
-    markplace(my_canvas, xz, yz, float(zaandamrijkdata[i][1]), float(zaandamrijkdata[i][2]), pointsz, w_hz, '#55557f', factor)
+    markplace(my_canvas, xz, yz, float(zaandamrijkdata[i][1]), float(zaandamrijkdata[i][2]), pointsz, w_hz, '#55557f', factor, zaandamrijkdata[i][0])
 for i in range(len(zaandijkrijkdata)):
-    markplace(my_canvas, xz, yz, float(zaandijkrijkdata[i][1]), float(zaandijkrijkdata[i][2]), pointsz, w_hz, '#55557f', factor)
+    markplace(my_canvas, xz, yz, float(zaandijkrijkdata[i][1]), float(zaandijkrijkdata[i][2]), pointsz, w_hz, '#55557f', factor, zaandijkrijkdata[i][0])
 for i in range(len(provinciedata)):
-    markplace(my_canvas, xz, yz, float(provinciedata[i][1]), float(provinciedata[i][2]), pointsz, w_hz, '#00ffff', factor)
+    markplace(my_canvas, xz, yz, float(provinciedata[i][1]), float(provinciedata[i][2]), pointsz, w_hz, '#00ffff', factor, provinciedata[i][0])
 for i in range(len(gemeentedata)):
-    markplace(my_canvas, xz, yz, float(gemeentedata[i][1]), float(gemeentedata[i][2]), pointsz, w_hz, '#ffb592', factor)
+    markplace(my_canvas, xz, yz, float(gemeentedata[i][1]), float(gemeentedata[i][2]), pointsz, w_hz, '#ffb592', factor, gemeentedata[i][0])
 scalepics = 0.3
 my_canvas.drawImage("Photos/deHuisman2e.jpg", xf, yf, 400 * scalepics, 250 * scalepics)
 my_canvas.drawImage("Photos/hetHuisAssumburg.jpg", xf + df, yf, 400 * scalepics, 250 * scalepics)
@@ -243,6 +244,5 @@ for i in range(len(assendelftrijkdata)):
     if col == 6:
         col = 0
         row -=1
-my_canvas.bookmarkPage("monumentname", fit = "FitR", left = 10, bottom = 10, right = 50, top = 50)
 my_canvas.save()
 key = input("Wait")
