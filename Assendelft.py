@@ -270,7 +270,7 @@ for i in range(len(zaanstaddata)):
     linkx2 = col * colwidth + colwidth
     linky2 = row * rowheight + rowheight
     linkarea = (linkx1, linky1, linkx2, linky2)
-    my_canvas.linkAbsolute("Find ", zaanstaddata[i][0][:7] + 'I', linkarea, addtopage = 1, thickness = 0, color = None)
+    my_canvas.linkAbsolute("Find ", zaanstaddata[i][0][:7] + 'I', linkarea, addtopage = 2, thickness = 0, color = None)
     col += 1
     if col == 6:
         col = 0
