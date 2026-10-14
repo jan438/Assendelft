@@ -261,7 +261,7 @@ row = 3
 colwidth = 200
 rowheight = 150
 for i in range(len(zaanstaddata)):
-    my_canvas.drawString(col * 95 + 10, row * 20, zaanstaddata[i][0])
+    my_canvas.drawString(col * colwidth, row * rowheight - 20, zaanstaddata[i][0])
     my_canvas.drawImage("Photos/" + zaanstaddata[i][0] + ".JPG", col * colwidth, row * rowheight, 400 * scalepics, 250 * scalepics)
     my_canvas.circle(col * colwidth + 20, row * rowheight - 40, 4.0, stroke=0, fill=1)
     my_canvas.bookmarkPage(zaanstaddata[i][0][:7] + 'I', fit = "FitR", left = 10, bottom = 10, right = 50, top = 50)
