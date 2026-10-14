@@ -127,10 +127,10 @@ def markplace(c, bx, by, lat, lon, points, w_h, color, factor, name):
     linkarea = (linkx1, linky1, linkx2, linky2)
     code = name[:7]
     if code[:2] == "RM":
-        mi = lookupmonument(name)
-        print(name, code, mi)
-    c.linkAbsolute("Find ", name, linkarea, addtopage = 1, thickness = 0, color = None)
-    c.bookmarkPage(name, fit = "FitR", left = 10, bottom = 10, right = 50, top = 50)
+        mi = lookupmonument(code)
+        if mi >= 0:
+            c.linkAbsolute("Find ", name, linkarea, addtopage = 1, thickness = 0, color = None)
+            c.bookmarkPage(name, fit = "FitR", left = 10, bottom = 10, right = 50, top = 50)
     return
     
 def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
