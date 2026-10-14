@@ -130,7 +130,6 @@ def markplace(c, bx, by, lat, lon, points, w_h, color, factor, name):
         mi = lookupmonument(code)
         if mi >= 0:
             c.linkAbsolute("Find ", code, linkarea, addtopage = 1, thickness = 0, color = None)
-            c.bookmarkPage(code, fit = "FitR", left = 10, bottom = 10, right = 50, top = 50)
     return
     
 def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
@@ -264,6 +263,7 @@ for i in range(len(zaanstaddata)):
     my_canvas.drawString(col * 95 + 10, row * 20, zaanstaddata[i][0])
     my_canvas.drawImage("Photos/" + zaanstaddata[i][0] + ".JPG", col * colwidth, row * rowheight, 400 * scalepics, 250 * scalepics)
     my_canvas.circle(col * colwidth + 20, row * rowheight - 40, 4.0, stroke=0, fill=1)
+    my_canvas.bookmarkPage(zaanstaddata[i][0][:7], fit = "FitR", left = 10, bottom = 10, right = 50, top = 50)
     col += 1
     if col == 6:
         col = 0
