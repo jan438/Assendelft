@@ -36,6 +36,7 @@ pointsa = (52.5242, 4.6596 , 52.4225 , 4.7942)
 w_ha = (72.9, 90.8)
 resp = requests.Response
 geodata = []
+zaanstaddata = []
 factor = 2.5
 xz = 40
 yz = 15
@@ -166,6 +167,13 @@ with open(file_to_open, 'r') as file:
     for row in csvreader:
         geodata.append(row)
         count += 1
+file_to_open = "CSV/zaanstad.csv"
+with open(file_to_open, 'r') as file:
+    csvreader = csv.reader(file, delimiter = ';')
+    count = 0
+    for row in csvreader:
+        zaanstaddata.append(row)
+        count += 1
 assendelftrijkdata = retrievecoords("assendelftrijk")
 koogaandezaanrijkdata = retrievecoords("koogaandezaanrijk")
 krommeniedijkrijkdata = []
@@ -234,12 +242,13 @@ my_canvas.drawImage("Photos/deHuisman2e.jpg", xf, yf, 400 * scalepics, 250 * sca
 my_canvas.drawImage("Photos/hetHuisAssumburg.jpg", xf + df, yf, 400 * scalepics, 250 * scalepics)
 my_canvas.drawImage("Photos/dePauw.jpg", xf + 2 * df, yf, 400 * scalepics, 250 * scalepics)
 my_canvas.drawImage("Photos/huisvrouw.jpg", xf + 3 * df, yf, 400 * scalepics, 250 * scalepics)
+my_canvas.showPage()
 my_canvas.setFillColor(HexColor('#000000'))
 my_canvas.setFont(assendelftfont, 10)
 col = 0
 row = 3
-for i in range(len(assendelftrijkdata)):
-    my_canvas.drawString(col * 95 + 10, row * 20, assendelftrijkdata[i][0][10:])
+for i in range(len(zaanstaddata)):
+    my_canvas.drawString(col * 95 + 10, row * 20, zaanstaddata[i][0])
     col += 1
     if col == 6:
         col = 0
