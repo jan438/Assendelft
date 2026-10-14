@@ -252,6 +252,7 @@ rowheight = 150
 for i in range(len(zaanstaddata)):
     my_canvas.drawString(col * 95 + 10, row * 20, zaanstaddata[i][0])
     my_canvas.drawImage("Photos/" + zaanstaddata[i][0] + ".JPG", col * colwidth, row * rowheight, 400 * scalepics, 250 * scalepics)
+    my_canvas.circle(col * colwidth + 20, row * rowheight - 40, 4.0, stroke=0, fill=1)
     col += 1
     if col == 6:
         col = 0
