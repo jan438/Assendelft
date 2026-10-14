@@ -9,16 +9,21 @@ def create_linked_pdf(filename):
     c.drawString(100, 600, "[ Ga naar Pagina 2 ]")
     linkx1 = 0
     linky1 = 0
-    linkx2 = 20
-    linky2 = 20
-    linkarea = (linkx1, linky1, linkx2, linky2)
-    c.linkAbsolute("Find ", "pagina_2", linkarea, addtopage = 1, thickness = 0, color = None)
+    linkx2 = 200
+    linky2 = 200
+    linkarea1 = (linkx1, linky1, linkx2, linky2)
+    c.linkAbsolute("Find ", "pagina_2", linkarea1, addtopage = 1, thickness = 0, color = None)
     c.showPage()
     c.bookmarkPage("pagina_2")
     c.drawString(100, 700, "Dit is Pagina 2")
     c.drawString(100, 650, "Klik hieronder om weer terug te gaan:")
     c.drawString(100, 600, "[ Terug naar Pagina 1 ]")
-#    c.linkAbsolute("pagina_1", 95, 595, 220, 615)
+    linkx1 = 0
+    linky1 = 0
+    linkx2 = 200
+    linky2 = 200
+    linkarea2 = (linkx1, linky1, linkx2, linky2)    
+    c.linkAbsolute("Find ", "pagina_1", linkarea2, addtopage = 1, thickness = 0, color = None)    
     c.save()
 
 if __name__ == "__main__":
