@@ -247,11 +247,11 @@ my_canvas.setFillColor(HexColor('#000000'))
 my_canvas.setFont(assendelftfont, 10)
 col = 0
 row = 3
-xf = 88
-yf = 88 
+colwidth = 200
+rowheight = 150
 for i in range(len(zaanstaddata)):
     my_canvas.drawString(col * 95 + 10, row * 20, zaanstaddata[i][0])
-    my_canvas.drawImage("Photos/" + zaanstaddata[i][0] + ".JPG", xf, yf, 400 * scalepics, 250 * scalepics)
+    my_canvas.drawImage("Photos/" + zaanstaddata[i][0] + ".JPG", col * colwidth, row * rowheight, 400 * scalepics, 250 * scalepics)
     col += 1
     if col == 6:
         col = 0
