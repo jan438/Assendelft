@@ -125,8 +125,10 @@ def markplace(c, bx, by, lat, lon, points, w_h, color, factor, name):
     linkx2 = bx + x + radius
     linky2 = by + y + radius
     linkarea = (linkx1, linky1, linkx2, linky2)
-    mi = lookupmonument(name)
-    print(mi)
+    code = name[:7]
+    if code[:2] == "RM":
+        mi = lookupmonument(name)
+        print(name, code, mi)
     c.linkAbsolute("Find ", name, linkarea, addtopage = 1, thickness = 0, color = None)
     c.bookmarkPage(name, fit = "FitR", left = 10, bottom = 10, right = 50, top = 50)
     return
