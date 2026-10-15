@@ -6,7 +6,6 @@ def create_linked_pdf(filename):
     c.bookmarkPage("pagina_1")
     c.drawString(100, 700, "Dit is Pagina 1")
     radius = 2.0
-    c.drawString(100, 650, "Klik hieronder om naar Pagina 2 te gaan:")
     c.circle(100, 650, radius, stroke=0, fill=1)
     linkx1 = 100 - 0.5 * radius
     linky1 = 650 - 0.5 * radius
