@@ -14,10 +14,11 @@ def create_linked_pdf(filename):
     c.drawString(100, 700, "Dit is Pagina 2")
     c.drawString(100, 650, "Klik hieronder om weer terug te gaan:")
     c.drawString(100, 600, "[ Terug naar Pagina 1 ]")
-    linkx1 = 0
-    linky1 = 0
-    linkx2 = 200
-    linky2 = 200
+    c.rect(100, 650, 100, 100)
+    linkx1 = 100
+    linky1 = 650
+    linkx2 = 100 + 100
+    linky2 = 650 + 100
     linkarea2 = (linkx1, linky1, linkx2, linky2)    
     c.linkAbsolute("Find ", "pagina_1", linkarea2, addtopage = 1, thickness = 0, color = None)    
     c.save()
