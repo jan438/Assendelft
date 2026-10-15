@@ -130,7 +130,7 @@ def markplace(c, bx, by, lat, lon, points, w_h, color, factor, name):
         mi = lookupmonument(code)
         if mi >= 0:
             c.linkAbsolute("Find ", code + 'I', linkarea, addtopage = 1, thickness = 0, color = None)
-            c.bookmarkPage(code + 'L', fit = "FitR", left = linkx1, bottom = linky1, right = linkx2, top = linky2)
+            c.bookmarkPage(code + 'L')
     return
     
 def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
@@ -264,13 +264,13 @@ for i in range(len(zaanstaddata)):
     my_canvas.drawString(col * colwidth, row * rowheight - 20, zaanstaddata[i][0])
     my_canvas.drawImage("Photos/" + zaanstaddata[i][0] + ".JPG", col * colwidth, row * rowheight, 400 * scalepics, 250 * scalepics)
     my_canvas.circle(col * colwidth + 20, row * rowheight - 40, 4.0, stroke=0, fill=1)
-    my_canvas.bookmarkPage(zaanstaddata[i][0][:7] + 'I', fit = "FitR", left = 10, bottom = 10, right = 50, top = 50)
+    my_canvas.bookmarkPage(zaanstaddata[i][0][:7] + 'I')
     linkx1 = col * colwidth
     linky1 = row * rowheight
     linkx2 = col * colwidth + colwidth
     linky2 = row * rowheight + rowheight
     linkarea = (linkx1, linky1, linkx2, linky2)
-    my_canvas.linkAbsolute("Find ", zaanstaddata[i][0][:7] + 'I', linkarea, addtopage = 2, thickness = 0, color = None)
+    my_canvas.linkAbsolute("Find ", zaanstaddata[i][0][:7] + 'L', linkarea, addtopage = 1, thickness = 0, color = None)
     col += 1
     if col == 6:
         col = 0
