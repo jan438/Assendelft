@@ -130,7 +130,7 @@ def markplace(c, bx, by, lat, lon, points, w_h, color, factor, name):
         mi = lookupmonument(code)
         if mi >= 0:
             c.linkAbsolute("Find", code + 'I', linkarea, addtopage = 1, thickness = 0, color = None)
-            c.bookmarkPage(code + 'L', fit = "XYZ", left = linkx1 - 60, top = linky1 + 20, zoom = 5)
+            c.bookmarkPage(code + 'L', fit = "FitR", left = linkx1 - 50, bottom = linky1 - 50, right = linkx2 + radius + 50, top = linky2 + radius + 50)
     return
     
 def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
