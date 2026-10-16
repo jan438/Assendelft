@@ -56,6 +56,11 @@ def lookupmonument(name):
         for l in range(len(zaanstaddata)):
             if zaanstaddata[l][0] == code:
                 index = l
+    if name[:2] == "RM" and name[8] == ' ':
+        code = name[:8]
+        for l in range(len(zaanstaddata)):
+            if zaanstaddata[l][0] == code:
+                index = l
     return (index, code)
 
 def readjson(jsonfile):
@@ -130,6 +135,7 @@ def markplace(c, bx, by, lat, lon, points, w_h, color, factor, name):
     linkarea = (linkx1, linky1, linkx2, linky2)
     (mi, code) = lookupmonument(name)
     if mi >= 0:
+        print(code)
         c.linkAbsolute("Find", code + 'I', linkarea, addtopage = 1, thickness = 0, color = None)
         c.bookmarkPage(code + 'L', fit = "FitR", left = linkx1 - 50, bottom = linky1 - 50, right = linkx2 + radius + 50, top = linky2 + radius + 50)
     return
