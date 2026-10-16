@@ -50,10 +50,13 @@ df = 130
 
 def lookupmonument(name):
     index = -1
-    for l in range(len(zaanstaddata)):
-        if zaanstaddata[l][0] == name:
-            index = l
-    return index
+    code = ""
+    if name[:2] == "RM" and name[7] == ' ':
+        code = name[:7]
+        for l in range(len(zaanstaddata)):
+            if zaanstaddata[l][0] == code:
+                index = l
+    return (index, code)
 
 def readjson(jsonfile):
     countyears = 0
@@ -125,13 +128,10 @@ def markplace(c, bx, by, lat, lon, points, w_h, color, factor, name):
     linkx2 = bx + x + radius
     linky2 = by + y + radius
     linkarea = (linkx1, linky1, linkx2, linky2)
-    if name[:2] == "RM" and name[7] == ' ':
-        code = name[:7]
-        mi = lookupmonument(code)
-        print(code)
-        if mi >= 0:
-            c.linkAbsolute("Find", code + 'I', linkarea, addtopage = 1, thickness = 0, color = None)
-            c.bookmarkPage(code + 'L', fit = "FitR", left = linkx1 - 50, bottom = linky1 - 50, right = linkx2 + radius + 50, top = linky2 + radius + 50)
+    (mi, code) = lookupmonument(name)
+    if mi >= 0:
+        c.linkAbsolute("Find", code + 'I', linkarea, addtopage = 1, thickness = 0, color = None)
+        c.bookmarkPage(code + 'L', fit = "FitR", left = linkx1 - 50, bottom = linky1 - 50, right = linkx2 + radius + 50, top = linky2 + radius + 50)
     return
     
 def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
