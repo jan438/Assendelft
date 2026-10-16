@@ -128,6 +128,7 @@ def markplace(c, bx, by, lat, lon, points, w_h, color, factor, name):
     code = name[:7]
     if code[:2] == "RM":
         mi = lookupmonument(code)
+        print(code)
         if mi >= 0:
             c.linkAbsolute("Find", code + 'I', linkarea, addtopage = 1, thickness = 0, color = None)
             c.bookmarkPage(code + 'L', fit = "FitR", left = linkx1 - 50, bottom = linky1 - 50, right = linkx2 + radius + 50, top = linky2 + radius + 50)
