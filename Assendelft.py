@@ -262,15 +262,16 @@ row = 3
 colwidth = 200
 rowheight = 150
 for i in range(len(zaanstaddata)):
-    my_canvas.drawString(col * colwidth, row * rowheight - 20, zaanstaddata[i][0])
-    my_canvas.drawImage("Photos/" + zaanstaddata[i][0] + ".JPG", col * colwidth, row * rowheight, 400 * scalepics, 250 * scalepics)
+    name = zaanstaddata[i][0]
+    my_canvas.drawString(col * colwidth, row * rowheight - 20, name)
+    my_canvas.drawImage("Photos/" + name + ".JPG", col * colwidth, row * rowheight, 400 * scalepics, 250 * scalepics)
     linkx1 = col * colwidth
     linky1 = row * rowheight
     linkx2 = col * colwidth + colwidth
     linky2 = row * rowheight + rowheight
     linkarea = (linkx1, linky1, linkx2, linky2)
-    my_canvas.linkAbsolute("Find", zaanstaddata[i][0][:7] + 'L', linkarea, addtopage = 1, thickness = 0, color = None)
-    my_canvas.bookmarkPage(zaanstaddata[i][0][:7] + 'I', fit = "FitR", left = linkx1, bottom = linky1, right = linkx2, top = linky2)
+    my_canvas.linkAbsolute("Find", name[:7] + 'L', linkarea, addtopage = 1, thickness = 0, color = None)
+    my_canvas.bookmarkPage(name[:7] + 'I', fit = "FitR", left = linkx1, bottom = linky1, right = linkx2, top = linky2)
     col += 1
     if col == 6:
         col = 0
