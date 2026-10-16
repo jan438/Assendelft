@@ -125,8 +125,8 @@ def markplace(c, bx, by, lat, lon, points, w_h, color, factor, name):
     linkx2 = bx + x + radius
     linky2 = by + y + radius
     linkarea = (linkx1, linky1, linkx2, linky2)
-    code = name[:7]
-    if code[:2] == "RM":
+    if name[:2] == "RM":
+        code = name[:7]
         mi = lookupmonument(code)
         print(code)
         if mi >= 0:
