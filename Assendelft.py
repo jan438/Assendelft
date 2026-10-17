@@ -119,7 +119,7 @@ def scale_to_img(lat_lon, points, w_h, factor):
     
 def markplace(c, bx, by, lat, lon, points, w_h, color, factor, name):
     c.setFillColor(HexColor(color))
-    radius = 2.0
+    radius = 1.0
     x = 0
     y = 0
     inkader = True
@@ -277,7 +277,7 @@ for i in range(len(zaanstaddata)):
     linky2 = row * rowheight + rowheight
     linkarea = (linkx1, linky1, linkx2, linky2)
     my_canvas.linkAbsolute("Find", code + 'L', linkarea, addtopage = 1, thickness = 0, color = None)
-    my_canvas.bookmarkPage(code + 'I', fit = "XYZ", left = linkx1, top = linky2, zoom = 4)
+    my_canvas.bookmarkPage(code + 'I', fit = "XYZ", left = linkx1, top = linky2, zoom = 6)
     #my_canvas.bookmarkPage(code + 'I', fit = "FitR", left = linkx1, bottom = linky1, right = linkx2, top = linky2)
     col += 1
     if col == 4:
