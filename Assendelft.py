@@ -264,7 +264,7 @@ my_canvas.showPage()
 my_canvas.setFillColor(HexColor('#000000'))
 my_canvas.setFont(assendelftfont, 10)
 col = 0
-row = 3
+row = 5
 colwidth = 150
 rowheight = 150
 for i in range(len(zaanstaddata)):
