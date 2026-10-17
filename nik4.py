@@ -674,3 +674,4 @@ if __name__ == "__main__":
         log_level = logging.INFO
     logging.basicConfig(level=log_level, format='%(asctime)s %(message)s', datefmt='%H:%M:%S')
     run(options)
+    key = input("Wait")
