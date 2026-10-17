@@ -279,7 +279,7 @@ for i in range(len(zaanstaddata)):
     my_canvas.linkAbsolute("Find", code + 'L', linkarea, addtopage = 1, thickness = 0, color = None)
     my_canvas.bookmarkPage(code + 'I', fit = "FitR", left = linkx1, bottom = linky1, right = linkx2, top = linky2)
     col += 1
-    if col == 6:
+    if col == 4:
         col = 0
         row -=1
 my_canvas.save()
