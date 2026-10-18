@@ -266,8 +266,8 @@ my_canvas.setFont(assendelftfont, 10)
 col = 0
 row = 5
 colwidth = 150
-rowheight = 150
-bottommargin = 50
+rowheight = 145
+bottommargin = 25
 for i in range(len(zaanstaddata)):
     code = zaanstaddata[i][0]
     my_canvas.drawString(col * colwidth, row * rowheight - 20, code)
