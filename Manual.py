@@ -11,6 +11,8 @@ req = Request(
         }
     )
 data = urlopen(req).read()
-print(data)
+
+with open("PDF/test.png", 'wb') as out:
+    out.write(data)
 
 key = input("Wait")
