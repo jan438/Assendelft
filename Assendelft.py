@@ -128,16 +128,17 @@ def markplace(c, bx, by, lat, lon, points, w_h, color, factor, name):
     if inkader:
         (x, y) = scale_to_img((lat, lon), points, w_h, factor)
     c.circle(bx + x, by + y, radius, stroke=0, fill=1)
-    linkx1 = bx + x - 0.5 * radius
-    linky1 = by + y - 0.5 * radius
-    linkx2 = bx + x + radius
-    linky2 = by + y + radius
+    linkx1 = bx + x - 1.5 * radius
+    linky1 = by + y - 1.5 * radius
+    linkx2 = bx + x + 1.5 * radius
+    linky2 = by + y + 1.5 * radius
     linkarea = (linkx1, linky1, linkx2, linky2)
     (mi, code) = lookupmonument(name)
     if mi >= 0:
         print(code)
         c.linkAbsolute(code, code + 'I', linkarea, addtopage = 1, thickness = 0, color = None)
-        c.bookmarkPage(code + 'L', fit = "FitR", left = linkx1 - 50, bottom = linky1 - 50, right = linkx2 + radius + 50, top = linky2 + radius + 50)
+        #c.bookmarkPage(code + 'L', fit = "FitR", left = linkx1 - 50, bottom = linky1 - 50, right = linkx2 + radius + 50, top = linky2 + radius + 50)
+        c.bookmarkPage(code + 'L', fit = "XYZ", left = linkx1, top = linky2, zoom = 12)
     return
     
 def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
