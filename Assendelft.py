@@ -283,5 +283,10 @@ for i in range(len(zaanstaddata)):
     if col == 4:
         col = 0
         row -=1
+    if i == 23:
+        my_canvas.showPage()
+        col = 0
+        row = 5
+    
 my_canvas.save()
 key = input("Wait")
