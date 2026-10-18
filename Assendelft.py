@@ -267,10 +267,11 @@ col = 0
 row = 5
 colwidth = 150
 rowheight = 150
+bottommargin = 50
 for i in range(len(zaanstaddata)):
     code = zaanstaddata[i][0]
     my_canvas.drawString(col * colwidth, row * rowheight - 20, code)
-    my_canvas.drawImage("Photos/" + code + ".JPG", col * colwidth, row * rowheight, 400 * scalepics, 250 * scalepics)
+    my_canvas.drawImage("Photos/" + code + ".JPG", col * colwidth, bottommargin + row * rowheight, 400 * scalepics, 250 * scalepics)
     linkx1 = col * colwidth
     linky1 = row * rowheight
     linkx2 = col * colwidth + colwidth
