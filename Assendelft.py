@@ -41,9 +41,9 @@ factor = 2.5
 xz = 40
 yz = 15
 xa1 = 75
-ya1 = 550
+ya1 = 450
 xa2 = 300
-ya2 = 550
+ya2 = 450
 xf = 40
 yf = 475
 df = 130
@@ -205,10 +205,10 @@ zaandijkrijkdata = retrievecoords("zaandijkrijk")
 provinciedata = retrievecoords("provincie")
 gemeentedata = retrievecoords("gemeente")
 provinciedata = retrievecoords("provincie")
-my_canvas = canvas.Canvas("PDF/Assendelft" + version + ".pdf")
+my_canvas = canvas.Canvas("PDF/Assendelft.pdf")
 my_canvas.setFillColor(HexColor("#50ff3c"))
 my_canvas.rect(left_padding, bottom_padding, width, height, fill=1)
-my_canvas.setTitle("Assendelft" + version)
+my_canvas.setTitle("Assendelft")
 my_canvas.setFont(assendelftfont, 30)
 my_canvas.setFillColor(HexColor("#000000"))
 my_canvas.drawString(50, 800, "Assendelft")
@@ -226,7 +226,7 @@ if response.status_code == 200:
     with open('JSON/Assendelft.json', 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
 [year1a, year2a, totalcoords1a, totalcoords2a] = readjson("JSON/Assendelft.json")
-my_canvas.drawImage("Photos/mapzaanstad.png", xz + 1.5, yz, w_hz[0] * factor, w_hz[1] * factor)
+#my_canvas.drawImage("Photos/mapzaanstad.png", xz + 1.5, yz, w_hz[0] * factor, w_hz[1] * factor)
 my_canvas.drawImage("Photos/mapAssendelft.png", xa1, ya1, w_ha[0] * factor, w_ha[1] * factor)
 my_canvas.drawImage("Photos/mapAssendelft.png", xa2, ya2, w_ha[0] * factor, w_ha[1] * factor)
 drawbounderies(my_canvas, xz, yz, totalcoords1z, year1z, pointsz, w_hz, factor)
