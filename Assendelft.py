@@ -276,9 +276,8 @@ for i in range(len(zaanstaddata)):
     linkx2 = col * colwidth + colwidth
     linky2 = row * rowheight + rowheight
     linkarea = (linkx1, linky1, linkx2, linky2)
-    my_canvas.linkAbsolute("Find", code + 'L', linkarea, addtopage = 1, thickness = 0, color = None)
+    my_canvas.linkAbsolute(code, code + 'L', linkarea, addtopage = 1, thickness = 0, color = None)
     my_canvas.bookmarkPage(code + 'I', fit = "XYZ", left = linkx1, top = linky2, zoom = 8)
-    #my_canvas.bookmarkPage(code + 'I', fit = "FitR", left = linkx1, bottom = linky1, right = linkx2, top = linky2)
     col += 1
     if col == 4:
         col = 0
