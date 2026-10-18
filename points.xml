@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Map background-color='lightgreen'>
+  <Style name="style">
+  <Rule>
+  <PointSymbolizer/>
+  </Rule>
+  </Style>
+  <Layer name="layer">
+  <StyleName>style</StyleName>
+  <Datasource>
+  <Parameter name="type">csv</Parameter>
+  <Parameter name="inline">
+wkt
+"POINT(10 10)"
+"POINT(20 20)"
+4 "POINT(30 30)"
+  </Parameter>
+  </Datasource>
+  </Layer>
+</Map>
