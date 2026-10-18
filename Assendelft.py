@@ -45,9 +45,9 @@ ya1 = 450
 xa2 = 300
 ya2 = 450
 xa3 = 200
-ya3 = 50
+ya3 = 25
 xf = 40
-yf = 400
+yf = 365
 df = 130
 
 def lookupmonument(name):
