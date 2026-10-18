@@ -44,8 +44,10 @@ xa1 = 75
 ya1 = 450
 xa2 = 300
 ya2 = 450
+xa3 = 200
+ya3 = 50
 xf = 40
-yf = 475
+yf = 400
 df = 130
 
 def lookupmonument(name):
@@ -229,6 +231,7 @@ if response.status_code == 200:
 #my_canvas.drawImage("Photos/mapzaanstad.png", xz + 1.5, yz, w_hz[0] * factor, w_hz[1] * factor)
 my_canvas.drawImage("Photos/mapAssendelft.png", xa1, ya1, w_ha[0] * factor, w_ha[1] * factor)
 my_canvas.drawImage("Photos/mapAssendelft.png", xa2, ya2, w_ha[0] * factor, w_ha[1] * factor)
+my_canvas.drawImage("Photos/mapAssendelft.png", xa3, ya3, w_ha[0] * factor, w_ha[1] * factor)
 drawbounderies(my_canvas, xz, yz, totalcoords1z, year1z, pointsz, w_hz, factor)
 drawbounderies(my_canvas, xa1, ya1, totalcoords1a, year1a, pointsa, w_ha, factor)
 drawbounderies(my_canvas, xa2, ya2, totalcoords2a, year2a, pointsa, w_ha, factor)
