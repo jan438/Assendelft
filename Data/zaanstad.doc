@@ -1,3 +1,40 @@
-Krommeniedijk
-RM342003 -                   52° 31′ 5.09″ N, 4° 45′ 52.24″ E                     
-RM39970 - Krommeniedijk 182  52° 31′ 2.68″ N, 4° 45′ 1.94″ E     
+OpenStreetMap xyzservices.Bunch
+MapTilesAPI xyzservices.Bunch
+OpenSeaMap xyzservices.TileProvider
+OPNVKarte xyzservices.TileProvider
+OpenTopoMap xyzservices.TileProvider
+OpenRailwayMap xyzservices.TileProvider
+OpenFireMap xyzservices.TileProvider
+SafeCast xyzservices.TileProvider
+Stadia xyzservices.Bunch
+Thunderforest xyzservices.Bunch
+CyclOSM xyzservices.TileProvider
+Jawg xyzservices.Bunch
+MapBox xyzservices.TileProvider
+MapTiler xyzservices.Bunch
+TomTom xyzservices.Bunch
+Esri xyzservices.Bunch
+OpenWeatherMap xyzservices.Bunch
+HERE xyzservices.Bunch
+HEREv3 xyzservices.Bunch
+FreeMapSK xyzservices.TileProvider
+MtbMap xyzservices.TileProvider
+CartoDB xyzservices.Bunch
+HikeBike xyzservices.Bunch
+BasemapAT xyzservices.Bunch
+nlmaps xyzservices.Bunch
+NASAGIBS xyzservices.Bunch
+NLS xyzservices.TileProvider
+JusticeMap xyzservices.Bunch
+GeoportailFrance xyzservices.Bunch
+OneMapSG xyzservices.Bunch
+USGS xyzservices.Bunch
+WaymarkedTrails xyzservices.Bunch
+OpenAIP xyzservices.TileProvider
+OpenSnowMap xyzservices.Bunch
+AzureMaps xyzservices.Bunch
+SwissFederalGeoportal xyzservices.Bunch
+Gaode xyzservices.Bunch
+Strava xyzservices.Bunch
+OrdnanceSurvey xyzservices.Bunch
+Stamen xyzservices.Bunch  
