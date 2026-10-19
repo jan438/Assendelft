@@ -121,7 +121,7 @@ def scale_to_img(lat_lon, points, w_h, factor):
     
 def markplace(c, bx, by, lat, lon, points, w_h, color, factor, name):
     c.setFillColor(HexColor(color))
-    radius = 10.0
+    radius = 3.0
     x = 0
     y = 0
     inkader = True
