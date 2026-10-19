@@ -187,23 +187,7 @@ with open(file_to_open, 'r') as file:
     for row in csvreader:
         geodata.append(row)
         count += 1
-file_to_open = "CSV/zaanstad.csv"
-with open(file_to_open, 'r') as file:
-    csvreader = csv.reader(file, delimiter = ';')
-    count = 0
-    for row in csvreader:
-        zaanstaddata.append(row)
-        count += 1
 assendelftrijkdata = retrievecoords("assendelftrijk")
-koogaandezaanrijkdata = retrievecoords("koogaandezaanrijk")
-krommeniedijkrijkdata = []
-krommeniedijkrijkdata.append(["RM342003 -", 52.51808, 4.76451])
-krommeniedijkrijkdata.append(["RM39970 - Krommeniedijk 182", 52.51741, 4.75054])
-krommenierijkdata = retrievecoords("krommenierijk")
-westzaanrijkdata = retrievecoords("westzaanrijk")
-wormerveerrijkdata = retrievecoords("wormerveerrijk")
-zaandamrijkdata = retrievecoords("zaandamrijk")
-zaandijkrijkdata = retrievecoords("zaandijkrijk")
 provinciedata = retrievecoords("provincie")
 gemeentedata = retrievecoords("gemeente")
 provinciedata = retrievecoords("provincie")
@@ -214,13 +198,6 @@ my_canvas.setTitle("Assendelft")
 my_canvas.setFont(assendelftfont, 30)
 my_canvas.setFillColor(HexColor("#000000"))
 my_canvas.drawString(50, 800, "Assendelft")
-response = requests.get("https://gemeentegeschiedenis.nl/gemeentenaam/json/Zaanstad")
-if response.status_code == 200:
-    history = response.content
-    data = json.loads(history.decode('utf-8'))
-    with open('JSON/Zaanstad.json', 'w', encoding='utf-8') as f:
-        json.dump(data, f, ensure_ascii=False, indent=4)
-[year1z, year2z, totalcoords1z, totalcoords2z] = readjson("JSON/Zaanstad.json")
 response = requests.get("https://gemeentegeschiedenis.nl/gemeentenaam/json/Assendelft")
 if response.status_code == 200:
     history = response.content
@@ -228,11 +205,9 @@ if response.status_code == 200:
     with open('JSON/Assendelft.json', 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
 [year1a, year2a, totalcoords1a, totalcoords2a] = readjson("JSON/Assendelft.json")
-#my_canvas.drawImage("Photos/mapzaanstad.png", xz + 1.5, yz, w_hz[0] * factor, w_hz[1] * factor)
 my_canvas.drawImage("Photos/mapAssendelft.png", xa1, ya1, w_ha[0] * factor, w_ha[1] * factor)
 my_canvas.drawImage("Photos/mapAssendelft.png", xa2, ya2, w_ha[0] * factor, w_ha[1] * factor)
 my_canvas.drawImage("Photos/mapAssendelft.png", xa3, ya3, w_ha[0] * factor, w_ha[1] * factor)
-drawbounderies(my_canvas, xz, yz, totalcoords1z, year1z, pointsz, w_hz, factor)
 drawbounderies(my_canvas, xa1, ya1, totalcoords1a, year1a, pointsa, w_ha, factor)
 drawbounderies(my_canvas, xa2, ya2, totalcoords2a, year2a, pointsa, w_ha, factor)
 for i in range(len(geodata)):
@@ -244,52 +219,10 @@ for i in range(len(gemeentedata)):
     markplace(my_canvas, xz, yz, float(gemeentedata[i][1]), float(gemeentedata[i][2]), pointsz, w_hz, '#ffb592', factor, gemeentedata[i][0])
 for i in range(len(assendelftrijkdata)):
     markplace(my_canvas, xz, yz, float(assendelftrijkdata[i][1]), float(assendelftrijkdata[i][2]), pointsz, w_hz, '#55557f', factor, assendelftrijkdata[i][0])
-for i in range(len(koogaandezaanrijkdata)):
-    markplace(my_canvas, xz, yz, float(koogaandezaanrijkdata[i][1]), float(koogaandezaanrijkdata[i][2]), pointsz, w_hz, '#55557f', factor, koogaandezaanrijkdata[i][0])   
-for i in range(len(krommeniedijkrijkdata)):
-    markplace(my_canvas, xz, yz, float(krommeniedijkrijkdata[i][1]), float(krommeniedijkrijkdata[i][2]), pointsz, w_hz, '#55557f', factor, krommeniedijkrijkdata[i][0])
-for i in range(len(krommenierijkdata)):
-    markplace(my_canvas, xz, yz, float(krommenierijkdata[i][1]), float(krommenierijkdata[i][2]), pointsz, w_hz, '#55557f', factor, krommenierijkdata[i][0])
-for i in range(len(westzaanrijkdata)):
-    markplace(my_canvas, xz, yz, float(westzaanrijkdata[i][1]), float(westzaanrijkdata[i][2]), pointsz, w_hz, '#55557f', factor, westzaanrijkdata[i][0])
-for i in range(len(wormerveerrijkdata)):
-    markplace(my_canvas, xz, yz, float(wormerveerrijkdata[i][1]), float(wormerveerrijkdata[i][2]), pointsz, w_hz, '#55557f', factor, wormerveerrijkdata[i][0])
-for i in range(len(zaandamrijkdata)):
-    markplace(my_canvas, xz, yz, float(zaandamrijkdata[i][1]), float(zaandamrijkdata[i][2]), pointsz, w_hz, '#55557f', factor, zaandamrijkdata[i][0])
-for i in range(len(zaandijkrijkdata)):
-    markplace(my_canvas, xz, yz, float(zaandijkrijkdata[i][1]), float(zaandijkrijkdata[i][2]), pointsz, w_hz, '#55557f', factor, zaandijkrijkdata[i][0])
 scalepics = 0.3
 my_canvas.drawImage("Photos/deHuisman2e.jpg", xf, yf, 400 * scalepics, 250 * scalepics)
 my_canvas.drawImage("Photos/hetHuisAssumburg.jpg", xf + df, yf, 400 * scalepics, 250 * scalepics)
 my_canvas.drawImage("Photos/dePauw.jpg", xf + 2 * df, yf, 400 * scalepics, 250 * scalepics)
 my_canvas.drawImage("Photos/huisvrouw.jpg", xf + 3 * df, yf, 400 * scalepics, 250 * scalepics)
-my_canvas.showPage()
-my_canvas.setFillColor(HexColor('#000000'))
-my_canvas.setFont(assendelftfont, 10)
-col = 0
-row = 5
-colwidth = 150
-rowheight = 145
-bottommargin = 25
-for i in range(len(zaanstaddata)):
-    code = zaanstaddata[i][0]
-    my_canvas.drawImage("Photos/" + code + ".JPG", col * colwidth, bottommargin + row * rowheight, 400 * scalepics, 250 * scalepics)
-    my_canvas.drawString(col * colwidth, bottommargin + row * rowheight - 5, code)
-    linkx1 = col * colwidth
-    linky1 = row * rowheight
-    linkx2 = col * colwidth + colwidth
-    linky2 = row * rowheight + rowheight
-    linkarea = (linkx1, linky1, linkx2, linky2)
-    my_canvas.linkAbsolute(code, code + 'L', linkarea, addtopage = 1, thickness = 0, color = None)
-    my_canvas.bookmarkPage(code + 'I', fit = "XYZ", left = linkx1, top = linky2, zoom = 8)
-    col += 1
-    if col == 4:
-        col = 0
-        row -=1
-    if i == 23:
-        my_canvas.showPage()
-        col = 0
-        row = 5
-    
 my_canvas.save()
 key = input("Wait")
