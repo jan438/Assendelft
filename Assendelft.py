@@ -235,5 +235,10 @@ scalepics = 0.3
 my_canvas.showPage()
 my_canvas.setFillColor(HexColor('#000000'))
 my_canvas.setFont(assendelftfont, 10)
+col = 0
+row = 5
+colwidth = 150
+rowheight = 145
+bottommargin = 25
 my_canvas.save()
 key = input("Wait")
