@@ -144,7 +144,7 @@ def markplace(c, bx, by, lat, lon, points, w_h, color, factor, name):
     linky2 = by + y + 1.5 * radius
     linkarea = (linkx1, linky1, linkx2, linky2)
     (mi, code) = lookupgeo(name)
-    print(name, code)
+    print(name, code, mi)
     if mi >= 0:
         c.linkAbsolute(code, code + 'I', linkarea, addtopage = 1, thickness = 0, color = None)
         c.bookmarkPage(code + 'L', fit = "XYZ", left = linkx1, top = linky2, zoom = 10)
