@@ -14,7 +14,7 @@ image, extent = cx.bounds2img(
     e=east, 
     n=north, 
     zoom=14, 
-    source=cx.providers.CartoDB.Positron, 
+    source=cx.providers.CartoDB.Positron(apikey="..."),
     ll=True
 )
 
