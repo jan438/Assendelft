@@ -68,7 +68,7 @@ def lookupmonument(name):
 def lookupgeo(name):
     index = -1
     code = ""
-    for l in range(len(zaanstaddata)):
+    for l in range(len(geodata)):
         if geodata[l][0] == code:
             index = l
     return (index, code)
