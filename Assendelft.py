@@ -64,6 +64,14 @@ def lookupmonument(name):
             if zaanstaddata[l][0] == code:
                 index = l
     return (index, code)
+    
+def lookupgeo(name):
+    index = -1
+    code = ""
+    for l in range(len(zaanstaddata)):
+        if geodata[l][0] == code:
+            index = l
+    return (index, code)
 
 def readjson(jsonfile):
     countyears = 0
@@ -135,7 +143,7 @@ def markplace(c, bx, by, lat, lon, points, w_h, color, factor, name):
     linkx2 = bx + x + 1.5 * radius
     linky2 = by + y + 1.5 * radius
     linkarea = (linkx1, linky1, linkx2, linky2)
-    (mi, code) = lookupmonument(name)
+    (mi, code) = lookupgeo(name)
     if mi >= 0:
         print(code)
         c.linkAbsolute(code, code + 'I', linkarea, addtopage = 1, thickness = 0, color = None)
