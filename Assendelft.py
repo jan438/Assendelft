@@ -70,8 +70,9 @@ def lookupgeo(name):
     code = ""
     for l in range(len(geodata)):
         print("lookup", name, code, index)
-        if geodata[l][0] == code:
+        if geodata[l][0] == name:
             index = l
+            code = name
     return (index, code)
 
 def readjson(jsonfile):
@@ -231,7 +232,24 @@ row = 5
 colwidth = 150
 rowheight = 145
 bottommargin = 25
-code = geodata[0][0]
-my_canvas.drawImage("Photos/" + code + ".jpg", col * colwidth, bottommargin + row * rowheight, 400 * scalepics, 250 * scalepics)
+for i in range(len(geodata)):
+    code = geodata[i][0]
+    my_canvas.drawImage("Photos/" + code + ".jpg", col * colwidth, bottommargin + row * rowheight, 400 * scalepics, 250 * scalepics)
+    my_canvas.drawString(col * colwidth, bottommargin + row * rowheight - 5, code)
+    linkx1 = col * colwidth
+    linky1 = row * rowheight
+    linkx2 = col * colwidth + colwidth
+    linky2 = row * rowheight + rowheight
+    linkarea = (linkx1, linky1, linkx2, linky2)
+    my_canvas.linkAbsolute(code, code + 'L', linkarea, addtopage = 1, thickness = 0, color = None)
+    my_canvas.bookmarkPage(code + 'I', fit = "XYZ", left = linkx1, top = linky2, zoom = 8)
+    col += 1
+    if col == 4:
+        col = 0
+        row -=1
+    if i == 23:
+        my_canvas.showPage()
+        col = 0
+        row = 5
 my_canvas.save()
 key = input("Wait")
