@@ -4,8 +4,9 @@ import matplotlib.pyplot as plt
 # 1. Definieer de grenzen in WGS84 (Longitude/Latitude)
 # Formaat: West (min_lon), Zuid (min_lat), Oost (max_lon), Noord (max_lat)
 # Voorbeeld: Amsterdam Centrum
-west, south, east, north = 4.88, 52.35, 4.92, 52.38
+west, south, east, north = 4.6688, 52.4288, 4.7684, 52.5156
 
+# pointsa = (52.5156, 4.6688, 52.4288, 4.7684)
 # 2. Download de kaarttegels (tiles) en zet ze om naar een afbeelding array
 # ll=True geeft aan dat de invoercoördinaten Longitude/Latitude zijn
 image, extent = cx.bounds2img(
