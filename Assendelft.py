@@ -240,5 +240,7 @@ row = 5
 colwidth = 150
 rowheight = 145
 bottommargin = 25
+code = geodata[0][0]
+my_canvas.drawImage("Photos/" + code + ".jpg", col * colwidth, bottommargin + row * rowheight, 400 * scalepics, 250 * scalepics)
 my_canvas.save()
 key = input("Wait")
