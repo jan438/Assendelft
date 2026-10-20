@@ -69,7 +69,6 @@ def lookupgeo(name):
     index = -1
     code = ""
     for l in range(len(geodata)):
-        print("lookup", name, code, index)
         if geodata[l][0] == name:
             index = l
             code = name
