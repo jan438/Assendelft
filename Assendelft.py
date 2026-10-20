@@ -35,7 +35,9 @@ w_ha = (55.6, 67.9)
 resp = requests.Response
 geodata = []
 zaanstaddata = []
-factor = 4.0
+fa1 = 4.0
+fa2 = 4.0
+fa3 = 5.0
 xz = 40
 yz = 15
 xa1 = 65
@@ -212,20 +214,20 @@ if response.status_code == 200:
     with open('JSON/Assendelft.json', 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
 [year1a, year2a, totalcoords1a, totalcoords2a] = readjson("JSON/Assendelft.json")
-my_canvas.drawImage("Photos/mapAssendelft.png", xa1, ya1, w_ha[0] * factor, w_ha[1] * factor)
-my_canvas.drawImage("Photos/mapAssendelft.png", xa2, ya2, w_ha[0] * factor, w_ha[1] * factor)
-my_canvas.drawImage("Photos/mapAssendelft.png", xa3, ya3, w_ha[0] * factor, w_ha[1] * factor)
-drawbounderies(my_canvas, xa1, ya1, totalcoords1a, year1a, pointsa, w_ha, factor)
-drawbounderies(my_canvas, xa2, ya2, totalcoords2a, year2a, pointsa, w_ha, factor)
+my_canvas.drawImage("Photos/mapAssendelft.png", xa1, ya1, w_ha[0] * fa1, w_ha[1] * fa1)
+my_canvas.drawImage("Photos/mapAssendelft.png", xa2, ya2, w_ha[0] * fa2, w_ha[1] * fa2)
+my_canvas.drawImage("Photos/mapAssendelft.png", xa3, ya3, w_ha[0] * fa3, w_ha[1] * fa3)
+drawbounderies(my_canvas, xa1, ya1, totalcoords1a, year1a, pointsa, w_ha, fa1)
+drawbounderies(my_canvas, xa2, ya2, totalcoords2a, year2a, pointsa, w_ha, fa2)
 for i in range(len(geodata)):
-    markplace(my_canvas, xa1, ya1, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#00aaff', factor, geodata[i][0])
-    markplace(my_canvas, xa2, ya2, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#aa55ff', factor,geodata[i][0])
+    markplace(my_canvas, xa1, ya1, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#00aaff', fa1, geodata[i][0])
+    markplace(my_canvas, xa2, ya2, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#aa55ff', fa2,geodata[i][0])
 for i in range(len(assendelftrijkdata)):
-    markplace(my_canvas, xa3, ya3, float(assendelftrijkdata[i][1]), float(assendelftrijkdata[i][2]), pointsa, w_ha, '#55557f', factor, assendelftrijkdata[i][0])
+    markplace(my_canvas, xa3, ya3, float(assendelftrijkdata[i][1]), float(assendelftrijkdata[i][2]), pointsa, w_ha, '#55557f', fa3, assendelftrijkdata[i][0])
 for i in range(len(provinciedata)):
-    markplace(my_canvas, xa3, ya3, float(provinciedata[i][1]), float(provinciedata[i][2]), pointsa, w_ha, '#00ffff', factor, provinciedata[i][0])
+    markplace(my_canvas, xa3, ya3, float(provinciedata[i][1]), float(provinciedata[i][2]), pointsa, w_ha, '#00ffff', fa3, provinciedata[i][0])
 for i in range(len(gemeentedata)):
-    markplace(my_canvas, xa3, ya3, float(gemeentedata[i][1]), float(gemeentedata[i][2]), pointsa, w_ha, '#ffb592', factor, gemeentedata[i][0]) 
+    markplace(my_canvas, xa3, ya3, float(gemeentedata[i][1]), float(gemeentedata[i][2]), pointsa, w_ha, '#ffb592', fa3, gemeentedata[i][0]) 
 my_canvas.showPage()
 my_canvas.setFillColor(HexColor('#000000'))
 my_canvas.setFont(assendelftfont, 10)
