@@ -55,10 +55,9 @@ def lookupmonument(name):
     code = ""
     if name[:2] == "RM" and name[7] == ' ':
         code = name[:7]
-        print(name)
-        for l in range(len(zaanstaddata)):
-            if zaanstaddata[l][0] == code:
-                index = l
+        for l in range(len(assendelftrijkdata)):
+            if code == assendelftrijkdata[l][0][:7]:
+                print(assendelftrijkdata[l][0])
     return (index, code)
     
 def lookupgeo(name):
