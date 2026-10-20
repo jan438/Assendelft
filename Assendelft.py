@@ -57,7 +57,7 @@ def lookupmonument(name):
         code = name[:7]
         for l in range(len(assendelftrijkdata)):
             if code == assendelftrijkdata[l][0][:7]:
-                print(assendelftrijkdata[l][0])
+               index = l
     return (index, code)
     
 def lookupgeo(name):
@@ -144,6 +144,8 @@ def markplace(c, bx, by, lat, lon, points, w_h, color, factor, name, radius):
         c.bookmarkPage(code + 'L', fit = "XYZ", left = linkx1, top = linky2, zoom = 10)
     else:
         (mi, code) = lookupmonument(name)
+        if mi >= 0:
+            print("todo", mi, code)
     return
     
 def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
