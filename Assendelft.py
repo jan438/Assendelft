@@ -223,7 +223,9 @@ for i in range(len(geodata)):
 for i in range(len(assendelftrijkdata)):
     markplace(my_canvas, xa3, ya3, float(assendelftrijkdata[i][1]), float(assendelftrijkdata[i][2]), pointsa, w_ha, '#55557f', factor, assendelftrijkdata[i][0])
 for i in range(len(provinciedata)):
-    markplace(my_canvas, xa3, ya3, float(provinciedata[i][1]), float(provinciedata[i][2]), pointsa, w_ha, '#00ffff', factor, provinciedata[i][0])   
+    markplace(my_canvas, xa3, ya3, float(provinciedata[i][1]), float(provinciedata[i][2]), pointsa, w_ha, '#00ffff', factor, provinciedata[i][0])
+for i in range(len(gemeentedata)):
+    markplace(my_canvas, xa3, ya3, float(gemeentedata[i][1]), float(gemeentedata[i][2]), pointsa, w_ha, '#ffb592', factor, gemeentedata[i][0]) 
 my_canvas.showPage()
 my_canvas.setFillColor(HexColor('#000000'))
 my_canvas.setFont(assendelftfont, 10)
