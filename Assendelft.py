@@ -30,8 +30,6 @@ A4_width = A4[0]
 A4_height = A4[1]
 width = A4_width
 height = A4_height
-pointsz = (52.5258, 4.6671, 52.4139, 4.8714)
-w_hz = (199.5, 177.9)
 pointsa = (52.5058, 4.6761, 52.4250, 4.7852)
 w_ha = (55.6, 67.9)
 resp = requests.Response
@@ -222,6 +220,8 @@ drawbounderies(my_canvas, xa2, ya2, totalcoords2a, year2a, pointsa, w_ha, factor
 for i in range(len(geodata)):
     markplace(my_canvas, xa1, ya1, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#00aaff', factor, geodata[i][0])
     markplace(my_canvas, xa2, ya2, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#aa55ff', factor,geodata[i][0])
+for i in range(len(assendelftrijkdata)):
+    markplace(my_canvas, xa3, ya3, float(assendelftrijkdata[i][1]), float(assendelftrijkdata[i][2]), pointsa, w_ha, '#55557f', factor, assendelftrijkdata[i][0])    
 my_canvas.showPage()
 my_canvas.setFillColor(HexColor('#000000'))
 my_canvas.setFont(assendelftfont, 10)
