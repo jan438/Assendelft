@@ -50,6 +50,7 @@ xf = 40
 yf = 365
 df = 130
 totallnksI = 0
+totallnksL = 0
 
 def lookupmonument(name):
     index = -1
@@ -257,6 +258,7 @@ for i in range(len(geodata)):
         linkarea = (linkx1, linky1, linkx2, linky2)
         my_canvas.linkAbsolute(code, code + 'L', linkarea, addtopage = 1, thickness = 0, color = None)
         my_canvas.bookmarkPage(code + 'I', fit = "XYZ", left = linkx1, top = linky2, zoom = 8)
+        totallnksL += 2
         col += 1
         if col == 4:
             col = 0
@@ -269,5 +271,6 @@ for i in range(len(assendelftrijkdata)):
     (mi, code) = lookupmonument(assendelftrijkdata[i][0])
     if mi >= 0:
         print("todo", mi, code)
+print("totallnksI", totallnksI, "totallnksL", totallnksL)
 my_canvas.save()
 key = input("Wait")
