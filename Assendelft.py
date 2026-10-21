@@ -49,6 +49,7 @@ ya3 = 25
 xf = 40
 yf = 365
 df = 130
+totallnksI = 0
 
 def lookupmonument(name):
     index = -1
@@ -151,6 +152,7 @@ def markplace(c, bx, by, lat, lon, points, w_h, color, factor, name, radius, lnk
         (mi, code) = lookupmonument(name)
         if mi >= 0:
             print("todo", mi, code)
+    print("totallnksI", totallnksI)
     return
     
 def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
@@ -226,8 +228,10 @@ for i in range(len(geodata)):
     disappeared = int(geodata[i][4])
     if disappeared < 1875:
         markplace(my_canvas, xa1, ya1, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#00aaff', fa1, geodata[i][0], 3.0, geodata[i][5])
+        totallnksI += 1
     else:
         markplace(my_canvas, xa2, ya2, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#aa55ff', fa2,geodata[i][0], 3.0, geodata[i][5])
+        totallnksI += 1
 for i in range(len(assendelftrijkdata)):
     markplace(my_canvas, xa3, ya3, float(assendelftrijkdata[i][1]), float(assendelftrijkdata[i][2]), pointsa, w_ha, '#55557f', fa3, assendelftrijkdata[i][0], 2.0, "n")
 my_canvas.showPage()
