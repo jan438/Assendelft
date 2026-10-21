@@ -152,8 +152,8 @@ def markplace(c, bx, by, lat, lon, points, w_h, color, factor, name, radius, lnk
     else:
         (mi, code) = lookupmonument(name)
         if mi >= 0:
-            print("todo", mi, code)
-    print("totallnksI", totallnksI)
+            c.linkAbsolute(code, code + 'I', linkarea, addtopage = 1, thickness = 0, color = None)
+            c.bookmarkPage(code + 'L', fit = "XYZ", left = linkx1, top = linky2, zoom = 10)
     return
     
 def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
@@ -235,6 +235,7 @@ for i in range(len(geodata)):
         totallnksI += 1
 for i in range(len(assendelftrijkdata)):
     markplace(my_canvas, xa3, ya3, float(assendelftrijkdata[i][1]), float(assendelftrijkdata[i][2]), pointsa, w_ha, '#55557f', fa3, assendelftrijkdata[i][0], 2.0, "n")
+    totallnksI += 1
 my_canvas.showPage()
 my_canvas.setFillColor(HexColor('#000000'))
 my_canvas.setFont(assendelftfont, 10)
@@ -258,7 +259,7 @@ for i in range(len(geodata)):
         linkarea = (linkx1, linky1, linkx2, linky2)
         my_canvas.linkAbsolute(code, code + 'L', linkarea, addtopage = 1, thickness = 0, color = None)
         my_canvas.bookmarkPage(code + 'I', fit = "XYZ", left = linkx1, top = linky2, zoom = 8)
-        totallnksL += 2
+        totallnksL += 1
         col += 1
         if col == 4:
             col = 0
@@ -270,7 +271,14 @@ for i in range(len(geodata)):
 for i in range(len(assendelftrijkdata)):
     (mi, code) = lookupmonument(assendelftrijkdata[i][0])
     if mi >= 0:
-        print("todo", mi, code)
+        linkx1 = col * colwidth
+        linky1 = row * rowheight
+        linkx2 = col * colwidth + colwidth
+        linky2 = row * rowheight + rowheight
+        linkarea = (linkx1, linky1, linkx2, linky2)
+        my_canvas.linkAbsolute(code, code + 'L', linkarea, addtopage = 1, thickness = 0, color = None)
+        my_canvas.bookmarkPage(code + 'I', fit = "XYZ", left = linkx1, top = linky2, zoom = 8)
+        totallnksL += 1
 print("totallnksI", totallnksI, "totallnksL", totallnksL)
 my_canvas.save()
 key = input("Wait")
