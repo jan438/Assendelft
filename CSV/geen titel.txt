@@ -1,0 +1,11 @@
+for i in range(len(geodata)):
+    code = geodata[i][0]
+    if geodata[i][5] == "y":
+    
+    geen links == "n" geo
+    
+    splitsen 1 en 2 op bouwjaar en verdwenen
+    
+    1 verdwenen < 1875 
+    
+    2 bouwjaar > 1875

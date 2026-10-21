@@ -128,7 +128,7 @@ def scale_to_img(lat_lon, points, w_h, factor):
     x = ((lat_lon[1] - old[0]) * (new[1] - new[0]) / (old[1] - old[0]))
     return int(x) * factor, int(y * factor)
     
-def markplace(c, bx, by, lat, lon, points, w_h, color, factor, name, radius):
+def markplace(c, bx, by, lat, lon, points, w_h, color, factor, name, radius, lnk):
     c.setFillColor(HexColor(color))
     x = 0
     y = 0
@@ -144,7 +144,7 @@ def markplace(c, bx, by, lat, lon, points, w_h, color, factor, name, radius):
     linky2 = by + y + 1.5 * radius
     linkarea = (linkx1, linky1, linkx2, linky2)
     (mi, code) = lookupgeo(name)
-    if mi >= 0:
+    if mi >= 0 and lnk == "y":
         c.linkAbsolute(code, code + 'I', linkarea, addtopage = 1, thickness = 0, color = None)
         c.bookmarkPage(code + 'L', fit = "XYZ", left = linkx1, top = linky2, zoom = 10)
     else:
@@ -222,14 +222,14 @@ my_canvas.drawImage("Photos/mapAssendelft.png", xa3, ya3, w_ha[0] * fa3, w_ha[1]
 drawbounderies(my_canvas, xa1, ya1, totalcoords1a, year1a, pointsa, w_ha, fa1)
 drawbounderies(my_canvas, xa2, ya2, totalcoords2a, year2a, pointsa, w_ha, fa2)
 for i in range(len(geodata)):
-    markplace(my_canvas, xa1, ya1, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#00aaff', fa1, geodata[i][0], 3.0)
-    markplace(my_canvas, xa2, ya2, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#aa55ff', fa2,geodata[i][0], 3.0)
+    markplace(my_canvas, xa1, ya1, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#00aaff', fa1, geodata[i][0], 3.0, geodata[i][5])
+    markplace(my_canvas, xa2, ya2, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#aa55ff', fa2,geodata[i][0], 3.0, geodata[i][5])
 for i in range(len(assendelftrijkdata)):
-    markplace(my_canvas, xa3, ya3, float(assendelftrijkdata[i][1]), float(assendelftrijkdata[i][2]), pointsa, w_ha, '#55557f', fa3, assendelftrijkdata[i][0], 2.0)
+    markplace(my_canvas, xa3, ya3, float(assendelftrijkdata[i][1]), float(assendelftrijkdata[i][2]), pointsa, w_ha, '#55557f', fa3, assendelftrijkdata[i][0], 2.0, "n")
 for i in range(len(provinciedata)):
-    markplace(my_canvas, xa3, ya3, float(provinciedata[i][1]), float(provinciedata[i][2]), pointsa, w_ha, '#00ffff', fa3, provinciedata[i][0], 2.0)
+    markplace(my_canvas, xa3, ya3, float(provinciedata[i][1]), float(provinciedata[i][2]), pointsa, w_ha, '#00ffff', fa3, provinciedata[i][0], 2.0, "n")
 for i in range(len(gemeentedata)):
-    markplace(my_canvas, xa3, ya3, float(gemeentedata[i][1]), float(gemeentedata[i][2]), pointsa, w_ha, '#ffb592', fa3, gemeentedata[i][0], 2.0) 
+    markplace(my_canvas, xa3, ya3, float(gemeentedata[i][1]), float(gemeentedata[i][2]), pointsa, w_ha, '#ffb592', fa3, gemeentedata[i][0], 2.0, "n") 
 my_canvas.showPage()
 my_canvas.setFillColor(HexColor('#000000'))
 my_canvas.setFont(assendelftfont, 10)
@@ -240,23 +240,24 @@ colwidth = 150
 rowheight = 145
 bottommargin = 25
 for i in range(len(geodata)):
-    code = geodata[i][0]
-    my_canvas.drawImage("Photos/" + code + ".jpg", col * colwidth, bottommargin + row * rowheight, 400 * scalepics, 250 * scalepics)
-    my_canvas.drawString(col * colwidth, bottommargin + row * rowheight - 5, code)
-    linkx1 = col * colwidth
-    linky1 = row * rowheight
-    linkx2 = col * colwidth + colwidth
-    linky2 = row * rowheight + rowheight
-    linkarea = (linkx1, linky1, linkx2, linky2)
-    my_canvas.linkAbsolute(code, code + 'L', linkarea, addtopage = 1, thickness = 0, color = None)
-    my_canvas.bookmarkPage(code + 'I', fit = "XYZ", left = linkx1, top = linky2, zoom = 8)
-    col += 1
-    if col == 4:
-        col = 0
-        row -=1
-    if i == 23:
-        my_canvas.showPage()
-        col = 0
-        row = 5
+    if geodata[i][5] == "y":
+        code = geodata[i][0]
+        my_canvas.drawImage("Photos/" + code + ".jpg", col * colwidth, bottommargin + row * rowheight, 400 * scalepics, 250 * scalepics)
+        my_canvas.drawString(col * colwidth, bottommargin + row * rowheight - 5, code)
+        linkx1 = col * colwidth
+        linky1 = row * rowheight
+        linkx2 = col * colwidth + colwidth
+        linky2 = row * rowheight + rowheight
+        linkarea = (linkx1, linky1, linkx2, linky2)
+        my_canvas.linkAbsolute(code, code + 'L', linkarea, addtopage = 1, thickness = 0, color = None)
+        my_canvas.bookmarkPage(code + 'I', fit = "XYZ", left = linkx1, top = linky2, zoom = 8)
+        col += 1
+        if col == 4:
+            col = 0
+            row -=1
+        if i == 23:
+            my_canvas.showPage()
+            col = 0
+            row = 5
 my_canvas.save()
 key = input("Wait")
