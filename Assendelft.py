@@ -261,5 +261,9 @@ for i in range(len(geodata)):
             my_canvas.showPage()
             col = 0
             row = 5
+for i in range(len(assendelftrijkdata)):
+    (mi, code) = lookupmonument(assendelftrijkdata[i][0])
+    if mi >= 0:
+        print("todo", mi, code)
 my_canvas.save()
 key = input("Wait")
