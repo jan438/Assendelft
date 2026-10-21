@@ -202,8 +202,6 @@ with open(file_to_open, 'r') as file:
         geodata.append(row)
         count += 1
 assendelftrijkdata = retrievecoords("assendelftrijk")
-for i in range(len(assendelftrijkdata)):
-    print(i, assendelftrijkdata[i][0])
 provinciedata = retrievecoords("provincie")
 gemeentedata = retrievecoords("gemeente")
 provinciedata = retrievecoords("provincie")
