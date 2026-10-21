@@ -224,7 +224,6 @@ drawbounderies(my_canvas, xa2, ya2, totalcoords2a, year2a, pointsa, w_ha, fa2)
 for i in range(len(geodata)):
     buildyear = int(geodata[i][3])
     disappeared = int(geodata[i][4])
-    print(i, buildyear, disappeared)
     if disappeared < 1875:
         markplace(my_canvas, xa1, ya1, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#00aaff', fa1, geodata[i][0], 3.0, geodata[i][5])
     else:
@@ -249,41 +248,22 @@ for i in range(len(geodata)):
     disappeared = int(geodata[i][4])
     if geodata[i][5] == "y":
         code = geodata[i][0]
-        if disappeared < 1875:
-            my_canvas.drawImage("Photos/" + code + ".jpg", col * colwidth, bottommargin + row * rowheight, 400 * scalepics, 250 * scalepics)
-            my_canvas.drawString(col * colwidth, bottommargin + row * rowheight - 5, code)
-            linkx1 = col * colwidth
-            linky1 = row * rowheight
-            linkx2 = col * colwidth + colwidth
-            linky2 = row * rowheight + rowheight
-            linkarea = (linkx1, linky1, linkx2, linky2)
-            my_canvas.linkAbsolute(code, code + 'L', linkarea, addtopage = 1, thickness = 0, color = None)
-            my_canvas.bookmarkPage(code + 'I', fit = "XYZ", left = linkx1, top = linky2, zoom = 8)
-            col += 1
-            if col == 4:
-                col = 0
-                row -=1
-            if i == 23:
-                my_canvas.showPage()
-                col = 0
-                row = 5
-        else:
-            my_canvas.drawImage("Photos/" + code + ".jpg", col * colwidth, bottommargin + row * rowheight, 400 * scalepics, 250 * scalepics)
-            my_canvas.drawString(col * colwidth, bottommargin + row * rowheight - 5, code)
-            linkx1 = col * colwidth
-            linky1 = row * rowheight
-            linkx2 = col * colwidth + colwidth
-            linky2 = row * rowheight + rowheight
-            linkarea = (linkx1, linky1, linkx2, linky2)
-            my_canvas.linkAbsolute(code, code + 'L', linkarea, addtopage = 1, thickness = 0, color = None)
-            my_canvas.bookmarkPage(code + 'I', fit = "XYZ", left = linkx1, top = linky2, zoom = 8)
-            col += 1
-            if col == 4:
-                col = 0
-                row -=1
-            if i == 23:
-                my_canvas.showPage()
-                col = 0
-                row = 5
+        my_canvas.drawImage("Photos/" + code + ".jpg", col * colwidth, bottommargin + row * rowheight, 400 * scalepics, 250 * scalepics)
+        my_canvas.drawString(col * colwidth, bottommargin + row * rowheight - 5, code)
+        linkx1 = col * colwidth
+        linky1 = row * rowheight
+        linkx2 = col * colwidth + colwidth
+        linky2 = row * rowheight + rowheight
+        linkarea = (linkx1, linky1, linkx2, linky2)
+        my_canvas.linkAbsolute(code, code + 'L', linkarea, addtopage = 1, thickness = 0, color = None)
+        my_canvas.bookmarkPage(code + 'I', fit = "XYZ", left = linkx1, top = linky2, zoom = 8)
+        col += 1
+        if col == 4:
+            col = 0
+            row -=1
+        if i == 23:
+            my_canvas.showPage()
+            col = 0
+            row = 5
 my_canvas.save()
 key = input("Wait")
