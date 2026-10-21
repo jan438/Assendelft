@@ -222,6 +222,9 @@ my_canvas.drawImage("Photos/mapAssendelft.png", xa3, ya3, w_ha[0] * fa3, w_ha[1]
 drawbounderies(my_canvas, xa1, ya1, totalcoords1a, year1a, pointsa, w_ha, fa1)
 drawbounderies(my_canvas, xa2, ya2, totalcoords2a, year2a, pointsa, w_ha, fa2)
 for i in range(len(geodata)):
+    buildyear = int(geodata[i][3])
+    disappeared = int(geodata[i][4])
+    print(i, buildyear, disappeared)
     markplace(my_canvas, xa1, ya1, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#00aaff', fa1, geodata[i][0], 3.0, geodata[i][5])
     markplace(my_canvas, xa2, ya2, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#aa55ff', fa2,geodata[i][0], 3.0, geodata[i][5])
 for i in range(len(assendelftrijkdata)):
