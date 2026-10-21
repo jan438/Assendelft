@@ -225,8 +225,10 @@ for i in range(len(geodata)):
     buildyear = int(geodata[i][3])
     disappeared = int(geodata[i][4])
     print(i, buildyear, disappeared)
-    markplace(my_canvas, xa1, ya1, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#00aaff', fa1, geodata[i][0], 3.0, geodata[i][5])
-    markplace(my_canvas, xa2, ya2, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#aa55ff', fa2,geodata[i][0], 3.0, geodata[i][5])
+    if disappeared < 1875:
+        markplace(my_canvas, xa1, ya1, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#00aaff', fa1, geodata[i][0], 3.0, geodata[i][5])
+    if buildyear >= 1875:
+        markplace(my_canvas, xa2, ya2, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#aa55ff', fa2,geodata[i][0], 3.0, geodata[i][5])
 for i in range(len(assendelftrijkdata)):
     markplace(my_canvas, xa3, ya3, float(assendelftrijkdata[i][1]), float(assendelftrijkdata[i][2]), pointsa, w_ha, '#55557f', fa3, assendelftrijkdata[i][0], 2.0, "n")
 for i in range(len(provinciedata)):
@@ -243,7 +245,9 @@ colwidth = 150
 rowheight = 145
 bottommargin = 25
 for i in range(len(geodata)):
-    if geodata[i][5] == "y":
+    buildyear = int(geodata[i][3])
+    disappeared = int(geodata[i][4])
+    if geodata[i][5] == "y" and (disappeared < 1875 or buildyear >= 1875):
         code = geodata[i][0]
         my_canvas.drawImage("Photos/" + code + ".jpg", col * colwidth, bottommargin + row * rowheight, 400 * scalepics, 250 * scalepics)
         my_canvas.drawString(col * colwidth, bottommargin + row * rowheight - 5, code)
