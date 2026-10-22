@@ -72,7 +72,7 @@ def lookupmonument(name):
             if code == provinciedata[l][0][:8]:
                index = l
     elif name[:4] == "GMWN":
-        code = name[4:7]
+        code = name[2:7]
         print(code)
         for l in range(len(gemeentedata)):
             if code == gemeentedata[l][0][:8]:
