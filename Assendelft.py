@@ -74,7 +74,6 @@ def lookupmonument(name):
         code = name[2:7]
         for l in range(len(gemeentedata)):
             if code == gemeentedata[l][0][2:7]:
-               print("gemeente", code)
                index = l 
     return (index, code)
     
