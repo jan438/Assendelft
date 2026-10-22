@@ -70,7 +70,13 @@ def lookupmonument(name):
         print(code)
         for l in range(len(provinciedata)):
             if code == provinciedata[l][0][:8]:
-               index = l         
+               index = l
+    elif name[:4] == "GMWN":
+        code = name[4:7]
+        print(code)
+        for l in range(len(gemeentedata)):
+            if code == gemeentedata[l][0][:8]:
+               index = l 
     return (index, code)
     
 def lookupgeo(name):
