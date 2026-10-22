@@ -204,7 +204,6 @@ with open(file_to_open, 'r') as file:
 assendelftrijkdata = retrievecoords("assendelftrijk")
 provinciedata = retrievecoords("provincie")
 gemeentedata = retrievecoords("gemeente")
-provinciedata = retrievecoords("provincie")
 my_canvas = canvas.Canvas("PDF/Assendelft.pdf")
 my_canvas.setFillColor(HexColor("#50ff3c"))
 my_canvas.rect(left_padding, bottom_padding, width, height, fill=1)
