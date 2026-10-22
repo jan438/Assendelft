@@ -64,7 +64,13 @@ def lookupmonument(name):
         code = name[:8]
         for l in range(len(assendelftrijkdata)):
             if code == assendelftrijkdata[l][0][:8]:
-               index = l          
+               index = l
+    elif name[:4] == "GMNH":
+        code = name[5:10]
+        print(code)
+        for l in range(len(provinciedata)):
+            if code == provinciedata[l][0][:8]:
+               index = l         
     return (index, code)
     
 def lookupgeo(name):
