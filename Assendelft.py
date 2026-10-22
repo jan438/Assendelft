@@ -67,13 +67,12 @@ def lookupmonument(name):
                index = l
     elif name[:4] == "GMNH":
         code = name[5:10]
-        print(code)
         for l in range(len(provinciedata)):
-            if code == provinciedata[l][0][:8]:
+            if code == provinciedata[l][0][5:10]:
+               print("provincie", code)
                index = l
     elif name[:4] == "GMWN":
         code = name[2:7]
-        print(code)
         for l in range(len(gemeentedata)):
             if code == gemeentedata[l][0][:8]:
                index = l 
