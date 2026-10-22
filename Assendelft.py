@@ -252,17 +252,14 @@ for i in range(len(geodata)):
     disappeared = int(geodata[i][4])
     if disappeared < 1875:
         markplace(my_canvas, xa1, ya1, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#00aaff', fa1, geodata[i][0], 3.0, geodata[i][5])
-        totallnksI += 1
     else:
         markplace(my_canvas, xa2, ya2, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#aa55ff', fa2,geodata[i][0], 3.0, geodata[i][5])
-        totallnksI += 1
 for i in range(len(assendelftrijkdata)):
     markplace(my_canvas, xa3, ya3, float(assendelftrijkdata[i][1]), float(assendelftrijkdata[i][2]), pointsa, w_ha, '#55557f', fa3, assendelftrijkdata[i][0], 2.0, "n")
 for i in range(len(provinciedata)):
     markplace(my_canvas, xa3, ya3, float(provinciedata[i][1]), float(provinciedata[i][2]), pointsa, w_ha, '#0cff08', fa3, provinciedata[i][0], 2.0, "n") 
 for i in range(len(gemeentedata)):
     markplace(my_canvas, xa3, ya3, float(gemeentedata[i][1]), float(gemeentedata[i][2]), pointsa, w_ha, '#ff5a23', fa3, gemeentedata[i][0], 2.0, "n")
-    totallnksI += 1
 my_canvas.showPage()
 my_canvas.setFillColor(HexColor('#000000'))
 my_canvas.setFont(assendelftfont, 10)
@@ -272,6 +269,7 @@ row = 5
 colwidth = 150
 rowheight = 145
 bottommargin = 25
+maxinfospage = 24
 for i in range(len(geodata)):
     buildyear = int(geodata[i][3])
     disappeared = int(geodata[i][4])
@@ -286,7 +284,6 @@ for i in range(len(geodata)):
         linkarea = (linkx1, linky1, linkx2, linky2)
         my_canvas.linkAbsolute(code, code + 'L', linkarea, addtopage = 1, thickness = 0, color = None)
         my_canvas.bookmarkPage(code + 'I', fit = "XYZ", left = linkx1, top = linky2, zoom = 8)
-        totallnksL += 1
         col += 1
         if col == 4:
             col = 0
@@ -307,7 +304,6 @@ for i in range(len(assendelftrijkdata)):
         linkarea = (linkx1, linky1, linkx2, linky2)
         my_canvas.linkAbsolute(code, code + 'L', linkarea, addtopage = 1, thickness = 0, color = None)
         my_canvas.bookmarkPage(code + 'I', fit = "XYZ", left = linkx1, top = linky2, zoom = 8)
-        totallnksL += 1
         col += 1
         if col == 4:
             col = 0
@@ -333,7 +329,6 @@ for i in range(len(provinciedata)):
         linkarea = (linkx1, linky1, linkx2, linky2)
         my_canvas.linkAbsolute(code, code + 'L', linkarea, addtopage = 1, thickness = 0, color = None)
         my_canvas.bookmarkPage(code + 'I', fit = "XYZ", left = linkx1, top = linky2, zoom = 8)
-        totallnksL += 1
         col += 1
         if col == 4:
             col = 0
@@ -354,7 +349,6 @@ for i in range(len(gemeentedata)):
         linkarea = (linkx1, linky1, linkx2, linky2)
         my_canvas.linkAbsolute(code, code + 'L', linkarea, addtopage = 1, thickness = 0, color = None)
         my_canvas.bookmarkPage(code + 'I', fit = "XYZ", left = linkx1, top = linky2, zoom = 8)
-        totallnksL += 1
         col += 1
         if col == 4:
             col = 0
@@ -363,6 +357,5 @@ for i in range(len(gemeentedata)):
             my_canvas.showPage()
             col = 0
             row = 5
-print("totallnksI", totallnksI, "totallnksL", totallnksL)
 my_canvas.save()
 key = input("Wait")
