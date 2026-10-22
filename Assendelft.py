@@ -237,6 +237,8 @@ for i in range(len(geodata)):
         totallnksI += 1
 for i in range(len(assendelftrijkdata)):
     markplace(my_canvas, xa3, ya3, float(assendelftrijkdata[i][1]), float(assendelftrijkdata[i][2]), pointsa, w_ha, '#55557f', fa3, assendelftrijkdata[i][0], 2.0, "n")
+for i in range(len(provinciedata)):
+    markplace(my_canvas, xa3, ya3, float(provinciedata[i][1]), float(provinciedata[i][2]), pointsa, w_ha, '#55557f', fa3, provinciedata[i][0], 2.0, "n")
     totallnksI += 1
 my_canvas.showPage()
 my_canvas.setFillColor(HexColor('#000000'))
