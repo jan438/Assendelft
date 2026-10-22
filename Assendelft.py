@@ -116,9 +116,11 @@ def retrievecoords(kmlfile):
         if not coord is None:
             coord = coord.text.strip()
             coord = re.findall(regex, coord)
-            for (long, lat, heig) in coord:
+            for (lon, lat, heig) in coord:
                 if i.find('.//def:Point', ns):
-                    data.append([name, lat, long])
+                    lat = float(lat)
+                    lon = float(lon)
+                    data.append([name, lat, lon])
     return data
     
 def scale_to_img(lat_lon, points, w_h, factor):
