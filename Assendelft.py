@@ -101,7 +101,7 @@ def readjson(jsonfile):
                             totalcoords2 = coords0[0]
     return [year1, year2, totalcoords1, totalcoords2]
     
-def retrievecoords(kmlfile):
+def retrievecoords(kmlfile, points):
     data = []
     tree = ET.parse('KML/' + kmlfile + ".kml")
     root = tree.getroot()
@@ -203,9 +203,9 @@ with open(file_to_open, 'r') as file:
     for row in csvreader:
         geodata.append(row)
         count += 1
-assendelftrijkdata = retrievecoords("assendelftrijk")
-provinciedata = retrievecoords("provincie")
-gemeentedata = retrievecoords("gemeente")
+assendelftrijkdata = retrievecoords("assendelftrijk", pointsa)
+provinciedata = retrievecoords("provincie", pointsa)
+gemeentedata = retrievecoords("gemeente", pointsa)
 my_canvas = canvas.Canvas("PDF/Assendelft.pdf")
 my_canvas.setFillColor(HexColor("#50ff3c"))
 my_canvas.rect(left_padding, bottom_padding, width, height, fill=1)
