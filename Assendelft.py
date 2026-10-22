@@ -290,7 +290,7 @@ for i in range(len(geodata)):
         if col == 4:
             col = 0
             row -=1
-        if infos == maxinfospage - 1:
+        if infos == maxinfospage:
             my_canvas.showPage()
             infos = 0
             col = 0
@@ -312,7 +312,7 @@ for i in range(len(assendelftrijkdata)):
         if col == 4:
             col = 0
             row -=1
-        if infos == maxinfospage - 1:
+        if infos == maxinfospage:
             my_canvas.showPage()
             infos = 0
             col = 0
@@ -339,7 +339,7 @@ for i in range(len(provinciedata)):
         if col == 4:
             col = 0
             row -=1
-        if infos == maxinfospage - 1:
+        if infos == maxinfospage:
             my_canvas.showPage()
             infos = 0
             col = 0
@@ -366,7 +366,7 @@ for i in range(len(gemeentedata)):
         if col == 4:
             col = 0
             row -=1
-        if infos == maxinfospage - 1:
+        if infos == maxinfospage:
             my_canvas.showPage()
             infos = 0
             col = 0
