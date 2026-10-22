@@ -120,7 +120,8 @@ def retrievecoords(kmlfile, points):
                 if i.find('.//def:Point', ns):
                     lat = float(lat)
                     lon = float(lon)
-                    data.append([name, lat, lon])
+                    if lat < points[0] and lat > points[2] and lon > points[1] and lon < points[3]:
+                        data.append([name, lat, lon])
     return data
     
 def scale_to_img(lat_lon, points, w_h, factor):
