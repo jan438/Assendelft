@@ -269,6 +269,7 @@ row = 5
 colwidth = 150
 rowheight = 145
 bottommargin = 25
+infos = 0
 maxinfospage = 24
 for i in range(len(geodata)):
     buildyear = int(geodata[i][3])
@@ -284,12 +285,14 @@ for i in range(len(geodata)):
         linkarea = (linkx1, linky1, linkx2, linky2)
         my_canvas.linkAbsolute(code, code + 'L', linkarea, addtopage = 1, thickness = 0, color = None)
         my_canvas.bookmarkPage(code + 'I', fit = "XYZ", left = linkx1, top = linky2, zoom = 8)
+        infos += 1
         col += 1
         if col == 4:
             col = 0
             row -=1
-        if i == 23:
+        if infos == maxinfospage - 1:
             my_canvas.showPage()
+            infos = 0
             col = 0
             row = 5
 for i in range(len(assendelftrijkdata)):
@@ -304,12 +307,14 @@ for i in range(len(assendelftrijkdata)):
         linkarea = (linkx1, linky1, linkx2, linky2)
         my_canvas.linkAbsolute(code, code + 'L', linkarea, addtopage = 1, thickness = 0, color = None)
         my_canvas.bookmarkPage(code + 'I', fit = "XYZ", left = linkx1, top = linky2, zoom = 8)
+        infos += 1
         col += 1
         if col == 4:
             col = 0
             row -=1
-        if i == 23:
+        if infos == maxinfospage - 1:
             my_canvas.showPage()
+            infos = 0
             col = 0
             row = 5
 for i in range(len(provinciedata)):
@@ -329,18 +334,25 @@ for i in range(len(provinciedata)):
         linkarea = (linkx1, linky1, linkx2, linky2)
         my_canvas.linkAbsolute(code, code + 'L', linkarea, addtopage = 1, thickness = 0, color = None)
         my_canvas.bookmarkPage(code + 'I', fit = "XYZ", left = linkx1, top = linky2, zoom = 8)
+        infos += 1
         col += 1
         if col == 4:
             col = 0
             row -=1
-        if i == 23:
+        if infos == maxinfospage - 1:
             my_canvas.showPage()
+            infos = 0
             col = 0
             row = 5
 for i in range(len(gemeentedata)):
     (mi, code) = lookupmonument(gemeentedata[i][0])
     if mi >= 0:
-        #my_canvas.drawImage("Photos/" + code + ".JPG", col * colwidth, bottommargin + row * rowheight, 400 * scalepics, 250 * scalepics)
+        a = Path("Photos/" + code + ".JPG")
+        if a.exists():
+            print("File exists", code)
+            my_canvas.drawImage(a, col * colwidth, bottommargin + row * rowheight, 400 * scalepics, 250 * scalepics)
+        else:
+            print("File does not exist", code)
         my_canvas.drawString(col * colwidth, bottommargin + row * rowheight - 5, code)
         linkx1 = col * colwidth
         linky1 = row * rowheight
@@ -349,12 +361,14 @@ for i in range(len(gemeentedata)):
         linkarea = (linkx1, linky1, linkx2, linky2)
         my_canvas.linkAbsolute(code, code + 'L', linkarea, addtopage = 1, thickness = 0, color = None)
         my_canvas.bookmarkPage(code + 'I', fit = "XYZ", left = linkx1, top = linky2, zoom = 8)
+        infos += 1
         col += 1
         if col == 4:
             col = 0
             row -=1
-        if i == 23:
+        if infos == maxinfospage - 1:
             my_canvas.showPage()
+            infos = 0
             col = 0
             row = 5
 my_canvas.save()
