@@ -1,11 +1,5 @@
-for i in range(len(geodata)):
-    code = geodata[i][0]
-    if geodata[i][5] == "y":
-    
-    geen links == "n" geo
-    
-    splitsen 1 en 2 op bouwjaar en verdwenen
-    
-    1 verdwenen < 1875 
-    
-    2 bouwjaar > 1875
+deAlmanak
+52.47352 4.75094 1623 1717 n
+
+deWitteDolfijn
+52.45770 4.73727 1786 1798 n
