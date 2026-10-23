@@ -232,7 +232,7 @@ my_canvas.rect(left_padding, bottom_padding, width, height, fill=1)
 my_canvas.setTitle("Assendelft")
 my_canvas.setFont(assendelftfont, 30)
 my_canvas.setFillColor(HexColor("#000000"))
-renderPDF.draw(scaleSVG("SVG/Assendelft_wapen.svg", 0.06), my_canvas, 45, 800)
+renderPDF.draw(scaleSVG("SVG/Assendelft_wapen.svg", 0.07), my_canvas, 45, 795)
 my_canvas.drawString(80, 800, "Assendelft")
 response = requests.get("https://gemeentegeschiedenis.nl/gemeentenaam/json/Assendelft")
 if response.status_code == 200:
