@@ -254,7 +254,7 @@ for i in range(len(geodata)):
     elif disappeared < 2027:
         markplace(my_canvas, xa2, ya2, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#aa55ff', fa2,geodata[i][0], 3.0, geodata[i][5])
     else:
-        markplace(my_canvas, xa3, ya3, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#aa55ff', fa2,geodata[i][0], 3.0, geodata[i][5])
+        markplace(my_canvas, xa3, ya3, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#aa55ff', fa3,geodata[i][0], 3.0, geodata[i][5])
 for i in range(len(assendelftrijkdata)):
     markplace(my_canvas, xa3, ya3, float(assendelftrijkdata[i][1]), float(assendelftrijkdata[i][2]), pointsa, w_ha, '#55557f', fa3, assendelftrijkdata[i][0], 2.0, "n")
 for i in range(len(provinciedata)):
