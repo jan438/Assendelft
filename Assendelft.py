@@ -75,7 +75,16 @@ def lookupmonument(name):
             if code == gemeentedata[l][0][2:7]:
                index = l 
     return (index, code)
-    
+def scaleSVG(svgfile, scaling_factor):
+    svg_root = load_svg_file(svgfile)
+    svgRenderer = SvgRenderer(svgfile)
+    drawing = svgRenderer.render(svg_root)
+    scaling_x = scaling_factor
+    scaling_y = scaling_factor
+    drawing.width = drawing.minWidth() * scaling_x
+    drawing.height = drawing.height * scaling_y
+    drawing.scale(scaling_x, scaling_y)
+    return drawing    
 def lookupgeo(name):
     index = -1
     code = ""
@@ -84,7 +93,6 @@ def lookupgeo(name):
             index = l
             code = name
     return (index, code)
-
 def readjson(jsonfile):
     countyears = 0
     totalcoords1 = []
@@ -108,8 +116,7 @@ def readjson(jsonfile):
                         if countyears == 2:
                             year2 = year
                             totalcoords2 = coords0[0]
-    return [year1, year2, totalcoords1, totalcoords2]
-    
+    return [year1, year2, totalcoords1, totalcoords2] 
 def retrievecoords(kmlfile, points):
     data = []
     tree = ET.parse('KML/' + kmlfile + ".kml")
@@ -132,7 +139,6 @@ def retrievecoords(kmlfile, points):
                     if lat < points[0] and lat > points[2] and lon > points[1] and lon < points[3]:
                         data.append([name, lat, lon])
     return data
-    
 def scale_to_img(lat_lon, points, w_h, factor):
     old = (points[2], points[0])
     new = (0, w_h[1])
@@ -141,7 +147,6 @@ def scale_to_img(lat_lon, points, w_h, factor):
     new = (0, w_h[0])
     x = ((lat_lon[1] - old[0]) * (new[1] - new[0]) / (old[1] - old[0]))
     return int(x) * factor, int(y * factor)
-    
 def markplace(c, bx, by, lat, lon, points, w_h, color, factor, name, radius, lnk):
     c.setFillColor(HexColor(color))
     x = 0
@@ -174,7 +179,6 @@ def markplace(c, bx, by, lat, lon, points, w_h, color, factor, name, radius, lnk
                     c.linkAbsolute(code, code + 'I', linkarea, addtopage = 1, thickness = 0, color = None)
                     c.bookmarkPage(code + 'L', fit = "XYZ", left = linkx1, top = linky2, zoom = 10)
     return
-    
 def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
     c.setFont(assendelftfont, 10)
     c.drawString(bx, by - 15, year + "   " + str(len(coords)))
@@ -203,7 +207,6 @@ def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
     c.drawPath(p, fill=0, stroke=1)
     c.drawString(bx, by - 30, str(round(gcircle, 1)) + "km")
     return
-
 if sys.platform[0] == 'l':
     path = '/home/jan/git/Assendelft'
 if sys.platform[0] == 'w':
@@ -229,6 +232,7 @@ my_canvas.rect(left_padding, bottom_padding, width, height, fill=1)
 my_canvas.setTitle("Assendelft")
 my_canvas.setFont(assendelftfont, 30)
 my_canvas.setFillColor(HexColor("#000000"))
+renderPDF.draw(scaleSVG("SVG/Assendelft_wapen.svg", 0.030), my_canvas, 40, 800)
 my_canvas.drawString(50, 800, "Assendelft")
 response = requests.get("https://gemeentegeschiedenis.nl/gemeentenaam/json/Assendelft")
 if response.status_code == 200:
