@@ -50,8 +50,6 @@ ya3 = 25
 xf = 40
 yf = 365
 df = 130
-totallnksI = 0
-totallnksL = 0
 
 def lookupmonument(name):
     index = -1
