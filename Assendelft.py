@@ -270,8 +270,6 @@ bottommargin = 25
 infos = 0
 maxinfospage = 24
 for i in range(len(geodata)):
-    buildyear = int(geodata[i][3])
-    disappeared = int(geodata[i][4])
     if geodata[i][5] == "y":
         code = geodata[i][0]
         my_canvas.drawImage("Photos/" + code + ".jpg", col * colwidth, bottommargin + row * rowheight, 400 * scalepics, 250 * scalepics)
