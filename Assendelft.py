@@ -146,10 +146,7 @@ def markplace(c, bx, by, lat, lon, points, w_h, color, factor, name, radius, lnk
     c.setFillColor(HexColor(color))
     x = 0
     y = 0
-    inkader = True
-    if lat > points[0] or lat < points[2] or lon < points[1] or lon > points[3]:
-        inkader = False
-    if inkader:
+    if lat < points[0] and lat > points[2] and lon > points[1] and lon < points[3]:
         (x, y) = scale_to_img((lat, lon), points, w_h, factor)
     c.circle(bx + x, by + y, radius, stroke=0, fill=1)
     linkx1 = bx + x - 1.5 * radius
