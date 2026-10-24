@@ -355,7 +355,6 @@ for i in range(len(gemeentedata)):
             my_canvas.drawImage(a, col * colwidth, bottommargin + row * rowheight, 400 * scalepics, 250 * scalepics)
         else:
             my_canvas.drawString(col * colwidth, bottommargin + row * rowheight + 30, displayname)
-        my_canvas.drawString(col * colwidth, bottommargin + row * rowheight - 5, code)
         linkx1 = col * colwidth
         linky1 = row * rowheight
         linkx2 = col * colwidth + colwidth
