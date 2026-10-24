@@ -153,7 +153,8 @@ def markplace(c, bx, by, lat, lon, points, w_h, color, factor, name, radius, lnk
     if lat < points[0] and lat > points[2] and lon > points[1] and lon < points[3]:
         (x, y) = scale_to_img((lat, lon), points, w_h, factor)
     c.circle(bx + x, by + y, radius, stroke=0, fill=1)
-    c.drawString(bx, by, displayname)
+    if len(displayname) > 0:
+        c.drawString(bx + x, by + y, displayname)
     linkx1 = bx + x - 1.5 * radius
     linky1 = by + y - 1.5 * radius
     linkx2 = bx + x + 1.5 * radius
