@@ -154,6 +154,7 @@ def markplace(c, bx, by, lat, lon, points, w_h, color, factor, name, radius, lnk
         (x, y) = scale_to_img((lat, lon), points, w_h, factor)
     c.circle(bx + x, by + y, radius, stroke=0, fill=1)
     if len(displayname) > 0:
+        c.setFillColor(HexColor("#000000"))
         c.drawString(bx + x, by + y, displayname)
     linkx1 = bx + x - 1.5 * radius
     linky1 = by + y - 1.5 * radius
