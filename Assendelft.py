@@ -328,8 +328,7 @@ for i in range(len(provinciedata)):
             print("File exists", code)
             my_canvas.drawImage(a, col * colwidth, bottommargin + row * rowheight, 400 * scalepics, 250 * scalepics)
         else:
-            print("File does not exist", code)
-        my_canvas.drawString(col * colwidth, bottommargin + row * rowheight - 5, code)
+            my_canvas.drawString(col * colwidth, bottommargin + row * rowheight + 30, displayname)
         linkx1 = col * colwidth
         linky1 = row * rowheight
         linkx2 = col * colwidth + colwidth
