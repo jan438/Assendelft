@@ -146,13 +146,14 @@ def scale_to_img(lat_lon, points, w_h, factor):
     new = (0, w_h[0])
     x = ((lat_lon[1] - old[0]) * (new[1] - new[0]) / (old[1] - old[0]))
     return int(x) * factor, int(y * factor)
-def markplace(c, bx, by, lat, lon, points, w_h, color, factor, name, radius, lnk):
+def markplace(c, bx, by, lat, lon, points, w_h, color, factor, name, radius, lnk, displayname):
     c.setFillColor(HexColor(color))
     x = 0
     y = 0
     if lat < points[0] and lat > points[2] and lon > points[1] and lon < points[3]:
         (x, y) = scale_to_img((lat, lon), points, w_h, factor)
     c.circle(bx + x, by + y, radius, stroke=0, fill=1)
+    c.drawString(bx, by, displayname)
     linkx1 = bx + x - 1.5 * radius
     linky1 = by + y - 1.5 * radius
     linkx2 = bx + x + 1.5 * radius
@@ -249,17 +250,17 @@ for i in range(len(geodata)):
     buildyear = int(geodata[i][3])
     disappeared = int(geodata[i][4])
     if disappeared < 1875:
-        markplace(my_canvas, xa1, ya1, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#00aaff', fa1, geodata[i][0], 3.0, geodata[i][5])
+        markplace(my_canvas, xa1, ya1, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#00aaff', fa1, geodata[i][0], 3.0, geodata[i][5], geodata[i][6])
     elif disappeared < 2027:
-        markplace(my_canvas, xa2, ya2, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#aa55ff', fa2,geodata[i][0], 3.0, geodata[i][5])
+        markplace(my_canvas, xa2, ya2, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#aa55ff', fa2,geodata[i][0], 3.0, geodata[i][5], geodata[i][6])
     else:
-        markplace(my_canvas, xa3, ya3, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#aa55ff', fa3,geodata[i][0], 3.0, geodata[i][5])
+        markplace(my_canvas, xa3, ya3, float(geodata[i][1]), float(geodata[i][2]), pointsa, w_ha, '#aa55ff', fa3,geodata[i][0], 3.0, geodata[i][5], geodata[i][6])
 for i in range(len(assendelftrijkdata)):
-    markplace(my_canvas, xa3, ya3, float(assendelftrijkdata[i][1]), float(assendelftrijkdata[i][2]), pointsa, w_ha, '#55557f', fa3, assendelftrijkdata[i][0], 2.0, "n")
+    markplace(my_canvas, xa3, ya3, float(assendelftrijkdata[i][1]), float(assendelftrijkdata[i][2]), pointsa, w_ha, '#55557f', fa3, assendelftrijkdata[i][0], 2.0, "n", "")
 for i in range(len(provinciedata)):
-    markplace(my_canvas, xa3, ya3, float(provinciedata[i][1]), float(provinciedata[i][2]), pointsa, w_ha, '#0cff08', fa3, provinciedata[i][0], 2.0, "n") 
+    markplace(my_canvas, xa3, ya3, float(provinciedata[i][1]), float(provinciedata[i][2]), pointsa, w_ha, '#0cff08', fa3, provinciedata[i][0], 2.0, "n", "") 
 for i in range(len(gemeentedata)):
-    markplace(my_canvas, xa3, ya3, float(gemeentedata[i][1]), float(gemeentedata[i][2]), pointsa, w_ha, '#ff5a23', fa3, gemeentedata[i][0], 2.0, "n")
+    markplace(my_canvas, xa3, ya3, float(gemeentedata[i][1]), float(gemeentedata[i][2]), pointsa, w_ha, '#ff5a23', fa3, gemeentedata[i][0], 2.0, "n", "")
 my_canvas.showPage()
 my_canvas.setFillColor(HexColor('#000000'))
 my_canvas.setFont(assendelftfont, 10)
