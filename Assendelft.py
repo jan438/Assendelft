@@ -49,6 +49,7 @@ ya3 = 25
 xf = 40
 yf = 365
 df = 130
+dfy = 20
 
 def lookupmonument(name):
     index = -1
@@ -303,8 +304,8 @@ for i in range(len(geodata)):
 for i in range(len(assendelftrijkdata)):
     (mi, code, displayname) = lookupmonument(assendelftrijkdata[i][0])
     if mi >= 0:
-        my_canvas.drawImage("Photos/" + code + ".JPG", col * colwidth, bottommargin + row * rowheight, 400 * scalepics, 250 * scalepics)
-        my_canvas.drawString(col * colwidth, bottommargin + row * rowheight - 5, code)
+        my_canvas.drawImage("Photos/" + code + ".JPG", col * colwidth, bottommargin + row * rowheight + dfy, 400 * scalepics, 250 * scalepics)
+        my_canvas.drawString(col * colwidth, bottommargin + row * rowheight, code)
         linkx1 = col * colwidth
         linky1 = row * rowheight
         linkx2 = col * colwidth + colwidth
@@ -327,9 +328,8 @@ for i in range(len(provinciedata)):
     if mi >= 0:
         a = Path("Photos/" + code + ".JPG")
         if a.exists():
-            my_canvas.drawImage(a, col * colwidth, bottommargin + row * rowheight, 400 * scalepics, 250 * scalepics)
-        else:
-            my_canvas.drawString(col * colwidth, bottommargin + row * rowheight + 30, displayname)
+            my_canvas.drawImage(a, col * colwidth, bottommargin + row * rowheight + dfy, 400 * scalepics, 250 * scalepics)
+        my_canvas.drawString(col * colwidth, bottommargin + row * rowheight, displayname)
         linkx1 = col * colwidth
         linky1 = row * rowheight
         linkx2 = col * colwidth + colwidth
@@ -352,9 +352,8 @@ for i in range(len(gemeentedata)):
     if mi >= 0:
         a = Path("Photos/" + code + ".JPG")
         if a.exists():
-            my_canvas.drawImage(a, col * colwidth, bottommargin + row * rowheight, 400 * scalepics, 250 * scalepics)
-        else:
-            my_canvas.drawString(col * colwidth, bottommargin + row * rowheight + 30, displayname)
+            my_canvas.drawImage(a, col * colwidth, bottommargin + row * rowheight + dfy, 400 * scalepics, 250 * scalepics)
+        my_canvas.drawString(col * colwidth, bottommargin + row * rowheight, displayname)
         linkx1 = col * colwidth
         linky1 = row * rowheight
         linkx2 = col * colwidth + colwidth
