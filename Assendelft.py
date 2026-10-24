@@ -35,7 +35,6 @@ pointsa = (52.5058, 4.6761, 52.4250, 4.7852)
 w_ha = (55.6, 67.9)
 resp = requests.Response
 geodata = []
-zaanstaddata = []
 fa1 = 4.0
 fa2 = 4.0
 fa3 = 6.0
