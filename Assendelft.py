@@ -68,11 +68,13 @@ def lookupmonument(name):
         code = name[5:10]
         for l in range(len(provinciedata)):
             if code == provinciedata[l][0][5:10]:
+               displayname = provinciedata[l][0][12:]
                index = l
     elif name[:4] == "GMWN":
         code = name[2:7]
         for l in range(len(gemeentedata)):
             if code == gemeentedata[l][0][2:7]:
+               displayname = gemeentedata[l][0][10:]
                index = l 
     return (index, code, displayname)
 def scaleSVG(svgfile, scaling_factor):
