@@ -53,6 +53,7 @@ df = 130
 def lookupmonument(name):
     index = -1
     code = ""
+    displayname = "abc"
     if name[:2] == "RM" and name[7] == ' ':
         code = name[:7]
         for l in range(len(assendelftrijkdata)):
@@ -73,7 +74,7 @@ def lookupmonument(name):
         for l in range(len(gemeentedata)):
             if code == gemeentedata[l][0][2:7]:
                index = l 
-    return (index, code)
+    return (index, code, displayname)
 def scaleSVG(svgfile, scaling_factor):
     svg_root = load_svg_file(svgfile)
     svgRenderer = SvgRenderer(svgfile)
@@ -167,17 +168,17 @@ def markplace(c, bx, by, lat, lon, points, w_h, color, factor, name, radius, lnk
         c.linkAbsolute(code, code + 'I', linkarea, addtopage = 1, thickness = 0, color = None)
         c.bookmarkPage(code + 'L', fit = "XYZ", left = linkx1, top = linky2, zoom = 10)
     else:
-        (mi, code) = lookupmonument(name)
+        (mi, code, displayname) = lookupmonument(name)
         if mi >= 0:
             c.linkAbsolute(code, code + 'I', linkarea, addtopage = 1, thickness = 0, color = None)
             c.bookmarkPage(code + 'L', fit = "XYZ", left = linkx1, top = linky2, zoom = 10)
         else:
-            (mi, code) = lookupmonument(name)
+            (mi, code, displayname) = lookupmonument(name)
             if mi >= 0:
                 c.linkAbsolute(code, code + 'I', linkarea, addtopage = 1, thickness = 0, color = None)
                 c.bookmarkPage(code + 'L', fit = "XYZ", left = linkx1, top = linky2, zoom = 10)
             else:
-                (mi, code) = lookupmonument(name)
+                (mi, code, displayname) = lookupmonument(name)
                 if mi >= 0:
                     c.linkAbsolute(code, code + 'I', linkarea, addtopage = 1, thickness = 0, color = None)
                     c.bookmarkPage(code + 'L', fit = "XYZ", left = linkx1, top = linky2, zoom = 10)
@@ -298,7 +299,7 @@ for i in range(len(geodata)):
             col = 0
             row = 5
 for i in range(len(assendelftrijkdata)):
-    (mi, code) = lookupmonument(assendelftrijkdata[i][0])
+    (mi, code, displayname) = lookupmonument(assendelftrijkdata[i][0])
     if mi >= 0:
         my_canvas.drawImage("Photos/" + code + ".JPG", col * colwidth, bottommargin + row * rowheight, 400 * scalepics, 250 * scalepics)
         my_canvas.drawString(col * colwidth, bottommargin + row * rowheight - 5, code)
@@ -320,7 +321,7 @@ for i in range(len(assendelftrijkdata)):
             col = 0
             row = 5
 for i in range(len(provinciedata)):
-    (mi, code) = lookupmonument(provinciedata[i][0])
+    (mi, code, displayname) = lookupmonument(provinciedata[i][0])
     if mi >= 0:
         a = Path("Photos/" + code + ".JPG")
         if a.exists():
@@ -347,7 +348,7 @@ for i in range(len(provinciedata)):
             col = 0
             row = 5
 for i in range(len(gemeentedata)):
-    (mi, code) = lookupmonument(gemeentedata[i][0])
+    (mi, code, displayname) = lookupmonument(gemeentedata[i][0])
     if mi >= 0:
         a = Path("Photos/" + code + ".JPG")
         if a.exists():
