@@ -327,7 +327,6 @@ for i in range(len(provinciedata)):
     if mi >= 0:
         a = Path("Photos/" + code + ".JPG")
         if a.exists():
-            print("File exists", code)
             my_canvas.drawImage(a, col * colwidth, bottommargin + row * rowheight, 400 * scalepics, 250 * scalepics)
         else:
             my_canvas.drawString(col * colwidth, bottommargin + row * rowheight + 30, displayname)
@@ -353,10 +352,9 @@ for i in range(len(gemeentedata)):
     if mi >= 0:
         a = Path("Photos/" + code + ".JPG")
         if a.exists():
-            print("File exists", code)
             my_canvas.drawImage(a, col * colwidth, bottommargin + row * rowheight, 400 * scalepics, 250 * scalepics)
         else:
-            print("File does not exist", code)
+            my_canvas.drawString(col * colwidth, bottommargin + row * rowheight + 30, displayname)
         my_canvas.drawString(col * colwidth, bottommargin + row * rowheight - 5, code)
         linkx1 = col * colwidth
         linky1 = row * rowheight
