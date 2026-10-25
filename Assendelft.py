@@ -54,11 +54,12 @@ dfy = 20
 def lookupmonument(name):
     index = -1
     code = ""
-    displayname = "abc"
+    displayname = ""
     if name[:2] == "RM" and name[7] == ' ':
         code = name[:7]
         for l in range(len(assendelftrijkdata)):
             if code == assendelftrijkdata[l][0][:7]:
+               displayname = assendelftrijkdata[l][0][9:]
                index = l
     elif name[:2] == "RM" and name[8] == ' ':
         code = name[:8]
@@ -305,7 +306,7 @@ for i in range(len(assendelftrijkdata)):
     (mi, code, displayname) = lookupmonument(assendelftrijkdata[i][0])
     if mi >= 0:
         my_canvas.drawImage("Photos/" + code + ".JPG", col * colwidth, bottommargin + row * rowheight + dfy, 400 * scalepics, 250 * scalepics)
-        my_canvas.drawString(col * colwidth, bottommargin + row * rowheight, code)
+        my_canvas.drawString(col * colwidth, bottommargin + row * rowheight, displayname)
         linkx1 = col * colwidth
         linky1 = row * rowheight
         linkx2 = col * colwidth + colwidth
