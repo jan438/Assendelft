@@ -249,11 +249,19 @@ if response.status_code == 200:
     with open('JSON/Assendelft.json', 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
 [year1a, year2a, totalcoords1a, totalcoords2a] = readjson("JSON/Assendelft.json")
+response = requests.get("https://gemeentegeschiedenis.nl/gemeentenaam/json/Zaanstad")
+if response.status_code == 200:
+    history = response.content
+    data = json.loads(history.decode('utf-8'))
+    with open('JSON/Zaanstad.json', 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=4)
+[year1a, year3a, totalcoords3a, totalcoords3a] = readjson("JSON/Zaanstad.json")
 my_canvas.drawImage("Photos/mapAssendelft.png", xa1, ya1, w_ha[0] * fa1, w_ha[1] * fa1)
 my_canvas.drawImage("Photos/mapAssendelft.png", xa2, ya2, w_ha[0] * fa2, w_ha[1] * fa2)
 my_canvas.drawImage("Photos/mapAssendelft.png", xa3, ya3, w_ha[0] * fa3, w_ha[1] * fa3)
 drawbounderies(my_canvas, xa1, ya1, totalcoords1a, year1a, pointsa, w_ha, fa1)
 drawbounderies(my_canvas, xa2, ya2, totalcoords2a, year2a, pointsa, w_ha, fa2)
+drawbounderies(my_canvas, xa3, ya3, totalcoords3a, year3a, pointsa, w_ha, fa3)
 for i in range(len(geodata)):
     buildyear = int(geodata[i][3])
     disappeared = int(geodata[i][4])
