@@ -145,6 +145,11 @@ def retrievecoords(kmlfile, points):
                     if lat < points[0] and lat > points[2] and lon > points[1] and lon < points[3]:
                         data.append([name, lat, lon])
     return data
+def get_image(path, width=1*cm):
+    img = utils.ImageReader(path)
+    iw, ih = img.getSize()
+    aspect = ih / float(iw)
+    return Image(path, width=width, height=(width * aspect))
 def scale_to_img(lat_lon, points, w_h, factor):
     old = (points[2], points[0])
     new = (0, w_h[1])
