@@ -15,6 +15,7 @@ from reportlab.graphics import renderPDF
 from reportlab.lib.colors import yellow, green, red, blue, black, white, tan, HexColor
 from reportlab.lib.units import inch, cm, mm
 from math import pi, cos, sin, radians, sqrt
+from reportlab.lib import utils
 import xml.etree.ElementTree as ET
 import re
 from geopy.distance import great_circle
@@ -298,7 +299,10 @@ maxinfospage = 24
 for i in range(len(geodata)):
     if geodata[i][5] == "y":
         code = geodata[i][0]
-        my_canvas.drawImage("Photos/" + code + ".jpg", col * colwidth, bottommargin + row * rowheight, 400 * scalepics, 250 * scalepics)
+        img = utils.ImageReader("Photos/" + code + ".jpg")
+        iw, ih = img.getSize()
+        aspect = ih / float(iw)
+        my_canvas.drawImage(img, col * colwidth, bottommargin + row * rowheight, iw * scalepics, ih * scalepics)
         my_canvas.drawString(col * colwidth, bottommargin + row * rowheight - 5, code)
         linkx1 = col * colwidth
         linky1 = row * rowheight
