@@ -194,7 +194,10 @@ def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
         temp = coords[i][0]
         coords[i][0] = coords[i][1]
         coords[i][1] = temp
-        print(coords[i][0], coords[i][1])
+        lat = coords[i][0]
+        lon = coords[i][1]
+        if lat < points[0] and lat > points[2] and lon > points[1] and lon < points[3]:
+            print(lat, lon)
     p = c.beginPath()
     gcircle = 0
     for i in range(len(coords)):
