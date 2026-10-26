@@ -267,7 +267,7 @@ if response.status_code == 200:
     data = json.loads(history.decode('utf-8'))
     with open('JSON/Zaanstad.json', 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
-[year1a, year3a, totalcoords3a, totalcoords3a] = readjson("JSON/Zaanstad.json")
+[year3a, year4a, totalcoords3a, totalcoords4a] = readjson("JSON/Zaanstad.json")
 my_canvas.drawImage("Photos/mapAssendelft.png", xa1, ya1, w_ha[0] * fa1, w_ha[1] * fa1)
 my_canvas.drawImage("Photos/mapAssendelft.png", xa2, ya2, w_ha[0] * fa2, w_ha[1] * fa2)
 my_canvas.drawImage("Photos/mapAssendelft.png", xa3, ya3, w_ha[0] * fa3, w_ha[1] * fa3)
