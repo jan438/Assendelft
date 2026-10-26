@@ -46,7 +46,7 @@ ya1 = 500
 xa2 = 310
 ya2 = 500
 xa3 = 140
-ya3 = 25
+ya3 = 45
 xf = 40
 yf = 365
 df = 130
@@ -196,8 +196,8 @@ def markplace(c, bx, by, lat, lon, points, w_h, color, factor, name, radius, lnk
     return
 def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
     crds = []
-    c.setFont(assendelftfont, 10)
-    c.drawString(bx, by - 15, year + "   " + str(len(coords)))
+    c.setFont(assendelftfont, 15)
+    c.drawString(bx, by - 15, year)
     for i in range(len(coords)):
         lat = coords[i][1]
         lon = coords[i][0]
