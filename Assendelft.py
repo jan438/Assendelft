@@ -65,6 +65,7 @@ def lookupmonument(name):
         code = name[:8]
         for l in range(len(assendelftrijkdata)):
             if code == assendelftrijkdata[l][0][:8]:
+               displayname = assendelftrijkdata[l][0][10:]
                index = l
     elif name[:4] == "GMNH":
         code = name[5:10]
