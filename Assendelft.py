@@ -188,30 +188,31 @@ def markplace(c, bx, by, lat, lon, points, w_h, color, factor, name, radius, lnk
                     c.bookmarkPage(code + 'L', fit = "XYZ", left = linkx1, top = linky2, zoom = 10)
     return
 def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
+    crds = []
     c.setFont(assendelftfont, 10)
     c.drawString(bx, by - 15, year + "   " + str(len(coords)))
     for i in range(len(coords)):
-        temp = coords[i][0]
-        coords[i][0] = coords[i][1]
-        coords[i][1] = temp
-        lat = coords[i][0]
-        lon = coords[i][1]
+        lat = coords[i][1]
+        lon = coords[i][0]
         if lat < points[0] and lat > points[2] and lon > points[1] and lon < points[3]:
-            print(lat, lon)
+            temp = coords[i][0]
+            coords[i][0] = coords[i][1]
+            coords[i][1] = temp
+            crds.append(coords[i])
     p = c.beginPath()
     gcircle = 0
-    for i in range(len(coords)):
-        x, y = scale_to_img(coords[i], points, w_h, factor)
+    for i in range(len(crds)):
+        x, y = scale_to_img(crds[i], points, w_h, factor)
         x1 = bx + x
         y1 = by + y
         if i == 0:
             p.moveTo(x1, y1)
         p.lineTo(x1, y1)
-        lat1, lon1 = coords[i]
-        if i < len(coords) - 1:
-            lat2, lon2 = coords[i + 1]
+        lat1, lon1 = crds[i]
+        if i < len(crds) - 1:
+            lat2, lon2 = crds[i + 1]
         else:
-            lat2, lon2 = coords[0]
+            lat2, lon2 = crds[0]
         coord1 = (lon1, lat1)
         coord2 = (lon2, lat2)
         d = great_circle(coord1, coord2).km
