@@ -194,6 +194,7 @@ def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
         temp = coords[i][0]
         coords[i][0] = coords[i][1]
         coords[i][1] = temp
+        print(coords[i][0], coords[i][1])
     p = c.beginPath()
     gcircle = 0
     for i in range(len(coords)):
