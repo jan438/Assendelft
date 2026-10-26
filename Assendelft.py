@@ -286,11 +286,12 @@ for i in range(len(gemeentedata)):
 my_canvas.showPage()
 my_canvas.setFillColor(HexColor('#000000'))
 my_canvas.setFont(assendelftfont, 10)
+maxrows = 4
 scalepics = 0.3
 col = 0
-row = 5
+row = maxrows
 colwidth = 150
-rowheight = 145
+rowheight = 160
 bottommargin = 25
 infos = 0
 maxinfospage = 24
@@ -315,7 +316,7 @@ for i in range(len(geodata)):
             my_canvas.showPage()
             infos = 0
             col = 0
-            row = 5
+            row = maxrows
 for i in range(len(assendelftrijkdata)):
     (mi, code, displayname) = lookupmonument(assendelftrijkdata[i][0])
     if mi >= 0:
@@ -337,7 +338,7 @@ for i in range(len(assendelftrijkdata)):
             my_canvas.showPage()
             infos = 0
             col = 0
-            row = 5
+            row = maxrows
 for i in range(len(provinciedata)):
     (mi, code, displayname) = lookupmonument(provinciedata[i][0])
     if mi >= 0:
@@ -361,7 +362,7 @@ for i in range(len(provinciedata)):
             my_canvas.showPage()
             infos = 0
             col = 0
-            row = 5
+            row = maxrows
 for i in range(len(gemeentedata)):
     (mi, code, displayname) = lookupmonument(gemeentedata[i][0])
     if mi >= 0:
@@ -385,6 +386,6 @@ for i in range(len(gemeentedata)):
             my_canvas.showPage()
             infos = 0
             col = 0
-            row = 5
+            row = maxrows
 my_canvas.save()
 key = input("Wait")
