@@ -200,9 +200,7 @@ def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
     crds = []
     c.setFont(assendelftfont, 15)
     c.drawString(bx, by - 15, year)
-    lat = coords[0][1]
-    lon = coords[0][0]
-    beginside = (lat < points[0] and lat > points[2] and lon > points[1] and lon < points[3])
+    beginside = (coords[0][1] < points[0] and coords[0][1] > points[2] and coords[0][0] > points[1] and coords[0][0] < points[3])
     if not beginside:
         for crd in coords:
             if crd[1] < points[0] and crd[1] > points[2] and crd[0] > points[1] and crd[0] < points[3]:
@@ -211,9 +209,7 @@ def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
                 beginlat = crd[1]
                 beginlon = crd[0]
         crds.append((beginlat, beginlon))
-    lat = coords[len(coords)-1][1]
-    lon = coords[len(coords)-1][0]
-    endinside = (lat < points[0] and lat > points[2] and lon > points[1] and lon < points[3])
+    endinside = (coords[len(coords)-1][1] < points[0] and coords[len(coords)-1][1] > points[2] and coords[len(coords)-1][0] > points[1] and coords[len(coords)-1][0] < points[3])
     print(beginside, endinside)
     for i in range(len(coords)):
         lat = coords[i][1]
