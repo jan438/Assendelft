@@ -200,6 +200,10 @@ def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
     crds = []
     c.setFont(assendelftfont, 15)
     c.drawString(bx, by - 15, year)
+    lat = coords[0][1]
+    lon = coords[0][0]
+    bginside = (lat < points[0] and lat > points[2] and lon > points[1] and lon < points[3])
+    print(bginside)
     for i in range(len(coords)):
         lat = coords[i][1]
         lon = coords[i][0]
