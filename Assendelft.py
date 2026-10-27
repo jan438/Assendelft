@@ -203,6 +203,9 @@ def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
     lat = coords[0][1]
     lon = coords[0][0]
     beginside = (lat < points[0] and lat > points[2] and lon > points[1] and lon < points[3])
+    if not beginside:
+        for i in range(len(coords)):
+            print("hallobeginout")
     lat = coords[len(coords)-1][1]
     lon = coords[len(coords)-1][0]
     endinside = (lat < points[0] and lat > points[2] and lon > points[1] and lon < points[3])
