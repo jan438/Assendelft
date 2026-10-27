@@ -223,16 +223,15 @@ def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
                 cutoff((firstlat, firstlon), (coords[i][0], coords[i][1]), points)
                 beginside = True
     if not endinside:
-        lastcrd = coords[len(coords)-1]
+        lastcrdo = coords[len(coords)-1]
+        lastcrdi = coords[0]
         for crd in reversed(coords):
-            if crd[1] < points[0] and crd[1] > points[2] and crd[0] > points[1] and crd[0] < points[3]:
-                lastcrd = crd
-                break
+            if not (crd[1] < points[0] and crd[1] > points[2] and crd[0] > points[1] and crd[0] < points[3]):
+                lastcrdo = crd
             else:
-                lastlat = crd[1]
-                lastlon = crd[0]
-        crds.append((lastlat, lastlon))
-        cutoff((lastlat, lastlon), (lastcrd[1], lastcrd[0]), points)
+                lastcrdi = crd
+                break
+        cutoff(lastcrdo, lastcrdi, points)
     p = c.beginPath()
     gcircle = 0
     for i in range(len(crds)):
