@@ -220,7 +220,7 @@ def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
             coords[i][1] = temp
             crds.append(coords[i])
             if not beginside:
-                cutoff((firstlat, firstlon), coords[i], points)
+                cutoff((firstlat, firstlon), (coords[i][0], coords[i][1]), points)
                 beginside = True
     if not endinside:
         lastcrd = coords[len(coords)-1]
