@@ -208,8 +208,9 @@ def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
             lat = coords[i][1]
             lon = coords[i][0]
             if lat < points[0] and lat > points[2] and lon > points[1] and lon < points[3]:
-                lastout = i - 1
-                print(lastout)
+                lastlat = coords[i - 1][1]
+                lastlon = coords[i - 1][0]
+                crds.append((lastlat, lastlon))
                 break
     lat = coords[len(coords)-1][1]
     lon = coords[len(coords)-1][0]
