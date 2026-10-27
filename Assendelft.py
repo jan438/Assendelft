@@ -227,8 +227,8 @@ def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
             else:
                 lastlat = crd[1]
                 lastlon = crd[0]
-        extrac = cutoff((lastlat, lastlon), crd, points)
-        print(extrac, lastlat, lastlon, crd)
+        extrac = cutoff((lastlat, lastlon), coords[len(coords)-1], points)
+        print(extrac, lastlat, lastlon, coords[len(coords)-1])
         crds.append((lastlat, lastlon))
     p = c.beginPath()
     gcircle = 0
