@@ -145,8 +145,8 @@ def retrievecoords(kmlfile, points):
                     if lat < points[0] and lat > points[2] and lon > points[1] and lon < points[3]:
                         data.append([name, lat, lon])
     return data
-def cutoff(crd1, crd2, points):
-    return crd1
+def cutoff(crd, points):
+    return crd
 def get_image(path, width=1*cm):
     img = utils.ImageReader(path)
     iw, ih = img.getSize()
@@ -206,11 +206,11 @@ def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
             if crd[1] < points[0] and crd[1] > points[2] and crd[0] > points[1] and crd[0] < points[3]:
                 break
             else:
-                beginlat = crd[1]
-                beginlon = crd[0]
-        extrac = cutoff((beginlat, beginlon), coords[0], points)
-        print(extrac, beginlat, beginlon, coords[0])
-        crds.append((beginlat, beginlon))
+                firstlat = crd[1]
+                firstlon = crd[0]
+        extrac = cutoff((firstlat, firstlon), points)
+        print("extra", extrac, "first", firstlat, firstlon)
+        crds.append((firstlat, firstlon))
     endinside = (coords[len(coords)-1][1] < points[0] and coords[len(coords)-1][1] > points[2] and coords[len(coords)-1][0] > points[1] and coords[len(coords)-1][0] < points[3])
     for i in range(len(coords)):
         lat = coords[i][1]
@@ -227,8 +227,8 @@ def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
             else:
                 lastlat = crd[1]
                 lastlon = crd[0]
-        extrac = cutoff((lastlat, lastlon), coords[len(coords)-1], points)
-        print(extrac, lastlat, lastlon, coords[len(coords)-1])
+        extrac = cutoff((lastlat, lastlon), points)
+        print("extra", extrac, "last", lastlat, lastlon)
         crds.append((lastlat, lastlon))
     p = c.beginPath()
     gcircle = 0
