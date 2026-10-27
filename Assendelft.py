@@ -204,12 +204,11 @@ def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
     beginside = (coords[0][1] < points[0] and coords[0][1] > points[2] and coords[0][0] > points[1] and coords[0][0] < points[3])
     if not beginside:
         for crd in coords:
-            if crd[1] < points[0] and crd[1] > points[2] and crd[0] > points[1] and crd[0] < points[3]:
-                break
+            if not (crd[1] < points[0] and crd[1] > points[2] and crd[0] > points[1] and crd[0] < points[3]):
+                firstcrdo = crd
             else:
-                firstlat = crd[1]
-                firstlon = crd[0]
-        crds.append((firstlat, firstlon))
+                firstcrdi = crd
+                break
     endinside = (coords[len(coords)-1][1] < points[0] and coords[len(coords)-1][1] > points[2] and coords[len(coords)-1][0] > points[1] and coords[len(coords)-1][0] < points[3])
     for i in range(len(coords)):
         lat = coords[i][1]
@@ -220,7 +219,7 @@ def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
             coords[i][1] = temp
             crds.append(coords[i])
             if not beginside:
-                cutoff((firstlat, firstlon), (coords[i][0], coords[i][1]), points)
+                cutoff(firstcrdo, firstcrdi, points)
                 beginside = True
     if not endinside:
         lastcrdo = coords[len(coords)-1]
