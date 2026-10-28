@@ -375,6 +375,14 @@ for i in range(len(assendelftrijkdata)):
         if a.exists():
             img = utils.ImageReader(photo)
             iw, ih = img.getSize()
+            if iw > maxw:
+                maxw = iw
+            if iw < minw:
+                minw = iw
+            if ih > maxh:
+                maxh = ih
+            if ih < minh:
+                minh = ih
             aspect = ih / float(iw)
             my_canvas.drawImage(img, col * colwidth, bottommargin + row * rowheight + dfy, iw * scalepics, ih * scalepics)
         my_canvas.drawString(col * colwidth, bottommargin + row * rowheight, displayname)
@@ -403,6 +411,14 @@ for i in range(len(provinciedata)):
         if a.exists():
             img = utils.ImageReader(photo)
             iw, ih = img.getSize()
+            if iw > maxw:
+                maxw = iw
+            if iw < minw:
+                minw = iw
+            if ih > maxh:
+                maxh = ih
+            if ih < minh:
+                minh = ih
             aspect = ih / float(iw)
             my_canvas.drawImage(img, col * colwidth, bottommargin + row * rowheight + dfy, iw * scalepics, ih * scalepics)
         my_canvas.drawString(col * colwidth, bottommargin + row * rowheight, displayname)
@@ -431,6 +447,14 @@ for i in range(len(gemeentedata)):
         if a.exists():
             img = utils.ImageReader(photo)
             iw, ih = img.getSize()
+            if iw > maxw:
+                maxw = iw
+            if iw < minw:
+                minw = iw
+            if ih > maxh:
+                maxh = ih
+            if ih < minh:
+                minh = ih
             aspect = ih / float(iw)
             my_canvas.drawImage(img, col * colwidth, bottommargin + row * rowheight + dfy, iw * scalepics, ih * scalepics)
         my_canvas.drawString(col * colwidth, bottommargin + row * rowheight, displayname)
