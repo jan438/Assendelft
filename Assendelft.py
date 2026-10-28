@@ -210,11 +210,11 @@ def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
     c.drawString(bx, by - 15, year)
     beginside = (coords[0][1] < points[0] and coords[0][1] > points[2] and coords[0][0] > points[1] and coords[0][0] < points[3])
     if not beginside:
-        print("len coords", len(coords))
+        print("len coords", len(coords), "points", "0", points[0], "2", points[2], "1", points[1], "3", points[3])
         for crd in coords:
             if not (crd[1] < points[0] and crd[1] > points[2] and crd[0] > points[1] and crd[0] < points[3]):
                 firstcrdo = crd
-                print("firstcrdo", "lon", firstcrdo[0], "lat", firstcrdo[1], "points", "0", points[0], "2", points[2], "1", points[1], "3", points[3], crd[1] < points[0], crd[1] > points[2], crd[0] > points[1], crd[0] < points[3])
+                print("firstcrdo", "lon", firstcrdo[0], "lat", firstcrdo[1], crd[1] < points[0], crd[1] > points[2], crd[0] > points[1], crd[0] < points[3])
             else:
                 firstcrdi = crd
                 print("firstcrdi", firstcrdi, crd[1] < points[0], crd[1] > points[2], crd[0] > points[1], crd[0] < points[3])
