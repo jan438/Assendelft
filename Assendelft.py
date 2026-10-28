@@ -414,9 +414,13 @@ for i in range(len(provinciedata)):
 for i in range(len(gemeentedata)):
     (mi, code, displayname) = lookupmonument(gemeentedata[i][0])
     if mi >= 0:
-        a = Path("Photos/" + code + ".JPG")
+        photo = "Photos/" + code + ".JPG"
+        a = Path(photo)
         if a.exists():
-            my_canvas.drawImage(a, col * colwidth, bottommargin + row * rowheight + dfy, 400 * scalepics, 250 * scalepics)
+            img = utils.ImageReader(photo)
+            iw, ih = img.getSize()
+            aspect = ih / float(iw)
+            my_canvas.drawImage(img, col * colwidth, bottommargin + row * rowheight + dfy, iw * scalepics, ih * scalepics)
         my_canvas.drawString(col * colwidth, bottommargin + row * rowheight, displayname)
         linkx1 = col * colwidth
         linky1 = row * rowheight
