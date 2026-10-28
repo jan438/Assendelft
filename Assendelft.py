@@ -145,9 +145,16 @@ def retrievecoords(kmlfile, points):
                     if lat < points[0] and lat > points[2] and lon > points[1] and lon < points[3]:
                         data.append([name, lat, lon])
     return data
-def cutoff(crd1, crd2, points):
-    print(crd1, crd2)
-    return crd1
+def cutoff(crdo, crdi, points):
+    print(crdo, crdi)
+    if crdo[1] < points[0] and crdo[1] > points[2] and crdo[0] > points[3]:
+        crdo[1] = crdo[1] + abs(crdi[1] - crdo[1]) / 2
+        crdo[0] = points[3]
+    if crdo[0] < points[3] and crdo[0] > points[1] and crdo[1] > points[0]:
+        crdo[0] = crdo[0] + abs(crdi[0] - crdo[0]) / 2
+        crdo[1] = points[0]
+    print(crdo, crdi)
+    return crdo
 def get_image(path, width=1*cm):
     img = utils.ImageReader(path)
     iw, ih = img.getSize()
@@ -209,7 +216,7 @@ def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
             else:
                 firstcrdi = crd
                 break
-        cutoff(firstcrdo, firstcrdi, points)
+        firstcrdo = cutoff(firstcrdo, firstcrdi, points)
     endinside = (coords[len(coords)-1][1] < points[0] and coords[len(coords)-1][1] > points[2] and coords[len(coords)-1][0] > points[1] and coords[len(coords)-1][0] < points[3])
     if not endinside:
         for crd in reversed(coords):
@@ -218,7 +225,7 @@ def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
             else:
                 lastcrdi = crd
                 break
-        cutoff(lastcrdo, lastcrdi, points)
+        lastcrdo = cutoff(lastcrdo, lastcrdi, points)
     for i in range(len(coords)):
         lat = coords[i][1]
         lon = coords[i][0]
