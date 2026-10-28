@@ -329,6 +329,8 @@ infos = 0
 maxinfospage = 24
 minw = math.inf
 maxw = -math.inf
+minh = math.inf
+maxh = -math.inf
 for i in range(len(geodata)):
     if geodata[i][5] == "y":
         code = geodata[i][0]
@@ -341,6 +343,10 @@ for i in range(len(geodata)):
                 maxw = iw
             if iw < minw:
                 minw = iw
+            if ih > maxh:
+                maxh = ih
+            if ih < minh:
+                minh = ih
             aspect = ih / float(iw)
             my_canvas.drawImage(img, col * colwidth, bottommargin + row * rowheight, iw * scalepics, ih * scalepics)
         my_canvas.drawString(col * colwidth, bottommargin + row * rowheight - 5, code)
@@ -445,6 +451,6 @@ for i in range(len(gemeentedata)):
             infos = 0
             col = 0
             row = maxrows
-print("maxw", maxw, "minw", minw)
+print("maxw", maxw, "minw", minw, "maxh", maxh, "minh", minh)
 my_canvas.save()
 key = input("Wait")
