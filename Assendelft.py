@@ -214,10 +214,10 @@ def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
         for crd in coords:
             if not (crd[1] < points[0] and crd[1] > points[2] and crd[0] > points[1] and crd[0] < points[3]):
                 firstcrdo = crd
-                print("firstcrdo", "lon", firstcrdo[0], "lat", firstcrdo[1], "points", "0", points[0], "2", points[2], "1", points[1], "3", points[3])
+                print("firstcrdo", "lon", firstcrdo[0], "lat", firstcrdo[1], "points", "0", points[0], "2", points[2], "1", points[1], "3", points[3], crd[1] < points[0], crd[1] > points[2], crd[0] > points[1], crd[0] < points[3])
             else:
                 firstcrdi = crd
-                print("firstcrdi", firstcrdi)
+                print("firstcrdi", firstcrdi, crd[1] < points[0], crd[1] > points[2], crd[0] > points[1], crd[0] < points[3])
                 break
         firstcrdo = cutoff(firstcrdo, firstcrdi, points)
     endinside = (coords[len(coords)-1][1] < points[0] and coords[len(coords)-1][1] > points[2] and coords[len(coords)-1][0] > points[1] and coords[len(coords)-1][0] < points[3])
