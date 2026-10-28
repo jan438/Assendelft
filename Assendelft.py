@@ -146,7 +146,7 @@ def retrievecoords(kmlfile, points):
                         data.append([name, lat, lon])
     return data
 def cutoff(crdo, crdi, points):
-    print("beforecut", crdo)
+    print("beforecut", "lon", crdo[0], "lat", crdo[1])
     if crdo[1] < points[0] and crdo[1] > points[2] and crdo[0] > points[3]:
         crdo[1] = crdo[1] + abs(crdi[1] - crdo[1]) / 2
         crdo[0] = points[3]
