@@ -155,11 +155,6 @@ def cutoff(crdo, crdi, points):
         crdo[1] = points[0]
     print("aftercut", crdo)
     return crdo
-def get_image(path, width=1*cm):
-    img = utils.ImageReader(path)
-    iw, ih = img.getSize()
-    aspect = ih / float(iw)
-    return Image(path, width=width, height=(width * aspect))
 def scale_to_img(lat_lon, points, w_h, factor):
     old = (points[2], points[0])
     new = (0, w_h[1])
