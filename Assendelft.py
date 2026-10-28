@@ -330,10 +330,13 @@ maxinfospage = 24
 for i in range(len(geodata)):
     if geodata[i][5] == "y":
         code = geodata[i][0]
-        img = utils.ImageReader("Photos/" + code + ".jpg")
-        iw, ih = img.getSize()
-        aspect = ih / float(iw)
-        my_canvas.drawImage(img, col * colwidth, bottommargin + row * rowheight, iw * scalepics, ih * scalepics)
+        photo = "Photos/" + code + ".jpg"
+        a = Path(photo)
+        if a.exists():
+            img = utils.ImageReader(photo)
+            iw, ih = img.getSize()
+            aspect = ih / float(iw)
+            my_canvas.drawImage(img, col * colwidth, bottommargin + row * rowheight, iw * scalepics, ih * scalepics)
         my_canvas.drawString(col * colwidth, bottommargin + row * rowheight - 5, code)
         linkx1 = col * colwidth
         linky1 = row * rowheight
