@@ -360,7 +360,10 @@ for i in range(len(geodata)):
 for i in range(len(assendelftrijkdata)):
     (mi, code, displayname) = lookupmonument(assendelftrijkdata[i][0])
     if mi >= 0:
-        my_canvas.drawImage("Photos/" + code + ".JPG", col * colwidth, bottommargin + row * rowheight + dfy, 400 * scalepics, 250 * scalepics)
+        img = utils.ImageReader("Photos/" + code + ".JPG")
+        iw, ih = img.getSize()
+        aspect = ih / float(iw)
+        my_canvas.drawImage(img, col * colwidth, bottommargin + row * rowheight + dfy, iw * scalepics, ih * scalepics)
         my_canvas.drawString(col * colwidth, bottommargin + row * rowheight, displayname)
         linkx1 = col * colwidth
         linky1 = row * rowheight
