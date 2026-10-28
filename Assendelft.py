@@ -146,14 +146,14 @@ def retrievecoords(kmlfile, points):
                         data.append([name, lat, lon])
     return data
 def cutoff(crdo, crdi, points):
-    print(crdo, crdi)
+    print("beforecut", crdo)
     if crdo[1] < points[0] and crdo[1] > points[2] and crdo[0] > points[3]:
         crdo[1] = crdo[1] + abs(crdi[1] - crdo[1]) / 2
         crdo[0] = points[3]
     if crdo[0] < points[3] and crdo[0] > points[1] and crdo[1] > points[0]:
         crdo[0] = crdo[0] + abs(crdi[0] - crdo[0]) / 2
         crdo[1] = points[0]
-    print(crdo, crdi)
+    print("aftercut", crdo)
     return crdo
 def get_image(path, width=1*cm):
     img = utils.ImageReader(path)
@@ -213,6 +213,7 @@ def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
         for crd in coords:
             if not (crd[1] < points[0] and crd[1] > points[2] and crd[0] > points[1] and crd[0] < points[3]):
                 firstcrdo = crd
+                print("firstcrdo", firstcrdo)
             else:
                 firstcrdi = crd
                 break
