@@ -346,7 +346,7 @@ for i in range(len(geodata)):
             if iw > ih:
                 my_canvas.drawImage(img, col * colwidth, bottommargin + row * rowheight, norm, norm * aspect)
             else:
-                my_canvas.drawImage(img, col * colwidth, bottommargin + row * rowheight, iw * scalepics, ih * scalepics)
+                my_canvas.drawImage(img, col * colwidth, bottommargin + row * rowheight, norm / aspect, norm)
         my_canvas.drawString(col * colwidth, bottommargin + row * rowheight - 5, code)
         linkx1 = col * colwidth
         linky1 = row * rowheight
