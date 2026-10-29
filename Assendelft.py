@@ -253,7 +253,7 @@ def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
     c.drawPath(p, fill=0, stroke=1)
     c.drawString(bx, by - 30, str(round(gcircle, 1)) + "km")
     return
-def insertphoto(c, col, row, infos, photo):
+def insertphoto(c, col, row, infos, code, photo):
     a = Path(photo)
     if a.exists():
         img = utils.ImageReader(photo)
@@ -370,12 +370,12 @@ for i in range(len(geodata)):
         code = geodata[i][0]
         (mi, code, displayname) = lookupgeo(code)
         photo = "Photos/" + code + ".jpg"
-        (col, row, infos) = insertphoto(my_canvas, col, row, infos, photo)
+        (col, row, infos) = insertphoto(my_canvas, col, row, infos, code, photo)
 for i in range(len(assendelftrijkdata)):
     (mi, code, displayname) = lookupmonument(assendelftrijkdata[i][0])
     if mi >= 0:
         photo = "Photos/" + code + ".JPG"
-        (col, row, infos) = insertphoto(my_canvas, col, row, infos, photo)
+        (col, row, infos) = insertphoto(my_canvas, col, row, infos, code, photo)
 for i in range(len(provinciedata)):
     (mi, code, displayname) = lookupmonument(provinciedata[i][0])
     if mi >= 0:
