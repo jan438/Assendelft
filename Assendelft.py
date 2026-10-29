@@ -94,11 +94,13 @@ def scaleSVG(svgfile, scaling_factor):
 def lookupgeo(name):
     index = -1
     code = ""
+    displayname = ""
     for l in range(len(geodata)):
         if geodata[l][0] == name:
             index = l
+            displayname = geodata[l][6]
             code = name
-    return (index, code)
+    return (index, code, displayname)
 def readjson(jsonfile):
     countyears = 0
     totalcoords1 = []
@@ -177,7 +179,7 @@ def markplace(c, bx, by, lat, lon, points, w_h, color, factor, name, radius, lnk
     linkx2 = bx + x + 1.5 * radius
     linky2 = by + y + 1.5 * radius
     linkarea = (linkx1, linky1, linkx2, linky2)
-    (mi, code) = lookupgeo(name)
+    (mi, code, displayname) = lookupgeo(name)
     if mi >= 0 and lnk == "y":
         c.linkAbsolute(code, code + 'I', linkarea, addtopage = 1, thickness = 0, color = None)
         c.bookmarkPage(code + 'L', fit = "XYZ", left = linkx1, top = linky2, zoom = 10)
@@ -337,6 +339,7 @@ norm = 140
 for i in range(len(geodata)):
     if geodata[i][5] == "y":
         code = geodata[i][0]
+        (mi, code, displayname) = lookupgeo(code)
         photo = "Photos/" + code + ".jpg"
         a = Path(photo)
         if a.exists():
@@ -347,7 +350,7 @@ for i in range(len(geodata)):
                 my_canvas.drawImage(img, col * colwidth, bottommargin + row * rowheight, norm, norm * aspect)
             else:
                 my_canvas.drawImage(img, col * colwidth, bottommargin + row * rowheight, norm / aspect, norm)
-        my_canvas.drawString(col * colwidth, bottommargin + row * rowheight - 10, code)
+        my_canvas.drawString(col * colwidth, bottommargin + row * rowheight - 10, displayname)
         linkx1 = col * colwidth
         linky1 = row * rowheight
         linkx2 = col * colwidth + colwidth
