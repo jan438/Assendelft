@@ -333,7 +333,7 @@ minwall = 120
 maxwall = 2048
 minhall = 80
 maxhall = 1536
-norm = 100
+norm = 140
 for i in range(len(geodata)):
     if geodata[i][5] == "y":
         code = geodata[i][0]
