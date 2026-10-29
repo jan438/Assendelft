@@ -253,9 +253,9 @@ def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
     c.drawPath(p, fill=0, stroke=1)
     c.drawString(bx, by - 30, str(round(gcircle, 1)) + "km")
     return
-def insertphoto(c, col, row, photo):
+def insertphoto(c, col, row, infos, photo):
     print(colwidth)
-    return (col, row)
+    return (col, row, infos)
 if sys.platform[0] == 'l':
     path = '/home/jan/git/Assendelft'
 if sys.platform[0] == 'w':
@@ -344,7 +344,7 @@ for i in range(len(geodata)):
         code = geodata[i][0]
         (mi, code, displayname) = lookupgeo(code)
         photo = "Photos/" + code + ".jpg"
-        (col, row) = insertphoto(my_canvas, col, row, photo)
+        (col, row, infos) = insertphoto(my_canvas, col, row, infos, photo)
         a = Path(photo)
         if a.exists():
             img = utils.ImageReader(photo)
