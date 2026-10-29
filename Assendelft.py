@@ -145,15 +145,11 @@ def retrievecoords(kmlfile, points):
                     if lat < points[0] and lat > points[2] and lon > points[1] and lon < points[3]:
                         data.append([name, lat, lon])
     return data
-def cutoff(crdo, crdi, points):
+def fcutoff(crdo, crdi, points):
     print("beforecut", "lon", crdo[0], "lat", crdo[1])
-    if crdo[1] < points[0] and crdo[1] > points[2] and crdo[0] > points[3]:
-        crdo[1] = crdo[1] + abs(crdi[1] - crdo[1]) / 2
-        crdo[0] = points[3]
-    if crdo[0] < points[3] and crdo[0] > points[1] and crdo[1] > points[0]:
-        crdo[0] = crdo[0] + abs(crdi[0] - crdo[0]) / 2
-        crdo[1] = points[0]
-    print("aftercut", crdo)
+    return crdo
+def lcutoff(crdo, crdi, points):
+    print("beforecut", "lon", crdo[0], "lat", crdo[1])
     return crdo
 def scale_to_img(lat_lon, points, w_h, factor):
     old = (points[2], points[0])
@@ -214,7 +210,7 @@ def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
                 firstcrdi = crd
                 print("firstcrdi", firstcrdi, crd[1] < points[0], crd[1] > points[2], crd[0] > points[1], crd[0] < points[3])
                 break
-        firstcrdo = cutoff(firstcrdo, firstcrdi, points)
+        firstcrdo = fcutoff(firstcrdo, firstcrdi, points)
     endinside = (coords[len(coords)-1][1] < points[0] and coords[len(coords)-1][1] > points[2] and coords[len(coords)-1][0] > points[1] and coords[len(coords)-1][0] < points[3])
     if not endinside:
         for crd in reversed(coords):
