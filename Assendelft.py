@@ -405,7 +405,11 @@ for i in range(len(provinciedata)):
             img = utils.ImageReader(photo)
             iw, ih = img.getSize()
             aspect = float(ih) / float(iw)
-            my_canvas.drawImage(img, col * colwidth, bottommargin + row * rowheight + dfy, iw * scalepics, ih * scalepics)
+            if iw > ih:
+                my_canvas.drawImage(img, col * colwidth, bottommargin + row * rowheight, norm, norm * aspect)
+
+            else:
+                my_canvas.drawImage(img, col * colwidth, bottommargin + row * rowheight, norm / aspect, norm)
         my_canvas.drawString(col * colwidth, bottommargin + row * rowheight, displayname)
         linkx1 = col * colwidth
         linky1 = row * rowheight
@@ -433,7 +437,11 @@ for i in range(len(gemeentedata)):
             img = utils.ImageReader(photo)
             iw, ih = img.getSize()
             aspect = float(ih) / float(iw)
-            my_canvas.drawImage(img, col * colwidth, bottommargin + row * rowheight + dfy, iw * scalepics, ih * scalepics)
+            if iw > ih:
+                my_canvas.drawImage(img, col * colwidth, bottommargin + row * rowheight, norm, norm * aspect)
+
+            else:
+                my_canvas.drawImage(img, col * colwidth, bottommargin + row * rowheight, norm / aspect, norm)
         my_canvas.drawString(col * colwidth, bottommargin + row * rowheight, displayname)
         linkx1 = col * colwidth
         linky1 = row * rowheight
