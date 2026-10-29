@@ -333,7 +333,7 @@ minwall = 120
 maxwall = 2048
 minhall = 80
 maxhall = 1536
-norm = 1000
+norm = 100
 for i in range(len(geodata)):
     if geodata[i][5] == "y":
         code = geodata[i][0]
@@ -343,7 +343,10 @@ for i in range(len(geodata)):
             img = utils.ImageReader(photo)
             iw, ih = img.getSize()
             aspect = float(ih) / float(iw)
-            my_canvas.drawImage(img, col * colwidth, bottommargin + row * rowheight, iw * scalepics, ih * scalepics)
+            if iw > ih:
+                my_canvas.drawImage(img, col * colwidth, bottommargin + row * rowheight, norm, norm * aspect)
+            else:
+                my_canvas.drawImage(img, col * colwidth, bottommargin + row * rowheight, iw * scalepics, ih * scalepics)
         my_canvas.drawString(col * colwidth, bottommargin + row * rowheight - 5, code)
         linkx1 = col * colwidth
         linky1 = row * rowheight
