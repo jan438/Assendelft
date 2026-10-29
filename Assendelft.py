@@ -208,6 +208,7 @@ def drawbounderies(c, bx, by, coords, year, points, w_h, factor):
                 firstcrdi = crd
                 break
         firstcrdo = fcutoff(firstcrdo, firstcrdi, points)
+        crds.append(   firstcrdo )
     endinside = (coords[len(coords)-1][1] < points[0] and coords[len(coords)-1][1] > points[2] and coords[len(coords)-1][0] > points[1] and coords[len(coords)-1][0] < points[3])
     if not endinside:
         for crd in reversed(coords):
