@@ -146,11 +146,9 @@ def retrievecoords(kmlfile, points):
                         data.append([name, lat, lon])
     return data
 def fcutoff(crdo, crdi, points):
-    print("beforecut", "lon", crdo[0], "lat", crdo[1])
-    temp = crdo[0]
-    crdo[0] = crdo[1]
-    crdo[1] = temp
-    return crdo
+    lon = 4.807377
+    lat = 52.424554
+    return (lat, lon)
 def lcutoff(crdo, crdi, points):
     print("beforecut", "lon", crdo[0], "lat", crdo[1])
     return crdo
