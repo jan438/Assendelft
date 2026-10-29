@@ -149,7 +149,7 @@ def fcutoff(crdo, crdi, points):
     #lon = 4.807377
     lon = points[3]
     #lat = 52.424554
-    lat = 52.429
+    lat = 52.427
     return (lat, lon)
 def lcutoff(crdo, crdi, points):
     print("beforecut", "lon", crdo[0], "lat", crdo[1])
