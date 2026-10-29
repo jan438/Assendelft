@@ -152,7 +152,8 @@ def fcutoff(crdo, crdi, points):
     lat = 52.427
     return (lat, lon)
 def lcutoff(crdo, crdi, points):
-    lon = points[1]
+    lon = 4.7
+    #lon = points[1]
     lat = points[0]
     return (lat, lon)
 def scale_to_img(lat_lon, points, w_h, factor):
