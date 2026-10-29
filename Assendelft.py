@@ -347,7 +347,7 @@ for i in range(len(geodata)):
                 my_canvas.drawImage(img, col * colwidth, bottommargin + row * rowheight, norm, norm * aspect)
             else:
                 my_canvas.drawImage(img, col * colwidth, bottommargin + row * rowheight, norm / aspect, norm)
-        my_canvas.drawString(col * colwidth, bottommargin + row * rowheight - 5, code)
+        my_canvas.drawString(col * colwidth, bottommargin + row * rowheight - 10, code)
         linkx1 = col * colwidth
         linky1 = row * rowheight
         linkx2 = col * colwidth + colwidth
@@ -378,7 +378,7 @@ for i in range(len(assendelftrijkdata)):
                 my_canvas.drawImage(img, col * colwidth, bottommargin + row * rowheight, norm, norm * aspect)
             else:
                 my_canvas.drawImage(img, col * colwidth, bottommargin + row * rowheight, norm / aspect, norm)
-        my_canvas.drawString(col * colwidth, bottommargin + row * rowheight, displayname)
+        my_canvas.drawString(col * colwidth, bottommargin + row * rowheight - 10, displayname)
         linkx1 = col * colwidth
         linky1 = row * rowheight
         linkx2 = col * colwidth + colwidth
@@ -410,7 +410,7 @@ for i in range(len(provinciedata)):
 
             else:
                 my_canvas.drawImage(img, col * colwidth, bottommargin + row * rowheight, norm / aspect, norm)
-        my_canvas.drawString(col * colwidth, bottommargin + row * rowheight, displayname)
+        my_canvas.drawString(col * colwidth, bottommargin + row * rowheight - 10, displayname)
         linkx1 = col * colwidth
         linky1 = row * rowheight
         linkx2 = col * colwidth + colwidth
@@ -442,7 +442,7 @@ for i in range(len(gemeentedata)):
 
             else:
                 my_canvas.drawImage(img, col * colwidth, bottommargin + row * rowheight, norm / aspect, norm)
-        my_canvas.drawString(col * colwidth, bottommargin + row * rowheight, displayname)
+        my_canvas.drawString(col * colwidth, bottommargin + row * rowheight - 10, displayname)
         linkx1 = col * colwidth
         linky1 = row * rowheight
         linkx2 = col * colwidth + colwidth
