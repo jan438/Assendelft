@@ -333,6 +333,7 @@ minwall = 120
 maxwall = 2048
 minhall = 80
 maxhall = 1536
+norm = 1000
 for i in range(len(geodata)):
     if geodata[i][5] == "y":
         code = geodata[i][0]
@@ -341,15 +342,7 @@ for i in range(len(geodata)):
         if a.exists():
             img = utils.ImageReader(photo)
             iw, ih = img.getSize()
-            if iw > maxw:
-                maxw = iw
-            if iw < minw:
-                minw = iw
-            if ih > maxh:
-                maxh = ih
-            if ih < minh:
-                minh = ih
-            aspect = ih / float(iw)
+            aspect = float(ih) / float(iw)
             my_canvas.drawImage(img, col * colwidth, bottommargin + row * rowheight, iw * scalepics, ih * scalepics)
         my_canvas.drawString(col * colwidth, bottommargin + row * rowheight - 5, code)
         linkx1 = col * colwidth
@@ -377,15 +370,7 @@ for i in range(len(assendelftrijkdata)):
         if a.exists():
             img = utils.ImageReader(photo)
             iw, ih = img.getSize()
-            if iw > maxw:
-                maxw = iw
-            if iw < minw:
-                minw = iw
-            if ih > maxh:
-                maxh = ih
-            if ih < minh:
-                minh = ih
-            aspect = ih / float(iw)
+            aspect = float(ih) / float(iw)
             my_canvas.drawImage(img, col * colwidth, bottommargin + row * rowheight + dfy, iw * scalepics, ih * scalepics)
         my_canvas.drawString(col * colwidth, bottommargin + row * rowheight, displayname)
         linkx1 = col * colwidth
@@ -413,15 +398,7 @@ for i in range(len(provinciedata)):
         if a.exists():
             img = utils.ImageReader(photo)
             iw, ih = img.getSize()
-            if iw > maxw:
-                maxw = iw
-            if iw < minw:
-                minw = iw
-            if ih > maxh:
-                maxh = ih
-            if ih < minh:
-                minh = ih
-            aspect = ih / float(iw)
+            aspect = float(ih) / float(iw)
             my_canvas.drawImage(img, col * colwidth, bottommargin + row * rowheight + dfy, iw * scalepics, ih * scalepics)
         my_canvas.drawString(col * colwidth, bottommargin + row * rowheight, displayname)
         linkx1 = col * colwidth
@@ -449,15 +426,7 @@ for i in range(len(gemeentedata)):
         if a.exists():
             img = utils.ImageReader(photo)
             iw, ih = img.getSize()
-            if iw > maxw:
-                maxw = iw
-            if iw < minw:
-                minw = iw
-            if ih > maxh:
-                maxh = ih
-            if ih < minh:
-                minh = ih
-            aspect = ih / float(iw)
+            aspect = float(ih) / float(iw)
             my_canvas.drawImage(img, col * colwidth, bottommargin + row * rowheight + dfy, iw * scalepics, ih * scalepics)
         my_canvas.drawString(col * colwidth, bottommargin + row * rowheight, displayname)
         linkx1 = col * colwidth
@@ -477,6 +446,5 @@ for i in range(len(gemeentedata)):
             infos = 0
             col = 0
             row = maxrows
-print("maxw", maxw, "minw", minw, "maxh", maxh, "minh", minh)
 my_canvas.save()
 key = input("Wait")
