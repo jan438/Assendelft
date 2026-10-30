@@ -264,10 +264,8 @@ def insertphoto(c, col, row, infos, code, photo):
         else:
             c.drawImage(img, col * colwidth, bottommargin + row * rowheight, norm / aspect, norm)
     ic = displayname.find(" (")
-    if ic > 0:
-        c.drawString(col * colwidth, bottommargin + row * rowheight - 10, displayname[:ic])
-    else:
-        c.drawString(col * colwidth, bottommargin + row * rowheight - 10, displayname)
+    c.setFont(assendelftfont, 9)
+    c.drawString(col * colwidth, bottommargin + row * rowheight - 10, displayname)
     linkx1 = col * colwidth
     linky1 = row * rowheight
     linkx2 = col * colwidth + colwidth
