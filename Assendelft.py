@@ -380,34 +380,7 @@ for i in range(len(provinciedata)):
     (mi, code, displayname) = lookupmonument(provinciedata[i][0])
     if mi >= 0:
         photo = "Photos/" + code + ".JPG"
-        a = Path(photo)
-        if a.exists():
-            img = utils.ImageReader(photo)
-            iw, ih = img.getSize()
-            aspect = float(ih) / float(iw)
-            if iw > ih:
-                my_canvas.drawImage(img, col * colwidth, bottommargin + row * rowheight, norm, norm * aspect)
-
-            else:
-                my_canvas.drawImage(img, col * colwidth, bottommargin + row * rowheight, norm / aspect, norm)
-        my_canvas.drawString(col * colwidth, bottommargin + row * rowheight - 10, displayname)
-        linkx1 = col * colwidth
-        linky1 = row * rowheight
-        linkx2 = col * colwidth + colwidth
-        linky2 = row * rowheight + rowheight
-        linkarea = (linkx1, linky1, linkx2, linky2)
-        my_canvas.linkAbsolute(code, code + 'L', linkarea, addtopage = 1, thickness = 0, color = None)
-        my_canvas.bookmarkPage(code + 'I', fit = "XYZ", left = linkx1, top = linky2, zoom = 8)
-        infos += 1
-        col += 1
-        if col == 4:
-            col = 0
-            row -=1
-        if infos == maxinfospage:
-            my_canvas.showPage()
-            infos = 0
-            col = 0
-            row = maxrows
+        (col, row, infos) = insertphoto(my_canvas, col, row, infos, code, photo)
 for i in range(len(gemeentedata)):
     (mi, code, displayname) = lookupmonument(gemeentedata[i][0])
     if mi >= 0:
