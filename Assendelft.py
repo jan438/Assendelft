@@ -263,24 +263,24 @@ def insertphoto(c, col, row, infos, code, photo):
             c.drawImage(img, col * colwidth, bottommargin + row * rowheight, norm, norm * aspect)
         else:
             c.drawImage(img, col * colwidth, bottommargin + row * rowheight, norm / aspect, norm)
-        c.drawString(col * colwidth, bottommargin + row * rowheight - 10, displayname)
-        linkx1 = col * colwidth
-        linky1 = row * rowheight
-        linkx2 = col * colwidth + colwidth
-        linky2 = row * rowheight + rowheight
-        linkarea = (linkx1, linky1, linkx2, linky2)
-        c.linkAbsolute(code, code + 'L', linkarea, addtopage = 1, thickness = 0, color = None)
-        c.bookmarkPage(code + 'I', fit = "XYZ", left = linkx1, top = linky2, zoom = 8)
-        infos += 1
-        col += 1
-        if col == 4:
-            col = 0
-            row -=1
-        if infos == maxinfospage:
-            c.showPage()
-            infos = 0
-            col = 0
-            row = maxrows
+    c.drawString(col * colwidth, bottommargin + row * rowheight - 10, displayname)
+    linkx1 = col * colwidth
+    linky1 = row * rowheight
+    linkx2 = col * colwidth + colwidth
+    linky2 = row * rowheight + rowheight
+    linkarea = (linkx1, linky1, linkx2, linky2)
+    c.linkAbsolute(code, code + 'L', linkarea, addtopage = 1, thickness = 0, color = None)
+    c.bookmarkPage(code + 'I', fit = "XYZ", left = linkx1, top = linky2, zoom = 8)
+    infos += 1
+    col += 1
+    if col == 4:
+        col = 0
+        row -=1
+    if infos == maxinfospage:
+        c.showPage()
+        infos = 0
+        col = 0
+        row = maxrows
     return (col, row, infos)
 if sys.platform[0] == 'l':
     path = '/home/jan/git/Assendelft'
